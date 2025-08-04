@@ -26,7 +26,7 @@ These reports give a general overview of UFC data. They are great for portfolio 
 
 ### 🧍 Fighter Statistics
 - Top 10 fighters with the most wins ✅
-- Fighters with the highest KO rate
+- Fighters with the highest KO rate ✅
 - Performance comparison by age
 - Average career length of fighters
 
