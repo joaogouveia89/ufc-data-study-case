@@ -37,7 +37,7 @@ These reports give a general overview of UFC data. They are great for portfolio 
 These go deeper and highlight analytical thinking, correlations, and behavior patterns.
 
 ### 📊 What Influences a Fight Outcome?
-- Correlation between height/reach and win probability
+- Correlation between height/reach and win probability ✅
 - Does making weight increase win chances?
 - Do fighters coming off a win have a higher chance of winning again?
 
