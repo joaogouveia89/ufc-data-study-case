@@ -42,7 +42,7 @@ These go deeper and highlight analytical thinking, correlations, and behavior pa
 - Do fighters coming off a win have a higher chance of winning again? ✅
 
 ### 🤼‍♂️ Rivalries & Rematches
-- Timeline of fights between the same opponents (e.g., McGregor vs Poirier)
+- Timeline of fights between the same opponents (e.g., McGregor vs Poirier) ✅
 - Performance evolution across trilogies
 - Who tends to improve in rematches?
 
