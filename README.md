@@ -38,7 +38,7 @@ These go deeper and highlight analytical thinking, correlations, and behavior pa
 
 ### 📊 What Influences a Fight Outcome?
 - Correlation between height/reach and win probability ✅
-- Does making weight increase win chances?
+- Does making weight increase win chances? ✅
 - Do fighters coming off a win have a higher chance of winning again?
 
 ### 🤼‍♂️ Rivalries & Rematches
