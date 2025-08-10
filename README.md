@@ -43,7 +43,7 @@ These go deeper and highlight analytical thinking, correlations, and behavior pa
 
 ### 🤼‍♂️ Rivalries & Rematches
 - Timeline of fights between the same opponents (e.g., McGregor vs Poirier) ✅
-- Performance evolution across trilogies
+- Performance evolution across trilogies ✅
 - Who tends to improve in rematches?
 
 ---
