@@ -41,50 +41,10 @@ These go deeper and highlight analytical thinking, correlations, and behavior pa
 - Does making weight increase win chances? ✅
 - Do fighters coming off a win have a higher chance of winning again? ✅
 
-### 🤼‍♂️ Rivalries & Rematches
+### 🤼‍♂️ Rivalries & Rematches ✅
 - Timeline of fights between the same opponents (e.g., McGregor vs Poirier) ✅
 - Performance evolution across trilogies ✅
-- Who tends to improve in rematches?
-
----
-
-## 3. 🤖 Predictive Modeling (Advanced)
-
-For those who want to apply machine learning to sports analytics.
-
-### 🧪 Fight Outcome Prediction
-- Predict the winner using fighter profiles: age, height, reach, fight record, recent performance
-- Binary classification (Fighter A or B wins)
-- Algorithms: Logistic Regression, Random Forest, XGBoost
-
-### 📌 Clustering Fighter Styles
-- Group fighters based on in-fight stats
-- Example clusters: "aggressive striker", "technical grappler", "pace controller"
-
----
-
-## 🛠️ Tools & Deliverables
-
-| Report Type                         | Suggested Tools                                 |
-|------------------------------------|-------------------------------------------------|
-| PDF with static graphs             | Jupyter Notebook + matplotlib/seaborn + nbconvert |
-| Interactive dashboards             | Streamlit, Plotly Dash, or Power BI            |
-| Executive summary or presentation  | Canva, Google Slides, or LaTeX (for polished PDF) |
-
----
-
-## 💡 Portfolio Example
-
-**Title:** _"20 Years of UFC in Numbers: How MMA Evolved from 1994 to 2025"_
-
-### Sections:
-1. Introduction to the dataset
-2. UFC historical timeline and trends
-3. Win patterns and weight class analysis
-4. Profile of top fighters and champions
-5. Country-by-country analysis (e.g. Brazil, USA, Russia)
-6. Predictive mini-model: what increases the chance of winning?
-7. Strategic insights and takeaways
+- Who tends to improve in rematches? ✅
 
 ---
 
