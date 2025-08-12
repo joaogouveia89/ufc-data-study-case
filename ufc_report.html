@@ -5,7 +5,7 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-          
+     <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <title>UFC Analysis Report</title>
@@ -57,7 +57,125 @@ The goal is to understand performance patterns, fighting styles, and results ove
 
         <hr class="my-4">
 
-        <!-- Dynamic content -->
+        <!-- UFC Historical Overview Section -->
+<section class="mb-5">
+    <h2 class="mb-4">
+        <i class="fas fa-history text-danger"></i> UFC Historical Overview
+    </h2>
+
+    <!-- Evolution of the number of fights per year -->
+    <div class="mb-5">
+        <h4 class="mb-3">
+            <i class="fas fa-chart-line text-primary"></i> Evolution of the number of fights per year
+        </h4>
+        <div class="text-center">
+            <img src="images/chart-1.png" alt="Evolution of fights per year" class="img-fluid rounded shadow-sm">
+            <p class="text-muted small mt-2">Figure 1: Number of UFC fights per year (historical trend)</p>
+        </div>
+    </div>
+
+    <!-- Most frequent host countries and cities -->
+    <div class="mb-5">
+        <h4 class="mb-3">
+            <i class="fas fa-map-marker-alt text-success"></i> Most frequent host countries and cities
+        </h4>
+
+        <!-- Countries -->
+        <div class="mb-4">
+            <p>
+                Over the years, UFC has hosted events in multiple countries, but certain nations have dominated the scene.
+                Below are the top host countries by number of events.
+            </p>
+            <!-- Example table -->
+            <table class="table table-striped table-bordered table-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Country</th>
+                        <th>Events Hosted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>USA</td>
+                        <td>5764</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Brazil</td>
+                        <td>471</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Canada</td>
+                        <td>413</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>United Kingdom</td>
+                        <td>338</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>United Arab Emirates</td>
+                        <td>240</td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Cities -->
+        <div>
+            <p>
+                These are the top 5 cities with the most UFC events.
+            </p>
+            <div class="row g-4">
+                <div class="col-6 col-md-4 col-lg-2 text-center">
+                    <img src="images/city1.jpg" alt="City 1" class="img-fluid rounded shadow-sm">
+                    <p class="mt-2 mb-0 fw-bold">City 1</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 text-center">
+                    <img src="images/city2.jpg" alt="City 2" class="img-fluid rounded shadow-sm">
+                    <p class="mt-2 mb-0 fw-bold">City 2</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 text-center">
+                    <img src="images/city3.jpg" alt="City 3" class="img-fluid rounded shadow-sm">
+                    <p class="mt-2 mb-0 fw-bold">City 3</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 text-center">
+                    <img src="images/city4.jpg" alt="City 4" class="img-fluid rounded shadow-sm">
+                    <p class="mt-2 mb-0 fw-bold">City 4</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 text-center">
+                    <img src="images/city5.jpg" alt="City 5" class="img-fluid rounded shadow-sm">
+                    <p class="mt-2 mb-0 fw-bold">City 5</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Distribution of fights per weight class over time -->
+    <div>
+        <h4 class="mb-3">
+            <i class="fas fa-dumbbell text-warning"></i> Distribution of fights per weight class over time
+        </h4>
+        <p>
+            The graph below shows how fights have been distributed across weight classes throughout UFC history.
+        </p>
+        <div class="text-center">
+            <img src="images/chart-2.png" alt="Distribution per weight class over time" class="img-fluid rounded shadow-sm">
+            <p class="text-muted small mt-2">Figure 2: Weight class distribution over time</p>
+        </div>
+    </div>
+</section>
+
         
     </div>
 </body>
