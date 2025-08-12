@@ -115,26 +115,15 @@ The goal is to understand performance patterns, fighting styles, and results ove
                 These are the top 5 cities with the most UFC events.
             </p>
             <div class="row g-4">
+                {% set ns = namespace(index_cnt = 1) -%}
+                {% for city in cities.keys() -%}
                 <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city1.jpg" alt="City 1" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">City 1</p>
+                    <img src="images/city{{ns.index_cnt}}.jpg" alt="{{ city }}" class="img-fluid rounded shadow-sm">
+                    <p class="mt-2 mb-0 fw-bold">{{ city }}</p>
+                    <p class="mt-2 mb-0 fw-bold">{{ cities[city] }} events</p>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city2.jpg" alt="City 2" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">City 2</p>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city3.jpg" alt="City 3" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">City 3</p>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city4.jpg" alt="City 4" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">City 4</p>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city5.jpg" alt="City 5" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">City 5</p>
-                </div>
+                {% set ns.index_cnt = ns.index_cnt + 1 %}
+                {% endfor %}
             </div>
         </div>
     </div>
