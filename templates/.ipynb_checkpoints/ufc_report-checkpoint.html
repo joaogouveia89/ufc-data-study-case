@@ -171,6 +171,41 @@
                     </div>
                 </div>
             </div>
+            <!-- Average fight duration per weight class -->
+            <div class="mb-5">
+                <h4 class="mb-3">
+                    <i class="fas fa-stopwatch text-info"></i> Average fight duration per weight class
+                </h4>
+                <p>
+                    This table shows the average fight duration for each weight class.  
+                    The bars visually represent the relative length of the fights.
+                </p>
+                <table class="table table-bordered align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Weight Class</th>
+                            <th>Average Duration (seconds)</th>
+                            <th>Visual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set max_val = duration_by_weight_class.values() | max %}
+                        {% for weight_class, seconds in duration_by_weight_class.items() %}
+                        <tr>
+                            <td>{{ weight_class }}</td>
+                            <td>{{ seconds }}</td>
+                            <td>
+                                <div class="progress" style="height: 20px;">
+                                    <div class="progress-bar bg-info" role="progressbar"
+                                         style="width: {{ (seconds / max_val) * 100 }}%;">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </section>
 
          {{ content | safe }}
