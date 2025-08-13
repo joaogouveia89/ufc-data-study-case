@@ -206,6 +206,61 @@
                     </tbody>
                 </table>
             </div>
+            <!-- Most common submission techniques -->
+            <div class="mb-5" id="submission-techniques">
+              <h4 class="mb-3">
+                <i class="fas fa-handshake-angle text-info"></i> Most common submission techniques
+              </h4>
+            
+              <!-- Limitation notice -->
+              <div class="alert alert-warning d-flex align-items-start gap-3" role="alert">
+                <i class="fas fa-triangle-exclamation fs-4 mt-1"></i>
+                <div>
+                  <strong>Data limitation:</strong> Although the initial objective included analyzing the most common submission techniques,
+                  the dataset used does <em>not</em> specify the submission type (e.g., rear-naked choke, triangle choke, kimura). Therefore,
+                  this analysis could not be performed with the available data.
+                </div>
+              </div>
+            
+              <!-- Context and what would be needed -->
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-2">What’s missing?</h6>
+                  <p class="mb-3 text-muted small">
+                    The current fields only indicate the high-level <code>method</code> (e.g., Submission) without a breakdown of the specific technique.
+                  </p>
+            
+                  <div class="row g-3">
+                    <div class="col-12 col-md-7">
+                      <h6 class="mb-2"><i class="fas fa-database text-secondary"></i> Data required for this analysis</h6>
+                      <ul class="mb-0">
+                        <li>Submission technique name (e.g., <em>Rear-Naked Choke</em>, <em>Armbar</em>, <em>Guillotine</em>)</li>
+                        <li>Standardized taxonomy or mapping to avoid duplicates/synonyms</li>
+                        <li>(Optional) Attempt counts per technique for deeper insights</li>
+                      </ul>
+                    </div>
+                    <div class="col-12 col-md-5">
+                      <h6 class="mb-2"><i class="fas fa-lightbulb text-secondary"></i> Next steps</h6>
+                      <ol class="mb-0">
+                        <li>Augment dataset with a <code>submission_technique</code> column</li>
+                        <li>Normalize technique names (e.g., mapping table)</li>
+                        <li>Compute frequency and share by technique and by weight class</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Optional placeholder for future chart -->
+              <div class="text-center mt-4">
+                <div class="border rounded p-4 text-muted">
+                  <i class="fas fa-chart-pie d-block mb-2"></i>
+                  <span class="small">Placeholder for a “Top submission techniques” chart — will render once technique-level data is available.</span>
+                  <!-- <canvas id="submissionTechniquesChart" height="200"></canvas> -->
+                </div>
+              </div>
+            </div>
+
         </section>
 
          {{ content | safe }}
