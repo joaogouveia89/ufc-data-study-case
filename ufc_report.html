@@ -1,193 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-     <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <title>UFC Analysis Report</title>
-    <style>
-        header {
-            background-color: #000;
-            color: #fff;
-        }
-        header img {
-            height: 60px;
-        }
-        .intro {
-            background-color: #f8f9fa;
-            border-left: 5px solid #dc3545;
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="py-3 shadow-sm">
-        <div class="container d-flex align-items-center">
+   <head>
+      <meta charset="UTF-8">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+      <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+      <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <title>UFC Analysis Report</title>
+      <style>
+         header {
+         background-color: #000;
+         color: #fff;
+         }
+         header img {
+         height: 60px;
+         }
+         .intro {
+         background-color: #f8f9fa;
+         border-left: 5px solid #dc3545;
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Header -->
+      <header class="py-3 shadow-sm">
+         <div class="container d-flex align-items-center">
             <img src="./images/UFC_Logo.png" alt="UFC Logo" class="me-3">
             <h1 class="h3 mb-0">UFC Analysis Report</h1>
-        </div>
-    </header>
-
-    <!-- Main container -->
-    <div class="container my-4">
-        <!-- Meta info -->
-        <p class="text-muted small mb-4">
-            <strong>Processed on:</strong> August 12th, 2025
-        </p>
-
-        <!-- Intro section -->
-        <div class="intro p-4 mb-4 rounded shadow-sm">
+         </div>
+      </header>
+      <!-- Main container -->
+      <div class="container my-4">
+         <!-- Meta info -->
+         <p class="text-muted small mb-4">
+            <strong>Processed on:</strong> August 13th, 2025
+         </p>
+         <!-- Intro section -->
+         <div class="intro p-4 mb-4 rounded shadow-sm">
             <p class="mb-3">
-                This report presents a detailed analysis of UFC fight data, exploring relevant statistics, trends, and insights.
-The goal is to understand performance patterns, fighting styles, and results over time.
+               This report presents a detailed analysis of UFC fight data, exploring relevant statistics, trends, and insights.
+               The goal is to understand performance patterns, fighting styles, and results over time.
             </p>
             <div class="d-flex flex-wrap gap-2">
-                <a href="https://www.kaggle.com/datasets/neelagiriaditya/ufc-datasets-1994-2025/data" target="_blank" class="btn btn-outline-primary btn-sm">
-                    <i class="devicon-kaggle-original"></i> Kaggle Dataset
-                </a>
-                <a href="https://github.com/joaogouveia89/ufc-data-study-case" target="_blank" class="btn btn-outline-dark btn-sm">
-                    <i class="devicon-github-original"></i> GitHub Codebase
-                </a>
+               <a href="https://www.kaggle.com/datasets/neelagiriaditya/ufc-datasets-1994-2025/data" target="_blank" class="btn btn-outline-primary btn-sm">
+               <i class="devicon-kaggle-original"></i> Kaggle Dataset
+               </a>
+               <a href="https://github.com/joaogouveia89/ufc-data-study-case" target="_blank" class="btn btn-outline-dark btn-sm">
+               <i class="devicon-github-original"></i> GitHub Codebase
+               </a>
             </div>
-        </div>
-
-        <hr class="my-4">
-
-        <!-- UFC Historical Overview Section -->
-<section class="mb-5">
-    <h2 class="mb-4">
-        <i class="fas fa-history text-danger"></i> UFC Historical Overview
-    </h2>
-
-    <!-- Evolution of the number of fights per year -->
-    <div class="mb-5">
-        <h4 class="mb-3">
-            <i class="fas fa-chart-line text-primary"></i> Evolution of the number of fights per year
-        </h4>
-        <div class="text-center">
-            <img src="images/chart-1.png" alt="Evolution of fights per year" class="img-fluid rounded shadow-sm">
-            <p class="text-muted small mt-2">Figure 1: Number of UFC fights per year (historical trend)</p>
-        </div>
-    </div>
-
-    <!-- Most frequent host countries and cities -->
-    <div class="mb-5">
-        <h4 class="mb-3">
-            <i class="fas fa-map-marker-alt text-success"></i> Most frequent host countries and cities
-        </h4>
-
-        <!-- Countries -->
-        <div class="mb-4">
-            <p>
-                Over the years, UFC has hosted events in multiple countries, but certain nations have dominated the scene.
-                Below are the top host countries by number of events.
-            </p>
-            <!-- Example table -->
-            <table class="table table-striped table-bordered table-sm">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Rank</th>
-                        <th>Country</th>
-                        <th>Events Hosted</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>USA</td>
-                        <td>5764</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Brazil</td>
-                        <td>471</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Canada</td>
-                        <td>413</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>United Kingdom</td>
-                        <td>338</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>United Arab Emirates</td>
-                        <td>240</td>
-                        
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Cities -->
-        <div>
-            <p>
-                These are the top 5 cities with the most UFC events.
-            </p>
-            <div class="row g-4">
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city1.jpg" alt="Las Vegas" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">Las Vegas</p>
-                    <p class="mt-2 mb-0 fw-bold">2787 events</p>
-                </div>
-                
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city2.jpg" alt="Abu Dhabi" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">Abu Dhabi</p>
-                    <p class="mt-2 mb-0 fw-bold">240 events</p>
-                </div>
-                
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city3.jpg" alt="London" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">London</p>
-                    <p class="mt-2 mb-0 fw-bold">183 events</p>
-                </div>
-                
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city4.jpg" alt="Rio de Janeiro" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">Rio de Janeiro</p>
-                    <p class="mt-2 mb-0 fw-bold">147 events</p>
-                </div>
-                
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="images/city5.jpg" alt="Newark" class="img-fluid rounded shadow-sm">
-                    <p class="mt-2 mb-0 fw-bold">Newark</p>
-                    <p class="mt-2 mb-0 fw-bold">127 events</p>
-                </div>
-                
-                
+         </div>
+         <hr class="my-4">
+         <!-- UFC Historical Overview Section -->
+         <section class="mb-5">
+            <h2 class="mb-4">
+               <i class="fas fa-history text-danger"></i> UFC Historical Overview
+            </h2>
+            <!-- Evolution of the number of fights per year -->
+            <div class="mb-5">
+               <h4 class="mb-3">
+                  <i class="fas fa-chart-line text-primary"></i> Evolution of the number of fights per year
+               </h4>
+               <div class="text-center">
+                  <img src="images/chart-1.png" alt="Evolution of fights per year" class="img-fluid rounded shadow-sm">
+                  <p class="text-muted small mt-2">Figure 1: Number of UFC fights per year (historical trend)</p>
+               </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Distribution of fights per weight class over time -->
-    <div>
-        <h4 class="mb-3">
-            <i class="fas fa-dumbbell text-warning"></i> Distribution of fights per weight class over time
-        </h4>
-        <p>
-            The graph below shows how fights have been distributed across weight classes throughout UFC history.
-        </p>
-        <div class="text-center">
-            <img src="images/chart-2.png" alt="Distribution per weight class over time" class="img-fluid rounded shadow-sm">
-            <p class="text-muted small mt-2">Figure 2: Weight class distribution over time</p>
-        </div>
-    </div>
-</section>
-
-        
-    </div>
-</body>
+            <!-- Most frequent host countries and cities -->
+            <div class="mb-5">
+               <h4 class="mb-3">
+                  <i class="fas fa-map-marker-alt text-success"></i> Most frequent host countries and cities
+               </h4>
+               <!-- Countries -->
+               <div class="mb-4">
+                  <p>
+                     Over the years, UFC has hosted events in multiple countries, but certain nations have dominated the scene.
+                     Below are the top host countries by number of events.
+                  </p>
+                  <!-- Example table -->
+                  <table class="table table-striped table-bordered table-sm">
+                     <thead class="table-dark">
+                        <tr>
+                           <th>Rank</th>
+                           <th>Country</th>
+                           <th>Events Hosted</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>1</td>
+                           <td>USA</td>
+                           <td>5764</td>
+                           
+                        </tr>
+                        <tr>
+                           <td>2</td>
+                           <td>Brazil</td>
+                           <td>471</td>
+                           
+                        </tr>
+                        <tr>
+                           <td>3</td>
+                           <td>Canada</td>
+                           <td>413</td>
+                           
+                        </tr>
+                        <tr>
+                           <td>4</td>
+                           <td>United Kingdom</td>
+                           <td>338</td>
+                           
+                        </tr>
+                        <tr>
+                           <td>5</td>
+                           <td>United Arab Emirates</td>
+                           <td>240</td>
+                           
+                        </tr>
+                        
+                     </tbody>
+                  </table>
+               </div>
+               <!-- Cities -->
+               <div>
+                  <p>
+                     These are the top 5 cities with the most UFC events.
+                  </p>
+                  <div class="row g-4">
+                     <div class="col-6 col-md-4 col-lg-2 text-center">
+                        <img src="images/city1.jpg" alt="Las Vegas" class="img-fluid rounded shadow-sm"">
+                        <p class="mt-2 mb-0 fw-bold">Las Vegas</p>
+                        <p class="mt-2 mb-0 fw-bold">2787 events</p>
+                     </div>
+                     
+                     <div class="col-6 col-md-4 col-lg-2 text-center">
+                        <img src="images/city2.jpg" alt="Abu Dhabi" class="img-fluid rounded shadow-sm"">
+                        <p class="mt-2 mb-0 fw-bold">Abu Dhabi</p>
+                        <p class="mt-2 mb-0 fw-bold">240 events</p>
+                     </div>
+                     
+                     <div class="col-6 col-md-4 col-lg-2 text-center">
+                        <img src="images/city3.jpg" alt="London" class="img-fluid rounded shadow-sm"">
+                        <p class="mt-2 mb-0 fw-bold">London</p>
+                        <p class="mt-2 mb-0 fw-bold">183 events</p>
+                     </div>
+                     
+                     <div class="col-6 col-md-4 col-lg-2 text-center">
+                        <img src="images/city4.jpg" alt="Rio de Janeiro" class="img-fluid rounded shadow-sm"">
+                        <p class="mt-2 mb-0 fw-bold">Rio de Janeiro</p>
+                        <p class="mt-2 mb-0 fw-bold">147 events</p>
+                     </div>
+                     
+                     <div class="col-6 col-md-4 col-lg-2 text-center">
+                        <img src="images/city5.jpg" alt="Newark" class="img-fluid rounded shadow-sm"">
+                        <p class="mt-2 mb-0 fw-bold">Newark</p>
+                        <p class="mt-2 mb-0 fw-bold">127 events</p>
+                     </div>
+                     
+                     
+                  </div>
+               </div>
+            </div>
+            <!-- Distribution of fights per weight class over time -->
+            <div>
+               <h4 class="mb-3">
+                  <i class="fas fa-dumbbell text-warning"></i> Distribution of fights per weight class over time
+               </h4>
+               <p>
+                  The graph below shows how fights have been distributed across weight classes throughout UFC history.
+               </p>
+               <div class="text-center">
+                  <div>
+                     <canvas id="distFightsPerWeightChart"></canvas>
+                  </div>
+                  <p class="text-muted small mt-2">Figure 2: Weight class distribution over time</p>
+               </div>
+            </div>
+         </section>
+         
+      </div>
+   </body>
+   <script>
+      function setupDistFightsPerWeightChart(){
+          const distFightsPerWeightChart = document.getElementById('distFightsPerWeightChart');
+          const chartData = {"labels": [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "datasets": [{"label": "bantamweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 428, 409, 404, 647, 424, 543, 469, 640, 754, 567, 722, 742, 667, 784, 375]}, {"label": "catch weight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 10, 46, 0, 12, 22, 0, 22, 24, 73, 36, 0, 12, 143, 42, 159, 128, 52, 36]}, {"label": "featherweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33, 454, 587, 577, 654, 630, 586, 535, 674, 750, 669, 708, 675, 713, 771, 423]}, {"label": "flyweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 143, 254, 379, 415, 281, 344, 298, 210, 262, 330, 378, 455, 525, 250]}, {"label": "heavyweight", "data": [185, 60, 140, 89, 80, 87, 106, 56, 88, 231, 146, 210, 252, 331, 265, 299, 330, 326, 331, 484, 460, 400, 489, 498, 448, 441, 411, 395, 214]}, {"label": "interim bantamweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 25, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0]}, {"label": "interim featherweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 24, 0, 0, 0, 0, 0, 0, 13, 0, 0]}, {"label": "interim flyweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0]}, {"label": "interim heavyweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 19, 0, 10, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 13, 0, 13, 14, 0]}, {"label": "interim lightweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 13, 11, 0, 0, 0, 0, 0]}, {"label": "interim middleweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 13, 0, 0, 0, 0, 0, 0]}, {"label": "interim welterweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0]}, {"label": "light heavyweight", "data": [7, 25, 8, 13, 64, 67, 34, 46, 115, 286, 283, 297, 387, 356, 385, 302, 382, 328, 313, 450, 468, 466, 572, 406, 468, 437, 433, 424, 247]}, {"label": "lightweight", "data": [99, 48, 44, 49, 56, 61, 74, 48, 0, 164, 470, 554, 619, 677, 704, 738, 889, 1194, 1125, 1055, 818, 859, 923, 561, 783, 823, 943, 824, 471]}, {"label": "middleweight", "data": [0, 59, 96, 85, 40, 93, 57, 61, 204, 296, 248, 454, 391, 548, 475, 508, 652, 635, 642, 692, 643, 540, 556, 500, 760, 785, 689, 733, 438]}, {"label": "super heavyweight", "data": [0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"label": "welterweight", "data": [0, 8, 15, 68, 80, 97, 58, 94, 188, 361, 368, 461, 600, 688, 596, 686, 806, 931, 990, 1137, 843, 975, 942, 632, 716, 761, 740, 789, 357]}, {"label": "women's bantamweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 175, 187, 234, 260, 189, 146, 283, 214, 212, 184, 224, 252, 125]}, {"label": "women's featherweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 64, 35, 36, 61, 61, 51, 0, 9]}, {"label": "women's flyweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 114, 282, 442, 384, 500, 402, 416, 360, 182]}, {"label": "women's strawweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 145, 283, 312, 405, 393, 370, 287, 366, 416, 426, 468, 219]}]};
+          console.log(chartData);
+          new Chart(distFightsPerWeightChart, {
+              type: 'line',
+              data: chartData,
+              options: { 
+              responsive: true,
+              plugins: {
+                  legend: {
+                      onClick: (e, legendItem, legend) => {
+                          const index = legendItem.datasetIndex;
+                          const ci = legend.chart;
+                          const meta = ci.getDatasetMeta(index);
+      
+                          // Alterna visibilidade
+                          meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
+                          ci.update();
+                      }
+                  }
+              }
+          }
+        });
+      }
+      
+      setupDistFightsPerWeightChart();
+      
+   </script>
 </html>
