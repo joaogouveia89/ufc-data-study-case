@@ -200,16 +200,16 @@
                     <div class="col-md-6">
                         <ul class="list-group shadow-sm">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-hand-rock text-success"></i> KO/TKO</span>
-                                <span class="badge bg-success rounded-pill">32.11%</span>
+                                <span><i class="fas fa-hand-rock text-danger"></i> KO/TKO</span>
+                                <span class="badge bg-danger rounded-pill">%</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-link text-primary"></i> Submission</span>
-                                <span class="badge bg-primary rounded-pill">19.49%</span>
+                                <span><i class="fas fa-link text-success"></i> Submission</span>
+                                <span class="badge bg-success rounded-pill">%</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-clipboard-check text-danger"></i> Decision</span>
-                                <span class="badge bg-danger rounded-pill">48.4%</span>
+                                <span><i class="fas fa-clipboard-check text-primary"></i> Decision</span>
+                                <span class="badge bg-primary rounded-pill">%</span>
                             </li>
                         </ul>
                     </div>
@@ -248,11 +248,12 @@
 
        function setupKoSubmissionDecisionMethodsChart(){
             const koSubmissionDecisionMethodsData = {'Decision': 3805, 'KO/TKO': 2524, 'Submission': 1532};
+       console.log(koSubmissionDecisionMethodsData);
            const ctx = document.getElementById('winRatioChart');
             const data = {
-                labels: Object.keys(koSubmissionDecisionMethodsData),
+                labels: ['KO/TKO', 'Submission', 'Decision'],
                 datasets: [{
-                    data: Object.values(koSubmissionDecisionMethodsData),
+                    data: [koSubmissionDecisionMethodsData["KO_TKO"] , koSubmissionDecisionMethodsData["submission"] , koSubmissionDecisionMethodsData["decision"] ],
                     backgroundColor: ['#dc3545', '#28a745', '#007bff'],
                     hoverOffset: 10
                 }]
@@ -281,7 +282,7 @@
             });
        }
       
-        setupDistFightsPerWeightChart();
+      setupDistFightsPerWeightChart();
         setupKoSubmissionDecisionMethodsChart();
       
    </script>

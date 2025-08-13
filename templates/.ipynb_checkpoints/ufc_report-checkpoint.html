@@ -134,17 +134,55 @@
                </div>
             </div>
          </section>
+          <!-- General Fight Statistics -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="fas fa-chart-pie text-danger"></i> General Fight Statistics
+            </h2>
+        
+            <!-- Win ratio by method -->
+            <div class="mb-5">
+                <h4 class="mb-3">
+                    <i class="fas fa-trophy text-warning"></i> Win ratio by method
+                </h4>
+                <p>
+                    This chart shows the proportion of fight outcomes by method — Knockout/Technical Knockout (KO/TKO), Submission, and Decision.
+                </p>
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center">
+                        <canvas id="winRatioChart" style="max-height: 300px;"></canvas>
+                        <p class="text-muted small mt-2">Figure 3: Win ratio distribution</p>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group shadow-sm">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-hand-rock text-success"></i> KO/TKO</span>
+                                <span class="badge bg-success rounded-pill">{{ ko_submission_decision_methods_props[1] }}%</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-link text-primary"></i> Submission</span>
+                                <span class="badge bg-primary rounded-pill">{{ ko_submission_decision_methods_props[2] }}%</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-clipboard-check text-danger"></i> Decision</span>
+                                <span class="badge bg-danger rounded-pill">{{ ko_submission_decision_methods_props[0] }}%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
          {{ content | safe }}
       </div>
    </body>
    <script>
       function setupDistFightsPerWeightChart(){
           const distFightsPerWeightChart = document.getElementById('distFightsPerWeightChart');
-          const chartData = {{ chart | safe }};
-          console.log(chartData);
+          const distFightsPerWeightChartData = {{ dist_fights_per_weight_chart | safe }};
           new Chart(distFightsPerWeightChart, {
               type: 'line',
-              data: chartData,
+              data: distFightsPerWeightChartData,
               options: { 
               responsive: true,
               plugins: {
@@ -163,8 +201,44 @@
           }
         });
       }
+
+       function setupKoSubmissionDecisionMethodsChart(){
+            const koSubmissionDecisionMethodsData = {{ ko_submission_decision_methods_chart | safe }};
+           const ctx = document.getElementById('winRatioChart');
+            const data = {
+                labels: Object.keys(koSubmissionDecisionMethodsData),
+                datasets: [{
+                    data: Object.values(koSubmissionDecisionMethodsData),
+                    backgroundColor: ['#dc3545', '#28a745', '#007bff'],
+                    hoverOffset: 10
+                }]
+            };
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let value = context.parsed;
+                                    let total = context.chart._metasets[context.datasetIndex].total;
+                                    let percentage = ((value / total) * 100).toFixed(1);
+                                    return `${context.label}: ${value} fights (${percentage}%)`;
+                                }
+                            }
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+       }
       
-      setupDistFightsPerWeightChart();
+        setupDistFightsPerWeightChart();
+        setupKoSubmissionDecisionMethodsChart();
       
    </script>
 </html>
