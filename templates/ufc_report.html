@@ -323,6 +323,46 @@
                 {% endfor %}
               </div>
             </section>
+            <!-- Performance Comparison by Age Section -->
+            <section class="mb-5">
+                <h4 class="mb-3">
+                    <i class="fas fa-user-clock text-info"></i> Performance Comparison by Age
+                </h4>
+                <p>
+                    This chart illustrates how fighters' performance varies with age, highlighting trends in win rates, striking efficiency, and fight outcomes over time.
+                </p>
+                
+                <!-- Chart -->
+                <div class="text-center mb-3">
+                    <img src="images/chart-2.png" alt="Performance Comparison by Age" class="img-fluid rounded shadow-sm">
+                    <p class="text-muted small mt-2">Figure: Win rate by age</p>
+                </div>
+            
+                <!-- Disclaimer -->
+                <div class="alert alert-warning shadow-sm" role="alert">
+                    <h6 class="fw-bold">⚠️ Disclaimer: How the Win Rate by Age is Calculated</h6>
+                    <p>
+                        The <code>win_rate</code> (win percentage by age) is computed by analyzing fighters' outcomes based on their age at the time of each fight.
+                        The dataset was transformed into a long format, where each row represents <strong>one fighter per fight</strong> (instead of one row per fight with two fighters). 
+                        This allows us to associate each fighter with their age and match outcome individually.
+                    </p>
+                    <p>
+                        The win rate for each age is calculated as: <br>
+                        <strong>Number of fights won by fighters at a given age ÷ Total number of fights fought at that same age</strong>
+                    </p>
+                    <p>
+                        For example, if fighters who were 30 years old won 60 out of 100 fights, the win rate at age 30 is 0.60.
+                    </p>
+                    <hr>
+                    <p class="mb-0">
+                        <strong>Important Notes:</strong>
+                        <ul class="mb-0">
+                            <li>This does <strong>not</strong> account for opponent strength, fight context, or event level.</li>
+                            <li>Ages with very few fights may result in misleading rates due to low sample size.</li>
+                        </ul>
+                    </p>
+                </div>
+            </section>
 
          {{ content | safe }}
       </div>
