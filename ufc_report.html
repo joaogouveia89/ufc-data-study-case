@@ -34,7 +34,7 @@
       <div class="container my-4">
          <!-- Meta info -->
          <p class="text-muted small mb-4">
-            <strong>Processed on:</strong> August 13th, 2025
+            <strong>Processed on:</strong> August 15th, 2025
          </p>
          <!-- Intro section -->
          <div class="intro p-4 mb-4 rounded shadow-sm">
@@ -490,60 +490,206 @@
                     </tbody>
                 </table>
             </div>
-            <!-- Most common submission techniques -->
-            <div class="mb-5" id="submission-techniques">
-              <h4 class="mb-3">
-                <i class="fas fa-handshake-angle text-info"></i> Most common submission techniques
-              </h4>
+            <!-- Average Strikes Leaders Section -->
+            <section class="mb-5">
+              <h2 class="mb-4">
+                <i class="fas fa-hand-rock text-danger"></i> Top 5 Fights by Striking Activity
+              </h2>
+              <p>
+                Below are the five fights with the highest average strikes, measured both per minute and per round.
+                These bouts showcase the most action-packed performances in UFC history.
+              </p>
             
-              <!-- Limitation notice -->
-              <div class="alert alert-warning d-flex align-items-start gap-3" role="alert">
-                <i class="fas fa-triangle-exclamation fs-4 mt-1"></i>
-                <div>
-                  <strong>Data limitation:</strong> Although the initial objective included analyzing the most common submission techniques,
-                  the dataset used does <em>not</em> specify the submission type (e.g., rear-naked choke, triangle choke, kimura). Therefore,
-                  this analysis could not be performed with the available data.
-                </div>
-              </div>
-            
-              <!-- Context and what would be needed -->
-              <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                  <h6 class="card-title mb-2">What’s missing?</h6>
-                  <p class="mb-3 text-muted small">
-                    The current fields only indicate the high-level <code>method</code> (e.g., Submission) without a breakdown of the specific technique.
-                  </p>
-            
-                  <div class="row g-3">
-                    <div class="col-12 col-md-7">
-                      <h6 class="mb-2"><i class="fas fa-database text-secondary"></i> Data required for this analysis</h6>
-                      <ul class="mb-0">
-                        <li>Submission technique name (e.g., <em>Rear-Naked Choke</em>, <em>Armbar</em>, <em>Guillotine</em>)</li>
-                        <li>Standardized taxonomy or mapping to avoid duplicates/synonyms</li>
-                        <li>(Optional) Attempt counts per technique for deeper insights</li>
-                      </ul>
+              <div class="row g-4">
+                
+                <div class="col-12">
+                  <div class="card shadow-sm border-0">
+                    <div class="row g-0">
+                      <!-- Fighter 1 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter1_1.jpg" alt="Pete Williams" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">Pete Williams</p>
+                      </div>
+                      <!-- Fight details -->
+                      <div class="col-md-8 p-3 text-center">
+                        <h5 class="card-title mb-1">UFC 20: Battle for the Gold</h5>
+                        <p class="text-muted small mb-1 date-to-format">1999-05-07 00:00:00 — </p>
+                        <p class="mb-1 upper-first"><strong>Division:</strong> heavyweight</p>
+                        <p class="mb-1"><strong>Method:</strong> Submission</p>
+                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">388</span></p>
+                      </div>
+                      <!-- Fighter 2 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter1_2.jpg" alt="Travis Fulton" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">Travis Fulton</p>
+                      </div>
                     </div>
-                    <div class="col-12 col-md-5">
-                      <h6 class="mb-2"><i class="fas fa-lightbulb text-secondary"></i> Next steps</h6>
-                      <ol class="mb-0">
-                        <li>Augment dataset with a <code>submission_technique</code> column</li>
-                        <li>Normalize technique names (e.g., mapping table)</li>
-                        <li>Compute frequency and share by technique and by weight class</li>
-                      </ol>
+                    <!-- Stats footer -->
+                    <div class="card-footer bg-light d-flex justify-content-around text-center">
+                      <div>
+                        <span class="fw-bold text-danger" style="font-size: 1.4em;">6.19</span><br>
+                        <small>Avg Strikes / Min</small>
+                      </div>
+                      <div>
+                        <span class="fw-bold text-primary" style="font-size: 1.4em;">40.0</span><br>
+                        <small>Avg Strikes / Round</small>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            
-              <!-- Optional placeholder for future chart -->
-              <div class="text-center mt-4">
-                <div class="border rounded p-4 text-muted">
-                  <i class="fas fa-chart-pie d-block mb-2"></i>
-                  <span class="small">Placeholder for a “Top submission techniques” chart — will render once technique-level data is available.</span>
-                  <!-- <canvas id="submissionTechniquesChart" height="200"></canvas> -->
+                  <hr/>
+                
+                <div class="col-12">
+                  <div class="card shadow-sm border-0">
+                    <div class="row g-0">
+                      <!-- Fighter 1 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter2_1.jpg" alt="Evan Tanner" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">Evan Tanner</p>
+                      </div>
+                      <!-- Fight details -->
+                      <div class="col-md-8 p-3 text-center">
+                        <h5 class="card-title mb-1">UFC 18: The Road to the Heavyweight Title</h5>
+                        <p class="text-muted small mb-1 date-to-format">1999-01-08 00:00:00 — </p>
+                        <p class="mb-1 upper-first"><strong>Division:</strong> middleweight</p>
+                        <p class="mb-1"><strong>Method:</strong> Submission</p>
+                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">477</span></p>
+                      </div>
+                      <!-- Fighter 2 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter2_2.jpg" alt="Darrel Gholar" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">Darrel Gholar</p>
+                      </div>
+                    </div>
+                    <!-- Stats footer -->
+                    <div class="card-footer bg-light d-flex justify-content-around text-center">
+                      <div>
+                        <span class="fw-bold text-danger" style="font-size: 1.4em;">6.92</span><br>
+                        <small>Avg Strikes / Min</small>
+                      </div>
+                      <div>
+                        <span class="fw-bold text-primary" style="font-size: 1.4em;">55.0</span><br>
+                        <small>Avg Strikes / Round</small>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                  <hr/>
+                
+                <div class="col-12">
+                  <div class="card shadow-sm border-0">
+                    <div class="row g-0">
+                      <!-- Fighter 1 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter3_1.jpg" alt="Laverne Clark" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">Laverne Clark</p>
+                      </div>
+                      <!-- Fight details -->
+                      <div class="col-md-8 p-3 text-center">
+                        <h5 class="card-title mb-1">UFC 18: The Road to the Heavyweight Title</h5>
+                        <p class="text-muted small mb-1 date-to-format">1999-01-08 00:00:00 — </p>
+                        <p class="mb-1 upper-first"><strong>Division:</strong> lightweight</p>
+                        <p class="mb-1"><strong>Method:</strong> KO/TKO</p>
+                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">412</span></p>
+                      </div>
+                      <!-- Fighter 2 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter3_2.jpg" alt="Frank Caracci" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">Frank Caracci</p>
+                      </div>
+                    </div>
+                    <!-- Stats footer -->
+                    <div class="card-footer bg-light d-flex justify-content-around text-center">
+                      <div>
+                        <span class="fw-bold text-danger" style="font-size: 1.4em;">5.1</span><br>
+                        <small>Avg Strikes / Min</small>
+                      </div>
+                      <div>
+                        <span class="fw-bold text-primary" style="font-size: 1.4em;">35.0</span><br>
+                        <small>Avg Strikes / Round</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <hr/>
+                
+                <div class="col-12">
+                  <div class="card shadow-sm border-0">
+                    <div class="row g-0">
+                      <!-- Fighter 1 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter4_1.jpg" alt="Frank Shamrock" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">Frank Shamrock</p>
+                      </div>
+                      <!-- Fight details -->
+                      <div class="col-md-8 p-3 text-center">
+                        <h5 class="card-title mb-1">UFC - Ultimate Brazil</h5>
+                        <p class="text-muted small mb-1 date-to-format">1998-10-16 00:00:00 — </p>
+                        <p class="mb-1 upper-first"><strong>Division:</strong> light heavyweight</p>
+                        <p class="mb-1"><strong>Method:</strong> Submission</p>
+                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">460</span></p>
+                      </div>
+                      <!-- Fighter 2 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter4_2.jpg" alt="John Lober" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">John Lober</p>
+                      </div>
+                    </div>
+                    <!-- Stats footer -->
+                    <div class="card-footer bg-light d-flex justify-content-around text-center">
+                      <div>
+                        <span class="fw-bold text-danger" style="font-size: 1.4em;">8.61</span><br>
+                        <small>Avg Strikes / Min</small>
+                      </div>
+                      <div>
+                        <span class="fw-bold text-primary" style="font-size: 1.4em;">66.0</span><br>
+                        <small>Avg Strikes / Round</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <hr/>
+                
+                <div class="col-12">
+                  <div class="card shadow-sm border-0">
+                    <div class="row g-0">
+                      <!-- Fighter 1 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter5_1.jpg" alt="Pedro Rizzo" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">Pedro Rizzo</p>
+                      </div>
+                      <!-- Fight details -->
+                      <div class="col-md-8 p-3 text-center">
+                        <h5 class="card-title mb-1">UFC - Ultimate Brazil</h5>
+                        <p class="text-muted small mb-1 date-to-format">1998-10-16 00:00:00 — </p>
+                        <p class="mb-1 upper-first"><strong>Division:</strong> heavyweight</p>
+                        <p class="mb-1"><strong>Method:</strong> KO/TKO</p>
+                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">487</span></p>
+                      </div>
+                      <!-- Fighter 2 -->
+                      <div class="col-md-2 text-center p-2">
+                        <img src="images/fighter5_2.jpg" alt="David Abbott" class="img-fluid rounded shadow-sm">
+                        <p class="fw-bold mt-2 small">David Abbott</p>
+                      </div>
+                    </div>
+                    <!-- Stats footer -->
+                    <div class="card-footer bg-light d-flex justify-content-around text-center">
+                      <div>
+                        <span class="fw-bold text-danger" style="font-size: 1.4em;">9.86</span><br>
+                        <small>Avg Strikes / Min</small>
+                      </div>
+                      <div>
+                        <span class="fw-bold text-primary" style="font-size: 1.4em;">80.0</span><br>
+                        <small>Avg Strikes / Round</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <hr/>
+                
               </div>
-            </div>
+                
+            </section>
 
         </section>
 
@@ -610,9 +756,63 @@
                 }
             });
        }
+
+       function datesToFormat(){
+           const dates = document.getElementsByClassName("date-to-format");
+            for(date = 0; date < dates.length; date++){
+                const dateEl = dates[date];
+                dateEl.innerHTML = dateEl.innerHTML.split(" ")[0];
+            }
+       }
+
+       function upperFirst(){
+           const elements = document.getElementsByClassName("upper-first");
+           for(elementIdx = 0; elementIdx < elements.length; elementIdx++){
+                const element = elements[elementIdx];
+                const result = element
+                              .innerHTML
+                              .split(" ")
+                              .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1))
+                              .join(" ");
+               element.innerHTML = result;
+            }
+       }
+
+       function secToMinAndSec(){
+           const elements = document.getElementsByClassName("sec-to-min-and-sec");
+           for(elementIdx = 0; elementIdx < elements.length; elementIdx++){
+                const element = elements[elementIdx];
+               const time = element.innerHTML.trim();
+               const totalSeconds = parseInt(time, 10);
+
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+                
+                let result = [];
+                
+                
+                if (minutes > 0) {
+                  result.push(`${minutes} minute${minutes > 1 ? 's' : ''}`);
+                }
+                
+                
+                if (seconds > 0) {
+                  result.push(`${seconds} second${seconds > 1 ? 's' : ''}`);
+                }
+                
+                
+                if (result.length === 0) {
+                  result.push(`0 seconds`);
+                }
+                element.innerHTML = result.join(" ")
+           }
+       }
       
         setupDistFightsPerWeightChart();
         setupKoSubmissionDecisionMethodsChart();
+        datesToFormat();
+        upperFirst();
+        secToMinAndSec();
       
    </script>
 </html>
