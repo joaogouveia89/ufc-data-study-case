@@ -206,7 +206,7 @@
                </table>
             </div>
             <!-- Average Strikes Leaders Section -->
-            <section class="mb-5">
+            <div class="mb-5">
                <h2 class="mb-4">
                   <i class="fas fa-hand-rock text-danger"></i> Top 5 Fights by Striking Activity
                </h2>
@@ -254,139 +254,133 @@
                   <hr/>
                   {% endfor %}
                </div>
-            </section>
-         </section>
-         <!-- Top 10 Fighters with the Most Wins -->
-         <section class="mb-5">
-            <h2 class="mb-4">
-               <i class="fas fa-trophy text-warning"></i> Top 10 Fighters with the Most Wins
-            </h2>
-            <p>
-               These fighters have achieved legendary status in MMA history, amassing the highest number of career victories.
-            </p>
-            <div class="row g-4">
-               {% for fighter in top_10_fighters_with_the_most_wins %}
-               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                  <div class="card shadow-sm border-0 h-100 text-center p-3">
-                     <img src="images/fighter_top_10_wins{{ loop.index }}.jpg" 
-                        alt="{{ fighter.name }}" 
-                        class="img-fluid rounded-circle mx-auto mb-3" 
-                        style="width:100px;height:100px;object-fit:cover;">
-                     <h5 class="mb-1">{{ fighter.name }}</h5>
-                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                        {% set nickname = '' if fighter.nick_name|trim|lower == 'nan' else fighter.nick_name %}
-                        {% if nickname %}
-                        <small class="text-muted fst-italic">"{{ nickname }}"</small>
-                        {% else %}
-                        <span style="visibility: hidden;">Placeholder</span>
-                        {% endif %}
-                        <span class="badge bg-success fs-6 px-3 py-2">
-                        {{ fighter.wins }} Wins
-                        </span>
+            </div>
+            <!-- Top 10 Fighters with the Most Wins -->
+            <div class="mb-5">
+               <h2 class="mb-4">
+                  <i class="fas fa-trophy text-warning"></i> Top 10 Fighters with the Most Wins
+               </h2>
+               <p>
+                  These fighters have achieved legendary status in MMA history, amassing the highest number of career victories.
+               </p>
+               <div class="row g-4">
+                  {% for fighter in top_10_fighters_with_the_most_wins %}
+                  <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                     <div class="card shadow-sm border-0 h-100 text-center p-3">
+                        <img src="images/fighter_top_10_wins{{ loop.index }}.jpg" 
+                           alt="{{ fighter.name }}" 
+                           class="img-fluid rounded-circle mx-auto mb-3" 
+                           style="width:100px;height:100px;object-fit:cover;">
+                        <h5 class="mb-1">{{ fighter.name }}</h5>
+                        <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                           {% set nickname = '' if fighter.nick_name|trim|lower == 'nan' else fighter.nick_name %}
+                           {% if nickname %}
+                           <small class="text-muted fst-italic">"{{ nickname }}"</small>
+                           {% else %}
+                           <span style="visibility: hidden;">Placeholder</span>
+                           {% endif %}
+                           <span class="badge bg-success fs-6 px-3 py-2">
+                           {{ fighter.wins }} Wins
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+                  {% endfor %}
+               </div>
+            </div>
+            <!-- Fighters with Highest KO Rate Section -->
+            <div class="mb-5">
+               <h2 class="mb-4">
+                  <i class="fas fa-fist-raised text-danger"></i> Fighters with the Highest KO Rate
+               </h2>
+               <p>
+                  Top 10 fighters ranked by their knockout rate, showing efficiency in finishing fights by KO/TKO.
+               </p>
+               <div class="row g-4">
+                  {% for fighter in top_10_fighters_with_the_most_ko_rate %}
+                  <div class="col-12 col-md-6 col-lg-4">
+                     <div class="card shadow-sm border-0 h-100">
+                        <div class="text-center p-3">
+                           <!-- Fighter Image -->
+                           <img src="images/fighter_ko_{{ loop.index }}.jpg" alt="{{ fighter.winner }}" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                           <!-- Fighter Name -->
+                           <h5 class="fw-bold mb-1">{{ fighter.winner }}</h5>
+                           <!-- KO Wins / Total Wins -->
+                           <p class="text-muted mb-2">{{ fighter.ko_wins }} KO Wins / {{ fighter.total_wins }} Total Wins</p>
+                           <!-- KO Rate Bar -->
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-danger" role="progressbar" 
+                                 style="width: {{ (fighter.ko_rate * 100)|round(1) }}%;" 
+                                 aria-valuenow="{{ (fighter.ko_rate * 100)|round(1) }}" aria-valuemin="0" aria-valuemax="100">
+                                 {{ (fighter.ko_rate * 100)|round(1) }}%
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  {% endfor %}
+               </div>
+            </div>
+            <!-- Performance Comparison by Age Section -->
+            <div class="mb-5">
+               <h4 class="mb-3">
+                  <i class="fas fa-user-clock text-info"></i> Performance Comparison by Age
+               </h4>
+               <p>
+                  This chart illustrates how fighters' performance varies with age, highlighting trends in win rates, striking efficiency, and fight outcomes over time.
+               </p>
+               <!-- Chart -->
+               <div class="text-center mb-3">
+                  <img src="images/chart-2.png" alt="Performance Comparison by Age" class="img-fluid rounded shadow-sm">
+                  <p class="text-muted small mt-2">Figure: Win rate by age</p>
+               </div>
+               <!-- Disclaimer -->
+               <div class="alert alert-warning shadow-sm" role="alert">
+                  <h6 class="fw-bold">⚠️ Disclaimer: How the Win Rate by Age is Calculated</h6>
+                  <p>
+                     The <code>win_rate</code> (win percentage by age) is computed by analyzing fighters' outcomes based on their age at the time of each fight.
+                     The dataset was transformed into a long format, where each row represents <strong>one fighter per fight</strong> (instead of one row per fight with two fighters). 
+                     This allows us to associate each fighter with their age and match outcome individually.
+                  </p>
+                  <p>
+                     The win rate for each age is calculated as: <br>
+                     <strong>Number of fights won by fighters at a given age ÷ Total number of fights fought at that same age</strong>
+                  </p>
+                  <p>
+                     For example, if fighters who were 30 years old won 60 out of 100 fights, the win rate at age 30 is 0.60.
+                  </p>
+                  <hr>
+                  <p class="mb-0">
+                     <strong>Important Notes:</strong>
+                  <ul class="mb-0">
+                     <li>This does <strong>not</strong> account for opponent strength, fight context, or event level.</li>
+                     <li>Ages with very few fights may result in misleading rates due to low sample size.</li>
+                  </ul>
+                  </p>
+               </div>
+            </div>
+            <!-- Average Career Length of Fighters Section -->
+            <div class="mb-5">
+               <h4 class="mb-3">
+                  <i class="fas fa-hourglass-half text-danger"></i> Average Career Length of Fighters
+               </h4>
+               <p>
+                  This metric represents the average duration of a professional UFC fighter's career, measured in years.
+               </p>
+               <div class="d-flex justify-content-center align-items-center my-4">
+                  <div class="card text-center shadow-sm" style="width: 12rem;">
+                     <div class="card-body">
+                        <i class="fas fa-clock fa-3x text-primary mb-3"></i>
+                        <h2 class="card-title display-5 fw-bold">{{ average_career_length_years }}</h2>
+                        <p class="card-text text-muted">Years</p>
                      </div>
                   </div>
                </div>
-               {% endfor %}
+               <p class="text-muted small text-center">
+                  Note: This average is computed based on available fight data and may not account for retired fighters with incomplete historical records.
+               </p>
             </div>
          </section>
-          <!-- Fighters with Highest KO Rate Section -->
-            <section class="mb-5">
-              <h2 class="mb-4">
-                <i class="fas fa-fist-raised text-danger"></i> Fighters with the Highest KO Rate
-              </h2>
-              <p>
-                Top 10 fighters ranked by their knockout rate, showing efficiency in finishing fights by KO/TKO.
-              </p>
-            
-              <div class="row g-4">
-                {% for fighter in top_10_fighters_with_the_most_ko_rate %}
-                <div class="col-12 col-md-6 col-lg-4">
-                  <div class="card shadow-sm border-0 h-100">
-                    <div class="text-center p-3">
-                      <!-- Fighter Image -->
-                      <img src="images/fighter_ko_{{ loop.index }}.jpg" alt="{{ fighter.winner }}" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
-                      <!-- Fighter Name -->
-                      <h5 class="fw-bold mb-1">{{ fighter.winner }}</h5>
-                      <!-- KO Wins / Total Wins -->
-                      <p class="text-muted mb-2">{{ fighter.ko_wins }} KO Wins / {{ fighter.total_wins }} Total Wins</p>
-                      <!-- KO Rate Bar -->
-                      <div class="progress" style="height: 20px;">
-                        <div class="progress-bar bg-danger" role="progressbar" 
-                             style="width: {{ (fighter.ko_rate * 100)|round(1) }}%;" 
-                             aria-valuenow="{{ (fighter.ko_rate * 100)|round(1) }}" aria-valuemin="0" aria-valuemax="100">
-                             {{ (fighter.ko_rate * 100)|round(1) }}%
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-            </section>
-            <!-- Performance Comparison by Age Section -->
-            <section class="mb-5">
-                <h4 class="mb-3">
-                    <i class="fas fa-user-clock text-info"></i> Performance Comparison by Age
-                </h4>
-                <p>
-                    This chart illustrates how fighters' performance varies with age, highlighting trends in win rates, striking efficiency, and fight outcomes over time.
-                </p>
-                
-                <!-- Chart -->
-                <div class="text-center mb-3">
-                    <img src="images/chart-2.png" alt="Performance Comparison by Age" class="img-fluid rounded shadow-sm">
-                    <p class="text-muted small mt-2">Figure: Win rate by age</p>
-                </div>
-            
-                <!-- Disclaimer -->
-                <div class="alert alert-warning shadow-sm" role="alert">
-                    <h6 class="fw-bold">⚠️ Disclaimer: How the Win Rate by Age is Calculated</h6>
-                    <p>
-                        The <code>win_rate</code> (win percentage by age) is computed by analyzing fighters' outcomes based on their age at the time of each fight.
-                        The dataset was transformed into a long format, where each row represents <strong>one fighter per fight</strong> (instead of one row per fight with two fighters). 
-                        This allows us to associate each fighter with their age and match outcome individually.
-                    </p>
-                    <p>
-                        The win rate for each age is calculated as: <br>
-                        <strong>Number of fights won by fighters at a given age ÷ Total number of fights fought at that same age</strong>
-                    </p>
-                    <p>
-                        For example, if fighters who were 30 years old won 60 out of 100 fights, the win rate at age 30 is 0.60.
-                    </p>
-                    <hr>
-                    <p class="mb-0">
-                        <strong>Important Notes:</strong>
-                        <ul class="mb-0">
-                            <li>This does <strong>not</strong> account for opponent strength, fight context, or event level.</li>
-                            <li>Ages with very few fights may result in misleading rates due to low sample size.</li>
-                        </ul>
-                    </p>
-                </div>
-            </section>
-          <!-- Average Career Length of Fighters Section -->
-            <section class="mb-5">
-                <h4 class="mb-3">
-                    <i class="fas fa-hourglass-half text-danger"></i> Average Career Length of Fighters
-                </h4>
-                <p>
-                    This metric represents the average duration of a professional UFC fighter's career, measured in years.
-                </p>
-            
-                <div class="d-flex justify-content-center align-items-center my-4">
-                    <div class="card text-center shadow-sm" style="width: 12rem;">
-                        <div class="card-body">
-                            <i class="fas fa-clock fa-3x text-primary mb-3"></i>
-                            <h2 class="card-title display-5 fw-bold">{{ average_career_length_years }}</h2>
-                            <p class="card-text text-muted">Years</p>
-                        </div>
-                    </div>
-                </div>
-            
-                <p class="text-muted small text-center">
-                    Note: This average is computed based on available fight data and may not account for retired fighters with incomplete historical records.
-                </p>
-            </section>
-
          {{ content | safe }}
       </div>
    </body>
