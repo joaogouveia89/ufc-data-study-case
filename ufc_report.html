@@ -178,735 +178,941 @@
                </div>
             </div>
          </section>
-          <!-- General Fight Statistics -->
-        <section class="mb-5">
+         <!-- General Fight Statistics -->
+         <section class="mb-5">
             <h2 class="mb-4">
-                <i class="fas fa-chart-pie text-danger"></i> General Fight Statistics
+               <i class="fas fa-chart-pie text-danger"></i> General Fight Statistics
             </h2>
-        
             <!-- Win ratio by method -->
             <div class="mb-5">
-                <h4 class="mb-3">
-                    <i class="fas fa-trophy text-warning"></i> Win ratio by method
-                </h4>
-                <p>
-                    This chart shows the proportion of fight outcomes by method — Knockout/Technical Knockout (KO/TKO), Submission, and Decision.
-                </p>
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center">
-                        <canvas id="winRatioChart" style="max-height: 300px;"></canvas>
-                        <p class="text-muted small mt-2">Figure 3: Win ratio distribution</p>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-group shadow-sm">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-hand-rock text-success"></i> KO/TKO</span>
-                                <span class="badge bg-success rounded-pill">32.11%</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-link text-primary"></i> Submission</span>
-                                <span class="badge bg-primary rounded-pill">19.49%</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-clipboard-check text-danger"></i> Decision</span>
-                                <span class="badge bg-danger rounded-pill">48.4%</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+               <h4 class="mb-3">
+                  <i class="fas fa-trophy text-warning"></i> Win ratio by method
+               </h4>
+               <p>
+                  This chart shows the proportion of fight outcomes by method — Knockout/Technical Knockout (KO/TKO), Submission, and Decision.
+               </p>
+               <div class="row align-items-center">
+                  <div class="col-md-6 text-center">
+                     <canvas id="winRatioChart" style="max-height: 300px;"></canvas>
+                     <p class="text-muted small mt-2">Figure 3: Win ratio distribution</p>
+                  </div>
+                  <div class="col-md-6">
+                     <ul class="list-group shadow-sm">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                           <span><i class="fas fa-hand-rock text-success"></i> KO/TKO</span>
+                           <span class="badge bg-success rounded-pill">32.11%</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                           <span><i class="fas fa-link text-primary"></i> Submission</span>
+                           <span class="badge bg-primary rounded-pill">19.49%</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                           <span><i class="fas fa-clipboard-check text-danger"></i> Decision</span>
+                           <span class="badge bg-danger rounded-pill">48.4%</span>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
             </div>
             <!-- Average fight duration per weight class -->
             <div class="mb-5">
-                <h4 class="mb-3">
-                    <i class="fas fa-stopwatch text-info"></i> Average fight duration per weight class
-                </h4>
-                <p>
-                    This table shows the average fight duration for each weight class.  
-                    The bars visually represent the relative length of the fights.
-                </p>
-                <table class="table table-bordered align-middle">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Weight Class</th>
-                            <th>Average Duration (seconds)</th>
-                            <th>Visual</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        
-                        <tr>
-                            <td>Interim Middleweight</td>
-                            <td>300.0</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 100.0%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Interim Welterweight</td>
-                            <td>298.0</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 99.33333333333333%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Interim Featherweight</td>
-                            <td>286.5</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 95.5%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Super Heavyweight</td>
-                            <td>274.0</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 91.33333333333333%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Interim Flyweight</td>
-                            <td>274.0</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 91.33333333333333%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Women'S Flyweight</td>
-                            <td>260.34</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 86.77999999999999%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Women'S Strawweight</td>
-                            <td>256.17</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 85.39000000000001%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Interim Lightweight</td>
-                            <td>253.67</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 84.55666666666666%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Women'S Featherweight</td>
-                            <td>250.72</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 83.57333333333334%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Women'S Bantamweight</td>
-                            <td>247.69</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 82.56333333333333%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Flyweight</td>
-                            <td>242.96</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 80.98666666666668%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Catch Weight</td>
-                            <td>242.53</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 80.84333333333333%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Bantamweight</td>
-                            <td>234.78</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 78.25999999999999%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Featherweight</td>
-                            <td>234.41</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 78.13666666666667%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Welterweight</td>
-                            <td>228.45</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 76.14999999999999%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Lightweight</td>
-                            <td>227.75</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 75.91666666666667%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Interim Bantamweight</td>
-                            <td>218.0</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 72.66666666666667%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Middleweight</td>
-                            <td>217.88</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 72.62666666666667%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Light Heavyweight</td>
-                            <td>209.95</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 69.98333333333333%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Heavyweight</td>
-                            <td>203.72</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 67.90666666666667%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Interim Heavyweight</td>
-                            <td>139.33</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 46.443333333333335%;">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
+               <h4 class="mb-3">
+                  <i class="fas fa-stopwatch text-info"></i> Average fight duration per weight class
+               </h4>
+               <p>
+                  This table shows the average fight duration for each weight class.  
+                  The bars visually represent the relative length of the fights.
+               </p>
+               <table class="table table-bordered align-middle">
+                  <thead class="table-dark">
+                     <tr>
+                        <th>Weight Class</th>
+                        <th>Average Duration (seconds)</th>
+                        <th>Visual</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     
+                     
+                     <tr>
+                        <td>Interim Middleweight</td>
+                        <td>300.0</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 100.0%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Interim Welterweight</td>
+                        <td>298.0</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 99.33333333333333%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Interim Featherweight</td>
+                        <td>286.5</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 95.5%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Super Heavyweight</td>
+                        <td>274.0</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 91.33333333333333%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Interim Flyweight</td>
+                        <td>274.0</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 91.33333333333333%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Women'S Flyweight</td>
+                        <td>260.34</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 86.77999999999999%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Women'S Strawweight</td>
+                        <td>256.17</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 85.39000000000001%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Interim Lightweight</td>
+                        <td>253.67</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 84.55666666666666%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Women'S Featherweight</td>
+                        <td>250.72</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 83.57333333333334%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Women'S Bantamweight</td>
+                        <td>247.69</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 82.56333333333333%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Flyweight</td>
+                        <td>242.96</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 80.98666666666668%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Catch Weight</td>
+                        <td>242.53</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 80.84333333333333%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Bantamweight</td>
+                        <td>234.78</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 78.25999999999999%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Featherweight</td>
+                        <td>234.41</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 78.13666666666667%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Welterweight</td>
+                        <td>228.45</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 76.14999999999999%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Lightweight</td>
+                        <td>227.75</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 75.91666666666667%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Interim Bantamweight</td>
+                        <td>218.0</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 72.66666666666667%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Middleweight</td>
+                        <td>217.88</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 72.62666666666667%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Light Heavyweight</td>
+                        <td>209.95</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 69.98333333333333%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Heavyweight</td>
+                        <td>203.72</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 67.90666666666667%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                     <tr>
+                        <td>Interim Heavyweight</td>
+                        <td>139.33</td>
+                        <td>
+                           <div class="progress" style="height: 20px;">
+                              <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 46.443333333333335%;">
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     
+                  </tbody>
+               </table>
             </div>
             <!-- Average Strikes Leaders Section -->
             <section class="mb-5">
+               <h2 class="mb-4">
+                  <i class="fas fa-hand-rock text-danger"></i> Top 5 Fights by Striking Activity
+               </h2>
+               <p>
+                  Below are the five fights with the highest average strikes, measured both per minute and per round.
+                  These bouts showcase the most action-packed performances in UFC history.
+               </p>
+               <div class="row g-4">
+                  
+                  <div class="col-12">
+                     <div class="card shadow-sm border-0">
+                        <div class="row g-0">
+                           <!-- Fighter 1 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter1_1.jpg" alt="Pete Williams" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">Pete Williams</p>
+                           </div>
+                           <!-- Fight details -->
+                           <div class="col-md-8 p-3 text-center">
+                              <h5 class="card-title mb-1">UFC 20: Battle for the Gold</h5>
+                              <p class="text-muted small mb-1 date-to-format">1999-05-07 00:00:00 — </p>
+                              <p class="mb-1 upper-first"><strong>Division:</strong> heavyweight</p>
+                              <p class="mb-1"><strong>Method:</strong> Submission</p>
+                              <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">388</span></p>
+                           </div>
+                           <!-- Fighter 2 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter1_2.jpg" alt="Travis Fulton" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">Travis Fulton</p>
+                           </div>
+                        </div>
+                        <!-- Stats footer -->
+                        <div class="card-footer bg-light d-flex justify-content-around text-center">
+                           <div>
+                              <span class="fw-bold text-danger" style="font-size: 1.4em;">6.19</span><br>
+                              <small>Avg Strikes / Min</small>
+                           </div>
+                           <div>
+                              <span class="fw-bold text-primary" style="font-size: 1.4em;">40.0</span><br>
+                              <small>Avg Strikes / Round</small>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <hr/>
+                  
+                  <div class="col-12">
+                     <div class="card shadow-sm border-0">
+                        <div class="row g-0">
+                           <!-- Fighter 1 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter2_1.jpg" alt="Evan Tanner" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">Evan Tanner</p>
+                           </div>
+                           <!-- Fight details -->
+                           <div class="col-md-8 p-3 text-center">
+                              <h5 class="card-title mb-1">UFC 18: The Road to the Heavyweight Title</h5>
+                              <p class="text-muted small mb-1 date-to-format">1999-01-08 00:00:00 — </p>
+                              <p class="mb-1 upper-first"><strong>Division:</strong> middleweight</p>
+                              <p class="mb-1"><strong>Method:</strong> Submission</p>
+                              <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">477</span></p>
+                           </div>
+                           <!-- Fighter 2 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter2_2.jpg" alt="Darrel Gholar" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">Darrel Gholar</p>
+                           </div>
+                        </div>
+                        <!-- Stats footer -->
+                        <div class="card-footer bg-light d-flex justify-content-around text-center">
+                           <div>
+                              <span class="fw-bold text-danger" style="font-size: 1.4em;">6.92</span><br>
+                              <small>Avg Strikes / Min</small>
+                           </div>
+                           <div>
+                              <span class="fw-bold text-primary" style="font-size: 1.4em;">55.0</span><br>
+                              <small>Avg Strikes / Round</small>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <hr/>
+                  
+                  <div class="col-12">
+                     <div class="card shadow-sm border-0">
+                        <div class="row g-0">
+                           <!-- Fighter 1 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter3_1.jpg" alt="Laverne Clark" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">Laverne Clark</p>
+                           </div>
+                           <!-- Fight details -->
+                           <div class="col-md-8 p-3 text-center">
+                              <h5 class="card-title mb-1">UFC 18: The Road to the Heavyweight Title</h5>
+                              <p class="text-muted small mb-1 date-to-format">1999-01-08 00:00:00 — </p>
+                              <p class="mb-1 upper-first"><strong>Division:</strong> lightweight</p>
+                              <p class="mb-1"><strong>Method:</strong> KO/TKO</p>
+                              <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">412</span></p>
+                           </div>
+                           <!-- Fighter 2 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter3_2.jpg" alt="Frank Caracci" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">Frank Caracci</p>
+                           </div>
+                        </div>
+                        <!-- Stats footer -->
+                        <div class="card-footer bg-light d-flex justify-content-around text-center">
+                           <div>
+                              <span class="fw-bold text-danger" style="font-size: 1.4em;">5.1</span><br>
+                              <small>Avg Strikes / Min</small>
+                           </div>
+                           <div>
+                              <span class="fw-bold text-primary" style="font-size: 1.4em;">35.0</span><br>
+                              <small>Avg Strikes / Round</small>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <hr/>
+                  
+                  <div class="col-12">
+                     <div class="card shadow-sm border-0">
+                        <div class="row g-0">
+                           <!-- Fighter 1 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter4_1.jpg" alt="Frank Shamrock" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">Frank Shamrock</p>
+                           </div>
+                           <!-- Fight details -->
+                           <div class="col-md-8 p-3 text-center">
+                              <h5 class="card-title mb-1">UFC - Ultimate Brazil</h5>
+                              <p class="text-muted small mb-1 date-to-format">1998-10-16 00:00:00 — </p>
+                              <p class="mb-1 upper-first"><strong>Division:</strong> light heavyweight</p>
+                              <p class="mb-1"><strong>Method:</strong> Submission</p>
+                              <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">460</span></p>
+                           </div>
+                           <!-- Fighter 2 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter4_2.jpg" alt="John Lober" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">John Lober</p>
+                           </div>
+                        </div>
+                        <!-- Stats footer -->
+                        <div class="card-footer bg-light d-flex justify-content-around text-center">
+                           <div>
+                              <span class="fw-bold text-danger" style="font-size: 1.4em;">8.61</span><br>
+                              <small>Avg Strikes / Min</small>
+                           </div>
+                           <div>
+                              <span class="fw-bold text-primary" style="font-size: 1.4em;">66.0</span><br>
+                              <small>Avg Strikes / Round</small>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <hr/>
+                  
+                  <div class="col-12">
+                     <div class="card shadow-sm border-0">
+                        <div class="row g-0">
+                           <!-- Fighter 1 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter5_1.jpg" alt="Pedro Rizzo" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">Pedro Rizzo</p>
+                           </div>
+                           <!-- Fight details -->
+                           <div class="col-md-8 p-3 text-center">
+                              <h5 class="card-title mb-1">UFC - Ultimate Brazil</h5>
+                              <p class="text-muted small mb-1 date-to-format">1998-10-16 00:00:00 — </p>
+                              <p class="mb-1 upper-first"><strong>Division:</strong> heavyweight</p>
+                              <p class="mb-1"><strong>Method:</strong> KO/TKO</p>
+                              <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">487</span></p>
+                           </div>
+                           <!-- Fighter 2 -->
+                           <div class="col-md-2 text-center p-2">
+                              <img src="images/fighter5_2.jpg" alt="David Abbott" class="img-fluid rounded shadow-sm">
+                              <p class="fw-bold mt-2 small">David Abbott</p>
+                           </div>
+                        </div>
+                        <!-- Stats footer -->
+                        <div class="card-footer bg-light d-flex justify-content-around text-center">
+                           <div>
+                              <span class="fw-bold text-danger" style="font-size: 1.4em;">9.86</span><br>
+                              <small>Avg Strikes / Min</small>
+                           </div>
+                           <div>
+                              <span class="fw-bold text-primary" style="font-size: 1.4em;">80.0</span><br>
+                              <small>Avg Strikes / Round</small>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <hr/>
+                  
+               </div>
+            </section>
+         </section>
+         <!-- Top 10 Fighters with the Most Wins -->
+         <section class="mb-5">
+            <h2 class="mb-4">
+               <i class="fas fa-trophy text-warning"></i> Top 10 Fighters with the Most Wins
+            </h2>
+            <p>
+               These fighters have achieved legendary status in MMA history, amassing the highest number of career victories.
+            </p>
+            <div class="row g-4">
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins1.jpg" 
+                        alt="Travis Fulton" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Travis Fulton</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <small class="text-muted fst-italic">"The Ironman"</small>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        253 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins2.jpg" 
+                        alt="Dan Severn" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Dan Severn</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <small class="text-muted fst-italic">"The Beast"</small>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        101 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins3.jpg" 
+                        alt="Jeremy Horn" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Jeremy Horn</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <small class="text-muted fst-italic">"Gumby"</small>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        91 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins4.jpg" 
+                        alt="Travis Wiuff" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Travis Wiuff</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <small class="text-muted fst-italic">"The Diesel"</small>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        75 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins5.jpg" 
+                        alt="Ikuhisa Minowa" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Ikuhisa Minowa</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <small class="text-muted fst-italic">"Minowaman"</small>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        60 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins6.jpg" 
+                        alt="Jeff Monson" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Jeff Monson</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <small class="text-muted fst-italic">"The Snowman"</small>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        60 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins7.jpg" 
+                        alt="Yuki Kondo" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Yuki Kondo</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <span style="visibility: hidden;">Placeholder</span>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        60 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins8.jpg" 
+                        alt="Aleksei Oleinik" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Aleksei Oleinik</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <small class="text-muted fst-italic">"The Boa Constrictor"</small>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        60 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins9.jpg" 
+                        alt="Adrian Serrano" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Adrian Serrano</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <span style="visibility: hidden;">Placeholder</span>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        56 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="card shadow-sm border-0 h-100 text-center p-3">
+                     <img src="images/fighter_top_10_wins10.jpg" 
+                        alt="Ricco Rodriguez" 
+                        class="img-fluid rounded-circle mx-auto mb-3" 
+                        style="width:100px;height:100px;object-fit:cover;">
+                     <h5 class="mb-1">Ricco Rodriguez</h5>
+                     <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
+                        
+                        
+                        <small class="text-muted fst-italic">"Suave"</small>
+                        
+                        <span class="badge bg-success fs-6 px-3 py-2">
+                        53 Wins
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               
+            </div>
+         </section>
+          <!-- Fighters with Highest KO Rate Section -->
+            <section class="mb-5">
               <h2 class="mb-4">
-                <i class="fas fa-hand-rock text-danger"></i> Top 5 Fights by Striking Activity
+                <i class="fas fa-fist-raised text-danger"></i> Fighters with the Highest KO Rate
               </h2>
               <p>
-                Below are the five fights with the highest average strikes, measured both per minute and per round.
-                These bouts showcase the most action-packed performances in UFC history.
+                Top 10 fighters ranked by their knockout rate, showing efficiency in finishing fights by KO/TKO.
               </p>
             
               <div class="row g-4">
                 
-                <div class="col-12">
-                  <div class="card shadow-sm border-0">
-                    <div class="row g-0">
-                      <!-- Fighter 1 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter1_1.jpg" alt="Pete Williams" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">Pete Williams</p>
-                      </div>
-                      <!-- Fight details -->
-                      <div class="col-md-8 p-3 text-center">
-                        <h5 class="card-title mb-1">UFC 20: Battle for the Gold</h5>
-                        <p class="text-muted small mb-1 date-to-format">1999-05-07 00:00:00 — </p>
-                        <p class="mb-1 upper-first"><strong>Division:</strong> heavyweight</p>
-                        <p class="mb-1"><strong>Method:</strong> Submission</p>
-                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">388</span></p>
-                      </div>
-                      <!-- Fighter 2 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter1_2.jpg" alt="Travis Fulton" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">Travis Fulton</p>
-                      </div>
-                    </div>
-                    <!-- Stats footer -->
-                    <div class="card-footer bg-light d-flex justify-content-around text-center">
-                      <div>
-                        <span class="fw-bold text-danger" style="font-size: 1.4em;">6.19</span><br>
-                        <small>Avg Strikes / Min</small>
-                      </div>
-                      <div>
-                        <span class="fw-bold text-primary" style="font-size: 1.4em;">40.0</span><br>
-                        <small>Avg Strikes / Round</small>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_1.jpg" alt="Anthony Johnson" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Anthony Johnson</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">11 KO Wins / 13 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 84.6%;" 
+                             aria-valuenow="84.6" aria-valuemin="0" aria-valuemax="100">
+                             84.6%
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                  <hr/>
                 
-                <div class="col-12">
-                  <div class="card shadow-sm border-0">
-                    <div class="row g-0">
-                      <!-- Fighter 1 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter2_1.jpg" alt="Evan Tanner" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">Evan Tanner</p>
-                      </div>
-                      <!-- Fight details -->
-                      <div class="col-md-8 p-3 text-center">
-                        <h5 class="card-title mb-1">UFC 18: The Road to the Heavyweight Title</h5>
-                        <p class="text-muted small mb-1 date-to-format">1999-01-08 00:00:00 — </p>
-                        <p class="mb-1 upper-first"><strong>Division:</strong> middleweight</p>
-                        <p class="mb-1"><strong>Method:</strong> Submission</p>
-                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">477</span></p>
-                      </div>
-                      <!-- Fighter 2 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter2_2.jpg" alt="Darrel Gholar" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">Darrel Gholar</p>
-                      </div>
-                    </div>
-                    <!-- Stats footer -->
-                    <div class="card-footer bg-light d-flex justify-content-around text-center">
-                      <div>
-                        <span class="fw-bold text-danger" style="font-size: 1.4em;">6.92</span><br>
-                        <small>Avg Strikes / Min</small>
-                      </div>
-                      <div>
-                        <span class="fw-bold text-primary" style="font-size: 1.4em;">55.0</span><br>
-                        <small>Avg Strikes / Round</small>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_2.jpg" alt="Cain Velasquez" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Cain Velasquez</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">10 KO Wins / 12 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 83.3%;" 
+                             aria-valuenow="83.3" aria-valuemin="0" aria-valuemax="100">
+                             83.3%
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                  <hr/>
                 
-                <div class="col-12">
-                  <div class="card shadow-sm border-0">
-                    <div class="row g-0">
-                      <!-- Fighter 1 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter3_1.jpg" alt="Laverne Clark" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">Laverne Clark</p>
-                      </div>
-                      <!-- Fight details -->
-                      <div class="col-md-8 p-3 text-center">
-                        <h5 class="card-title mb-1">UFC 18: The Road to the Heavyweight Title</h5>
-                        <p class="text-muted small mb-1 date-to-format">1999-01-08 00:00:00 — </p>
-                        <p class="mb-1 upper-first"><strong>Division:</strong> lightweight</p>
-                        <p class="mb-1"><strong>Method:</strong> KO/TKO</p>
-                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">412</span></p>
-                      </div>
-                      <!-- Fighter 2 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter3_2.jpg" alt="Frank Caracci" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">Frank Caracci</p>
-                      </div>
-                    </div>
-                    <!-- Stats footer -->
-                    <div class="card-footer bg-light d-flex justify-content-around text-center">
-                      <div>
-                        <span class="fw-bold text-danger" style="font-size: 1.4em;">5.1</span><br>
-                        <small>Avg Strikes / Min</small>
-                      </div>
-                      <div>
-                        <span class="fw-bold text-primary" style="font-size: 1.4em;">35.0</span><br>
-                        <small>Avg Strikes / Round</small>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_3.jpg" alt="Francis Ngannou" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Francis Ngannou</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">10 KO Wins / 12 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 83.3%;" 
+                             aria-valuenow="83.3" aria-valuemin="0" aria-valuemax="100">
+                             83.3%
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                  <hr/>
                 
-                <div class="col-12">
-                  <div class="card shadow-sm border-0">
-                    <div class="row g-0">
-                      <!-- Fighter 1 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter4_1.jpg" alt="Frank Shamrock" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">Frank Shamrock</p>
-                      </div>
-                      <!-- Fight details -->
-                      <div class="col-md-8 p-3 text-center">
-                        <h5 class="card-title mb-1">UFC - Ultimate Brazil</h5>
-                        <p class="text-muted small mb-1 date-to-format">1998-10-16 00:00:00 — </p>
-                        <p class="mb-1 upper-first"><strong>Division:</strong> light heavyweight</p>
-                        <p class="mb-1"><strong>Method:</strong> Submission</p>
-                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">460</span></p>
-                      </div>
-                      <!-- Fighter 2 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter4_2.jpg" alt="John Lober" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">John Lober</p>
-                      </div>
-                    </div>
-                    <!-- Stats footer -->
-                    <div class="card-footer bg-light d-flex justify-content-around text-center">
-                      <div>
-                        <span class="fw-bold text-danger" style="font-size: 1.4em;">8.61</span><br>
-                        <small>Avg Strikes / Min</small>
-                      </div>
-                      <div>
-                        <span class="fw-bold text-primary" style="font-size: 1.4em;">66.0</span><br>
-                        <small>Avg Strikes / Round</small>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_4.jpg" alt="Derrick Lewis" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Derrick Lewis</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">16 KO Wins / 20 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 80.0%;" 
+                             aria-valuenow="80.0" aria-valuemin="0" aria-valuemax="100">
+                             80.0%
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                  <hr/>
                 
-                <div class="col-12">
-                  <div class="card shadow-sm border-0">
-                    <div class="row g-0">
-                      <!-- Fighter 1 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter5_1.jpg" alt="Pedro Rizzo" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">Pedro Rizzo</p>
-                      </div>
-                      <!-- Fight details -->
-                      <div class="col-md-8 p-3 text-center">
-                        <h5 class="card-title mb-1">UFC - Ultimate Brazil</h5>
-                        <p class="text-muted small mb-1 date-to-format">1998-10-16 00:00:00 — </p>
-                        <p class="mb-1 upper-first"><strong>Division:</strong> heavyweight</p>
-                        <p class="mb-1"><strong>Method:</strong> KO/TKO</p>
-                        <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">487</span></p>
-                      </div>
-                      <!-- Fighter 2 -->
-                      <div class="col-md-2 text-center p-2">
-                        <img src="images/fighter5_2.jpg" alt="David Abbott" class="img-fluid rounded shadow-sm">
-                        <p class="fw-bold mt-2 small">David Abbott</p>
-                      </div>
-                    </div>
-                    <!-- Stats footer -->
-                    <div class="card-footer bg-light d-flex justify-content-around text-center">
-                      <div>
-                        <span class="fw-bold text-danger" style="font-size: 1.4em;">9.86</span><br>
-                        <small>Avg Strikes / Min</small>
-                      </div>
-                      <div>
-                        <span class="fw-bold text-primary" style="font-size: 1.4em;">80.0</span><br>
-                        <small>Avg Strikes / Round</small>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_5.jpg" alt="Vitor Belfort" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Vitor Belfort</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">12 KO Wins / 15 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 80.0%;" 
+                             aria-valuenow="80.0" aria-valuemin="0" aria-valuemax="100">
+                             80.0%
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                  <hr/>
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_6.jpg" alt="Thiago Santos" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Thiago Santos</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">11 KO Wins / 14 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 78.6%;" 
+                             aria-valuenow="78.6" aria-valuemin="0" aria-valuemax="100">
+                             78.6%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_7.jpg" alt="Matt Brown" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Matt Brown</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">13 KO Wins / 17 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 76.5%;" 
+                             aria-valuenow="76.5" aria-valuemin="0" aria-valuemax="100">
+                             76.5%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_8.jpg" alt="Alistair Overeem" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Alistair Overeem</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">9 KO Wins / 12 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 75.0%;" 
+                             aria-valuenow="75.0" aria-valuemin="0" aria-valuemax="100">
+                             75.0%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_9.jpg" alt="Mauricio Rua" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Mauricio Rua</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">8 KO Wins / 11 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 72.7%;" 
+                             aria-valuenow="72.7" aria-valuemin="0" aria-valuemax="100">
+                             72.7%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card shadow-sm border-0 h-100">
+                    <div class="text-center p-3">
+                      <!-- Fighter Image -->
+                      <img src="images/fighter_ko_10.jpg" alt="Joaquin Buckley" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                      <!-- Fighter Name -->
+                      <h5 class="fw-bold mb-1">Joaquin Buckley</h5>
+                      <!-- KO Wins / Total Wins -->
+                      <p class="text-muted mb-2">8 KO Wins / 11 Total Wins</p>
+                      <!-- KO Rate Bar -->
+                      <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" 
+                             style="width: 72.7%;" 
+                             aria-valuenow="72.7" aria-valuemin="0" aria-valuemax="100">
+                             72.7%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 
               </div>
-                
             </section>
-
-        </section>
-
-          <!-- Top 10 Fighters with the Most Wins -->
-        <section class="mb-5">
-          <h2 class="mb-4">
-            <i class="fas fa-trophy text-warning"></i> Top 10 Fighters with the Most Wins
-          </h2>
-          <p>
-            These fighters have achieved legendary status in MMA history, amassing the highest number of career victories.
-          </p>
-        
-          <div class="row g-4">
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins1.jpg" 
-                     alt="Travis Fulton" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Travis Fulton</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <small class="text-muted fst-italic">"The Ironman"</small>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    253 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins2.jpg" 
-                     alt="Dan Severn" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Dan Severn</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <small class="text-muted fst-italic">"The Beast"</small>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    101 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins3.jpg" 
-                     alt="Jeremy Horn" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Jeremy Horn</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <small class="text-muted fst-italic">"Gumby"</small>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    91 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins4.jpg" 
-                     alt="Travis Wiuff" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Travis Wiuff</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <small class="text-muted fst-italic">"The Diesel"</small>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    75 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins5.jpg" 
-                     alt="Ikuhisa Minowa" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Ikuhisa Minowa</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <small class="text-muted fst-italic">"Minowaman"</small>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    60 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins6.jpg" 
-                     alt="Jeff Monson" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Jeff Monson</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <small class="text-muted fst-italic">"The Snowman"</small>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    60 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins7.jpg" 
-                     alt="Yuki Kondo" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Yuki Kondo</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <span style="visibility: hidden;">Placeholder</span>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    60 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins8.jpg" 
-                     alt="Aleksei Oleinik" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Aleksei Oleinik</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <small class="text-muted fst-italic">"The Boa Constrictor"</small>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    60 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins9.jpg" 
-                     alt="Adrian Serrano" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Adrian Serrano</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <span style="visibility: hidden;">Placeholder</span>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    56 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div class="card shadow-sm border-0 h-100 text-center p-3">
-                <img src="images/fighter_top_10_wins10.jpg" 
-                     alt="Ricco Rodriguez" 
-                     class="img-fluid rounded-circle mx-auto mb-3" 
-                     style="width:100px;height:100px;object-fit:cover;">
-        
-                <h5 class="mb-1">Ricco Rodriguez</h5>
-                <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                
-                
-                    <small class="text-muted fst-italic">"Suave"</small>
-                
-                <span class="badge bg-success fs-6 px-3 py-2">
-                    53 Wins
-                </span>
-            </div>
-              </div>
-            </div>
-            
-          </div>
-        </section>
-
 
          
       </div>
@@ -936,7 +1142,7 @@
           }
         });
       }
-
+      
        function setupKoSubmissionDecisionMethodsChart(){
             const koSubmissionDecisionMethodsData = {'Decision': 3805, 'KO/TKO': 2524, 'Submission': 1532};
            const ctx = document.getElementById('winRatioChart');
@@ -971,7 +1177,7 @@
                 }
             });
        }
-
+      
        function datesToFormat(){
            const dates = document.getElementsByClassName("date-to-format");
             for(date = 0; date < dates.length; date++){
@@ -979,7 +1185,7 @@
                 dateEl.innerHTML = dateEl.innerHTML.split(" ")[0];
             }
        }
-
+      
        function upperFirst(){
            const elements = document.getElementsByClassName("upper-first");
            for(elementIdx = 0; elementIdx < elements.length; elementIdx++){
@@ -992,14 +1198,14 @@
                element.innerHTML = result;
             }
        }
-
+      
        function secToMinAndSec(){
            const elements = document.getElementsByClassName("sec-to-min-and-sec");
            for(elementIdx = 0; elementIdx < elements.length; elementIdx++){
                 const element = elements[elementIdx];
                const time = element.innerHTML.trim();
                const totalSeconds = parseInt(time, 10);
-
+      
                 const minutes = Math.floor(totalSeconds / 60);
                 const seconds = totalSeconds % 60;
                 
