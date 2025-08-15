@@ -429,6 +429,36 @@
                </p>
             </section>
 
+            <section class="mt-5">
+               <h4 class="mb-3">
+                  <i class="fas fa-running text-success"></i> Do Fighters Coming Off a Win Have a Higher Chance of Winning Again?
+               </h4>
+               <p>
+                  This analysis explores whether winning a fight increases the probability of winning the subsequent fight.
+               </p>
+               <table class="table table-bordered table-striped w-50">
+                  <thead class="table-dark">
+                     <tr>
+                        <th>Previous Fight Outcome</th>
+                        <th>Win Probability</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>Won Previous Fight</td>
+                        <td>{{ (win_rate_after_win * 100) | round(1) }}%</td>
+                     </tr>
+                     <tr>
+                        <td>Lost Previous Fight</td>
+                        <td>{{ (win_rate_after_loss * 100) | round(1) }}%</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="text-muted small mt-2">
+                  Fighters coming off a win have a slightly higher probability of winning again ({{ (win_rate_after_win * 100) | round(1) }}%) compared to those coming off a loss ({{ (win_rate_after_loss * 100) | round(1) }}%).
+                  While the difference is not huge, it suggests a minor momentum effect in fight outcomes.
+               </p>
+            </section>
 
 
          {{ content | safe }}
