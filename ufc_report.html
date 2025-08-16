@@ -20,6 +20,48 @@
          background-color: #f8f9fa;
          border-left: 5px solid #dc3545;
          }
+         #rivalries {
+         padding: 20px;
+         }
+         .rivalry-card {
+         border: 1px solid #ccc;
+         border-radius: 12px;
+         margin-bottom: 30px;
+         padding: 15px;
+         background-color: #f9f9f9;
+         }
+         .fights-container {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+         }
+         .fight-card {
+         border: 1px solid #ddd;
+         border-radius: 10px;
+         padding: 10px;
+         background-color: #fff;
+         }
+         .fighters {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 10px;
+         margin-bottom: 10px;
+         }
+         .fighter {
+         text-align: center;
+         }
+         .fighter img {
+         width: 60px;
+         height: 60px;
+         border-radius: 50%;
+         object-fit: cover;
+         margin-bottom: 5px;
+         }
+         .vs {
+         font-weight: bold;
+         font-size: 18px;
+         }
       </style>
    </head>
    <body>
@@ -34,7 +76,7 @@
       <div class="container my-4">
          <!-- Meta info -->
          <p class="text-muted small mb-4">
-            <strong>Processed on:</strong> August 15th, 2025
+            <strong>Processed on:</strong> August 16th, 2025
          </p>
          <!-- Intro section -->
          <div class="intro p-4 mb-4 rounded shadow-sm">
@@ -1171,91 +1213,996 @@
                </p>
             </div>
          </section>
-          <!-- 📊 What Influences a Fight Outcome? -->
-            <section class="mt-5">
-              <h3 class="mb-3">📊 What Influences a Fight Outcome?</h3>
-              
-              <div class="card shadow-sm border-0">
-                <div class="card-body">
+         <!-- 📊 What Influences a Fight Outcome? -->
+         <section class="mt-5">
+            <h3 class="mb-3">📊 What Influences a Fight Outcome?</h3>
+            <div class="card shadow-sm border-0">
+               <div class="card-body">
                   <p class="mb-3">
-                    <i class="fas fa-lightbulb text-warning me-2"></i>
-                    <strong>Insight:</strong> The analysis explores how physical attributes might correlate with a fighter's chance of winning.
+                     <i class="fas fa-lightbulb text-warning me-2"></i>
+                     <strong>Insight:</strong> The analysis explores how physical attributes might correlate with a fighter's chance of winning.
                   </p>
-                  
                   <div class="alert alert-info mb-0">
-                    <i class="fas fa-chart-line me-2"></i>
-                    Note: Based on the data, reach difference shows a correlation of 0.057 with winning probability, while height difference shows a correlation of 0.043. This suggests that reach has a slightly higher influence on fight outcomes than height, although both correlations are weak and should not be considered strong predictors.
+                     <i class="fas fa-chart-line me-2"></i>
+                     Note: Based on the data, reach difference shows a correlation of 0.057 with winning probability, while height difference shows a correlation of 0.043. This suggests that reach has a slightly higher influence on fight outcomes than height, although both correlations are weak and should not be considered strong predictors.
                   </div>
-                </div>
-              </div>
-            </section>
-            <!-- Does Making Weight Increase Win Chances Section -->
-            <section class="mt-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-weight-hanging text-primary"></i> Does Making Weight Increase Win Chances?
-               </h4>
-               <p>
-                  The table below shows the win probabilities for fighters based on whether they successfully made weight. 
-                  Fighters who made weight have a significantly higher chance of winning.
-               </p>
-               <table class="table table-bordered table-striped w-50">
-                  <thead class="table-dark">
-                     <tr>
-                        <th>Made Weight</th>
-                        <th>Win Probability</th>
-                     </tr>
-                  </thead>
-                  <tbody>
+               </div>
+            </div>
+         </section>
+         <!-- Does Making Weight Increase Win Chances Section -->
+         <section class="mt-5">
+            <h4 class="mb-3">
+               <i class="fas fa-weight-hanging text-primary"></i> Does Making Weight Increase Win Chances?
+            </h4>
+            <p>
+               The table below shows the win probabilities for fighters based on whether they successfully made weight. 
+               Fighters who made weight have a significantly higher chance of winning.
+            </p>
+            <table class="table table-bordered table-striped w-50">
+               <thead class="table-dark">
+                  <tr>
+                     <th>Made Weight</th>
+                     <th>Win Probability</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  
+                  <tr>
+                     <td>False</td>
+                     <td>20.0%</td>
+                  </tr>
+                  
+                  <tr>
+                     <td>True</td>
+                     <td>49.1%</td>
+                  </tr>
+                  
+               </tbody>
+            </table>
+            <p class="text-muted small mt-2">
+               Fighters who made weight nearly doubled their winning probability compared to those who missed weight.
+            </p>
+         </section>
+         <section class="mt-5">
+            <h4 class="mb-3">
+               <i class="fas fa-running text-success"></i> Do Fighters Coming Off a Win Have a Higher Chance of Winning Again?
+            </h4>
+            <p>
+               This analysis explores whether winning a fight increases the probability of winning the subsequent fight.
+            </p>
+            <table class="table table-bordered table-striped w-50">
+               <thead class="table-dark">
+                  <tr>
+                     <th>Previous Fight Outcome</th>
+                     <th>Win Probability</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>Won Previous Fight</td>
+                     <td>52.0%</td>
+                  </tr>
+                  <tr>
+                     <td>Lost Previous Fight</td>
+                     <td>46.6%</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="text-muted small mt-2">
+               Fighters coming off a win have a slightly higher probability of winning again (52.0%) compared to those coming off a loss (46.6%).
+               While the difference is not huge, it suggests a minor momentum effect in fight outcomes.
+            </p>
+         </section>
+         <section id="rivalries">
+            <h2>⚔️ Rivalries & Rematches</h2>
+            
+            <div class="rivalry-card">
+               <!-- Topo com fotos, nomes e número de vitórias -->
+               <div class="rivalry-header" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 20px;">
+                  <!-- Lutador 1 -->
+                  <div class="fighter" style="text-align: center;">
                      
-                     <tr>
-                        <td>False</td>
-                        <td>20.0%</td>
-                     </tr>
+                     <img src="images/rivalry_1.jpg" alt="Andrei Arlovski" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
                      
-                     <tr>
-                        <td>True</td>
-                        <td>49.1%</td>
-                     </tr>
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Andrei Arlovski</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         1
+                     </p>
+                  </div>
+                  <!-- VS -->
+                  <div class="vs" style="font-size: 24px; font-weight: bold; color: #e74c3c;">VS</div>
+                  <!-- Lutador 2 -->
+                  <div class="fighter" style="text-align: center;">
                      
-                  </tbody>
-               </table>
-               <p class="text-muted small mt-2">
-                  Fighters who made weight nearly doubled their winning probability compared to those who missed weight.
-               </p>
-            </section>
+                     <img src="images/rivalry_2.jpg" alt="Tim Sylvia" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Tim Sylvia</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         🏆  2
+                     </p>
+                  </div>
+               </div>
+               <!-- Sub-seção com informações detalhadas de cada luta -->
+                <div class="rivalry-fights" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        1
+      </div>
 
-            <section class="mt-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-running text-success"></i> Do Fighters Coming Off a Win Have a Higher Chance of Winning Again?
-               </h4>
-               <p>
-                  This analysis explores whether winning a fight increases the probability of winning the subsequent fight.
-               </p>
-               <table class="table table-bordered table-striped w-50">
-                  <thead class="table-dark">
-                     <tr>
-                        <th>Previous Fight Outcome</th>
-                        <th>Win Probability</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>Won Previous Fight</td>
-                        <td>52.0%</td>
-                     </tr>
-                     <tr>
-                        <td>Lost Previous Fight</td>
-                        <td>46.6%</td>
-                     </tr>
-                  </tbody>
-               </table>
-               <p class="text-muted small mt-2">
-                  Fighters coming off a win have a slightly higher probability of winning again (52.0%) compared to those coming off a loss (46.6%).
-                  While the difference is not huge, it suggests a minor momentum effect in fight outcomes.
-               </p>
-            </section>
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2005-02-05
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 51: Super Saturday</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #4caf50;">
+            Andrei Arlovski
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Submission
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        2
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2006-04-15
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 59: Reality Check</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #2196f3;">
+            Tim Sylvia
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> KO/TKO
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        3
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2006-07-08
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 61: Bitter Rivals</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #2196f3;">
+            Tim Sylvia
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Decision - Unanimous
+        </div>
+      </div>
+
+    </div>
+  
+</div>
 
 
+            </div>
+            
+            <div class="rivalry-card">
+               <!-- Topo com fotos, nomes e número de vitórias -->
+               <div class="rivalry-header" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 20px;">
+                  <!-- Lutador 1 -->
+                  <div class="fighter" style="text-align: center;">
+                     
+                     <img src="images/rivalry_3.jpg" alt="Tito Ortiz" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Tito Ortiz</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         🏆  3
+                     </p>
+                  </div>
+                  <!-- VS -->
+                  <div class="vs" style="font-size: 24px; font-weight: bold; color: #e74c3c;">VS</div>
+                  <!-- Lutador 2 -->
+                  <div class="fighter" style="text-align: center;">
+                     
+                     <img src="images/rivalry_4.jpg" alt="Ken Shamrock" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Ken Shamrock</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         0
+                     </p>
+                  </div>
+               </div>
+               <!-- Sub-seção com informações detalhadas de cada luta -->
+                <div class="rivalry-fights" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        1
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2002-11-22
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 40: Vendetta</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #4caf50;">
+            Tito Ortiz
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> KO/TKO
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        2
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2006-07-08
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 61: Bitter Rivals</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #4caf50;">
+            Tito Ortiz
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> KO/TKO
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        3
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2006-10-10
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>Ortiz vs Shamrock 3: The Final Chapter</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #4caf50;">
+            Tito Ortiz
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> KO/TKO
+        </div>
+      </div>
+
+    </div>
+  
+</div>
+
+
+            </div>
+            
+            <div class="rivalry-card">
+               <!-- Topo com fotos, nomes e número de vitórias -->
+               <div class="rivalry-header" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 20px;">
+                  <!-- Lutador 1 -->
+                  <div class="fighter" style="text-align: center;">
+                     
+                     <img src="images/rivalry_5.jpg" alt="Tito Ortiz" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Tito Ortiz</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         1
+                     </p>
+                  </div>
+                  <!-- VS -->
+                  <div class="vs" style="font-size: 24px; font-weight: bold; color: #e74c3c;">VS</div>
+                  <!-- Lutador 2 -->
+                  <div class="fighter" style="text-align: center;">
+                     
+                     <img src="images/rivalry_6.jpg" alt="Forrest Griffin" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Forrest Griffin</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         🏆  2
+                     </p>
+                  </div>
+               </div>
+               <!-- Sub-seção com informações detalhadas de cada luta -->
+                <div class="rivalry-fights" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        1
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2006-04-15
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 59: Reality Check</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #4caf50;">
+            Tito Ortiz
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Decision - Split
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        2
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2009-11-21
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 106: Ortiz vs Griffin 2</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #2196f3;">
+            Forrest Griffin
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Decision - Split
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        3
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2012-07-07
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 148: Silva vs Sonnen 2</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #2196f3;">
+            Forrest Griffin
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Decision - Unanimous
+        </div>
+      </div>
+
+    </div>
+  
+</div>
+
+
+            </div>
+            
+            <div class="rivalry-card">
+               <!-- Topo com fotos, nomes e número de vitórias -->
+               <div class="rivalry-header" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 20px;">
+                  <!-- Lutador 1 -->
+                  <div class="fighter" style="text-align: center;">
+                     
+                     <img src="images/rivalry_7.jpg" alt="Deiveson Figueiredo" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Deiveson Figueiredo</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         1
+                     </p>
+                  </div>
+                  <!-- VS -->
+                  <div class="vs" style="font-size: 24px; font-weight: bold; color: #e74c3c;">VS</div>
+                  <!-- Lutador 2 -->
+                  <div class="fighter" style="text-align: center;">
+                     
+                     <img src="images/rivalry_8.jpg" alt="Brandon Moreno" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Brandon Moreno</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         🏆  2
+                     </p>
+                  </div>
+               </div>
+               <!-- Sub-seção com informações detalhadas de cada luta -->
+                <div class="rivalry-fights" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        1
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2020-12-12
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 256: Figueiredo vs. Moreno</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #ff9800;">
+            Draw
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Decision - Majority
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        2
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2021-06-12
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 263: Adesanya vs. Vettori 2</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #2196f3;">
+            Brandon Moreno
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Submission
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        3
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2022-01-22
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 270: Ngannou vs. Gane</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #4caf50;">
+            Deiveson Figueiredo
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Decision - Unanimous
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        4
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2023-01-21
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 283: Teixeira vs. Hill</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #2196f3;">
+            Brandon Moreno
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> TKO - Doctor's Stoppage
+        </div>
+      </div>
+
+    </div>
+  
+</div>
+
+
+            </div>
+            
+            <div class="rivalry-card">
+               <!-- Topo com fotos, nomes e número de vitórias -->
+               <div class="rivalry-header" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 20px;">
+                  <!-- Lutador 1 -->
+                  <div class="fighter" style="text-align: center;">
+                     
+                     <img src="images/rivalry_9.jpg" alt="Gray Maynard" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Gray Maynard</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         1
+                     </p>
+                  </div>
+                  <!-- VS -->
+                  <div class="vs" style="font-size: 24px; font-weight: bold; color: #e74c3c;">VS</div>
+                  <!-- Lutador 2 -->
+                  <div class="fighter" style="text-align: center;">
+                     
+                     <img src="images/rivalry_10.jpg" alt="Frankie Edgar" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     
+                     <p style="margin: 8px 0 4px; font-weight: bold;">Frankie Edgar</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                         1
+                     </p>
+                  </div>
+               </div>
+               <!-- Sub-seção com informações detalhadas de cada luta -->
+                <div class="rivalry-fights" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        1
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2008-04-02
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC Fight Night: Florian vs Lauzon</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #4caf50;">
+            Gray Maynard
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Decision - Unanimous
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        2
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2011-01-01
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 125: Resolution</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #ff9800;">
+            Draw
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> Decision - Split
+        </div>
+      </div>
+
+    </div>
+  
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        3
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 2011-10-08
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>UFC 136: Edgar vs Maynard 3</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: #2196f3;">
+            Frankie Edgar
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> KO/TKO
+        </div>
+      </div>
+
+    </div>
+  
+</div>
+
+
+            </div>
+            
+         </section>
          
       </div>
    </body>

@@ -20,6 +20,48 @@
          background-color: #f8f9fa;
          border-left: 5px solid #dc3545;
          }
+         #rivalries {
+         padding: 20px;
+         }
+         .rivalry-card {
+         border: 1px solid #ccc;
+         border-radius: 12px;
+         margin-bottom: 30px;
+         padding: 15px;
+         background-color: #f9f9f9;
+         }
+         .fights-container {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+         }
+         .fight-card {
+         border: 1px solid #ddd;
+         border-radius: 10px;
+         padding: 10px;
+         background-color: #fff;
+         }
+         .fighters {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 10px;
+         margin-bottom: 10px;
+         }
+         .fighter {
+         text-align: center;
+         }
+         .fighter img {
+         width: 60px;
+         height: 60px;
+         border-radius: 50%;
+         object-fit: cover;
+         margin-bottom: 5px;
+         }
+         .vs {
+         font-weight: bold;
+         font-size: 18px;
+         }
       </style>
    </head>
    <body>
@@ -381,86 +423,165 @@
                </p>
             </div>
          </section>
-          <!-- 📊 What Influences a Fight Outcome? -->
-            <section class="mt-5">
-              <h3 class="mb-3">📊 What Influences a Fight Outcome?</h3>
-              
-              <div class="card shadow-sm border-0">
-                <div class="card-body">
+         <!-- 📊 What Influences a Fight Outcome? -->
+         <section class="mt-5">
+            <h3 class="mb-3">📊 What Influences a Fight Outcome?</h3>
+            <div class="card shadow-sm border-0">
+               <div class="card-body">
                   <p class="mb-3">
-                    <i class="fas fa-lightbulb text-warning me-2"></i>
-                    <strong>Insight:</strong> The analysis explores how physical attributes might correlate with a fighter's chance of winning.
+                     <i class="fas fa-lightbulb text-warning me-2"></i>
+                     <strong>Insight:</strong> The analysis explores how physical attributes might correlate with a fighter's chance of winning.
                   </p>
-                  
                   <div class="alert alert-info mb-0">
-                    <i class="fas fa-chart-line me-2"></i>
-                    {{ influences_fight_outcome }}
+                     <i class="fas fa-chart-line me-2"></i>
+                     {{ influences_fight_outcome }}
                   </div>
-                </div>
-              </div>
-            </section>
-            <!-- Does Making Weight Increase Win Chances Section -->
-            <section class="mt-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-weight-hanging text-primary"></i> Does Making Weight Increase Win Chances?
-               </h4>
-               <p>
-                  The table below shows the win probabilities for fighters based on whether they successfully made weight. 
-                  Fighters who made weight have a significantly higher chance of winning.
-               </p>
-               <table class="table table-bordered table-striped w-50">
-                  <thead class="table-dark">
-                     <tr>
-                        <th>Made Weight</th>
-                        <th>Win Probability</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     {% for row in made_weight_stats %}
-                     <tr>
-                        <td>{{ row.made_weight }}</td>
-                        <td>{{ (row.won * 100) | round(1) }}%</td>
-                     </tr>
-                     {% endfor %}
-                  </tbody>
-               </table>
-               <p class="text-muted small mt-2">
-                  Fighters who made weight nearly doubled their winning probability compared to those who missed weight.
-               </p>
-            </section>
+               </div>
+            </div>
+         </section>
+         <!-- Does Making Weight Increase Win Chances Section -->
+         <section class="mt-5">
+            <h4 class="mb-3">
+               <i class="fas fa-weight-hanging text-primary"></i> Does Making Weight Increase Win Chances?
+            </h4>
+            <p>
+               The table below shows the win probabilities for fighters based on whether they successfully made weight. 
+               Fighters who made weight have a significantly higher chance of winning.
+            </p>
+            <table class="table table-bordered table-striped w-50">
+               <thead class="table-dark">
+                  <tr>
+                     <th>Made Weight</th>
+                     <th>Win Probability</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for row in made_weight_stats %}
+                  <tr>
+                     <td>{{ row.made_weight }}</td>
+                     <td>{{ (row.won * 100) | round(1) }}%</td>
+                  </tr>
+                  {% endfor %}
+               </tbody>
+            </table>
+            <p class="text-muted small mt-2">
+               Fighters who made weight nearly doubled their winning probability compared to those who missed weight.
+            </p>
+         </section>
+         <section class="mt-5">
+            <h4 class="mb-3">
+               <i class="fas fa-running text-success"></i> Do Fighters Coming Off a Win Have a Higher Chance of Winning Again?
+            </h4>
+            <p>
+               This analysis explores whether winning a fight increases the probability of winning the subsequent fight.
+            </p>
+            <table class="table table-bordered table-striped w-50">
+               <thead class="table-dark">
+                  <tr>
+                     <th>Previous Fight Outcome</th>
+                     <th>Win Probability</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>Won Previous Fight</td>
+                     <td>{{ (win_rate_after_win * 100) | round(1) }}%</td>
+                  </tr>
+                  <tr>
+                     <td>Lost Previous Fight</td>
+                     <td>{{ (win_rate_after_loss * 100) | round(1) }}%</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="text-muted small mt-2">
+               Fighters coming off a win have a slightly higher probability of winning again ({{ (win_rate_after_win * 100) | round(1) }}%) compared to those coming off a loss ({{ (win_rate_after_loss * 100) | round(1) }}%).
+               While the difference is not huge, it suggests a minor momentum effect in fight outcomes.
+            </p>
+         </section>
+         <section id="rivalries">
+            <h2>⚔️ Rivalries & Rematches</h2>
+            {% for rivalry in rivalries %}
+            <div class="rivalry-card">
+               <!-- Topo com fotos, nomes e número de vitórias -->
+               <div class="rivalry-header" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 20px;">
+                  <!-- Lutador 1 -->
+                  <div class="fighter" style="text-align: center;">
+                     {% if rivalry.r_image %}
+                     <img src="{{ rivalry.r_image }}" alt="{{ rivalry.fights[0].r_name }}" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     {% endif %}
+                     <p style="margin: 8px 0 4px; font-weight: bold;">{{ rivalry.fights[0].r_name }}</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                        {% if  rivalry.r_wins > rivalry.b_wins %} 🏆 {% endif %} {{ rivalry.r_wins }}
+                     </p>
+                  </div>
+                  <!-- VS -->
+                  <div class="vs" style="font-size: 24px; font-weight: bold; color: #e74c3c;">VS</div>
+                  <!-- Lutador 2 -->
+                  <div class="fighter" style="text-align: center;">
+                     {% if rivalry.b_image %}
+                     <img src="{{ rivalry.b_image }}" alt="{{ rivalry.fights[0].b_name }}" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+                     {% endif %}
+                     <p style="margin: 8px 0 4px; font-weight: bold;">{{ rivalry.fights[0].b_name }}</p>
+                     <p style="margin:0; color:#f39c12; font-weight:bold;">
+                        {% if  rivalry.b_wins > rivalry.r_wins %} 🏆 {% endif %} {{ rivalry.b_wins }}
+                     </p>
+                  </div>
+               </div>
+               <!-- Sub-seção com informações detalhadas de cada luta -->
+                <div class="rivalry-fights" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+  {% for fight in rivalry.fights %}
+    <div class="fight-card" style="
+      flex: 1 1 280px; 
+      display: flex; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #d32f2f;
+      align-items: center;
+    ">
+      
+      <!-- Coluna esquerda: número da luta -->
+      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+        {{ fight.fight_number }}
+      </div>
 
-            <section class="mt-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-running text-success"></i> Do Fighters Coming Off a Win Have a Higher Chance of Winning Again?
-               </h4>
-               <p>
-                  This analysis explores whether winning a fight increases the probability of winning the subsequent fight.
-               </p>
-               <table class="table table-bordered table-striped w-50">
-                  <thead class="table-dark">
-                     <tr>
-                        <th>Previous Fight Outcome</th>
-                        <th>Win Probability</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>Won Previous Fight</td>
-                        <td>{{ (win_rate_after_win * 100) | round(1) }}%</td>
-                     </tr>
-                     <tr>
-                        <td>Lost Previous Fight</td>
-                        <td>{{ (win_rate_after_loss * 100) | round(1) }}%</td>
-                     </tr>
-                  </tbody>
-               </table>
-               <p class="text-muted small mt-2">
-                  Fighters coming off a win have a slightly higher probability of winning again ({{ (win_rate_after_win * 100) | round(1) }}%) compared to those coming off a loss ({{ (win_rate_after_loss * 100) | round(1) }}%).
-                  While the difference is not huge, it suggests a minor momentum effect in fight outcomes.
-               </p>
-            </section>
+      <!-- Coluna direita: informações -->
+      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+        
+        <!-- Data -->
+        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+          📅 {{ fight.date }}
+        </div>
+
+        <!-- Nome do evento -->
+        <div style="margin-bottom: 6px; font-size: 15px;">
+          🎯 <em>{{ fight.event_name }}</em>
+        </div>
+
+        <!-- Vencedor -->
+        <div style="margin-bottom: 6px;">
+          🏆 <strong>Winner:</strong> 
+          <span style="color: {% if fight.winner == rivalry.r_name %}#4caf50{% elif fight.winner == rivalry.b_name %}#2196f3{% else %}#ff9800{% endif %};">
+            {{ fight.winner if fight.winner else "Draw/No Contest" }}
+          </span>
+        </div>
+
+        <!-- Método -->
+        <div>
+          ⚡ <strong>Method:</strong> {{ fight.method }}
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
+</div>
 
 
+            </div>
+            {% endfor %}
+         </section>
          {{ content | safe }}
       </div>
    </body>
