@@ -223,20 +223,20 @@
                   <thead class="table-dark">
                      <tr>
                         <th>Weight Class</th>
-                        <th>Average Duration (seconds)</th>
+                        <th>Average Duration</th>
                         <th>Visual</th>
                      </tr>
                   </thead>
                   <tbody>
-                     {% set max_val = duration_by_weight_class.values() | max %}
-                     {% for weight_class, seconds in duration_by_weight_class.items() %}
+                      {% set duration_by_weight_classes = data["duration_by_weight_class"] -%}
+                      {% for duration_weight_class in duration_by_weight_classes %}
                      <tr>
-                        <td>{{ weight_class }}</td>
-                        <td>{{ seconds }}</td>
+                        <td>{{ duration_weight_class["division"] }}</td>
+                        <td>{{ duration_weight_class["humanized"] }}</td>
                         <td>
                            <div class="progress" style="height: 20px;">
                               <div class="progress-bar bg-info" role="progressbar"
-                                 style="width: {{ (seconds / max_val) * 100 }}%;">
+                                 style="width: {{ (duration_weight_class['match_time_sec'] / duration_by_weight_classes[0]['match_time_sec']) * 100 }}%;">
                               </div>
                            </div>
                         </td>
