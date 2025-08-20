@@ -130,13 +130,12 @@
                         </tr>
                      </thead>
                      <tbody>
-                        {% set ns = namespace(index_cnt = 1) -%}
-                        {% for country in countries.keys() -%}
+                        {% set countries = data["top_5_countries_with_more_events"] -%}
+                        {% for country in countries -%}
                         <tr>
-                           <td>{{ ns.index_cnt }}</td>
-                           <td>{{ country }}</td>
-                           <td>{{ countries[country] }}</td>
-                           {% set ns.index_cnt = ns.index_cnt + 1 %}
+                           <td>{{ country["position"] }}</td>
+                           <td>{{ country["country"] }}</td>
+                           <td>{{ country["count"] }}</td>
                         </tr>
                         {% endfor %}
                      </tbody>
@@ -148,14 +147,13 @@
                      These are the top 5 cities with the most UFC events.
                   </p>
                   <div class="row g-4">
-                     {% set ns = namespace(index_cnt = 1) -%}
-                     {% for city in cities.keys() -%}
+                      {% set cities = data["top_5_cities_with_more_events"] -%}
+                     {% for city in cities -%}
                      <div class="col-6 col-md-4 col-lg-2 text-center">
-                        <img src="images/city{{ns.index_cnt}}.jpg" alt="{{ city }}" class="img-fluid rounded shadow-sm"">
-                        <p class="mt-2 mb-0 fw-bold">{{ city }}</p>
-                        <p class="mt-2 mb-0 fw-bold">{{ cities[city] }} events</p>
+                        <img src="images/city{{ city['position'] }}.jpg" alt="{{ city }}" class="img-fluid rounded shadow-sm"">
+                        <p class="mt-2 mb-0 fw-bold">{{ city["city"] }}</p>
+                        <p class="mt-2 mb-0 fw-bold">{{ city["count"] }} events</p>
                      </div>
-                     {% set ns.index_cnt = ns.index_cnt + 1 %}
                      {% endfor %}
                   </div>
                </div>
@@ -588,7 +586,7 @@
    <script>
       function setupDistFightsPerWeightChart(){
           const distFightsPerWeightChart = document.getElementById('distFightsPerWeightChart');
-          const distFightsPerWeightChartData = {{ dist_fights_per_weight_chart | safe }};
+          const distFightsPerWeightChartData = {{ data["fights_per_year_division"] | safe }};
           new Chart(distFightsPerWeightChart, {
               type: 'line',
               data: distFightsPerWeightChartData,
