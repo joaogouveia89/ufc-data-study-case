@@ -1,0 +1,35 @@
+<div class="col-12">
+ <div class="card shadow-sm border-0">
+    <div class="row g-0">
+       <!-- Fighter 1 -->
+       <div class="col-md-2 text-center p-2">
+          <img src="{{ fight.r_image }}" alt="{{ fight.r_name }}" class="img-fluid rounded shadow-sm">
+          <p class="fw-bold mt-2 small">{{ fight.r_name }}</p>
+       </div>
+       <!-- Fight details -->
+       <div class="col-md-8 p-3 text-center">
+          <h5 class="card-title mb-1">{{ fight.event_name }}</h5>
+          <p class="text-muted small mb-1 date-to-format">{{ fight.date }} — {{ fight.localization }}</p>
+          <p class="mb-1 upper-first"><strong>Division:</strong> {{ fight.division }}</p>
+          <p class="mb-1"><strong>Method:</strong> {{ fight.method }}</p>
+          <p class="mb-0"><strong>Fight Duration:</strong> <span class="sec-to-min-and-sec">{{ fight.match_time_sec }}</span></p>
+       </div>
+       <!-- Fighter 2 -->
+       <div class="col-md-2 text-center p-2">
+          <img src="{{ fight._image }}" alt="{{ fight.b_name }}" class="img-fluid rounded shadow-sm">
+          <p class="fw-bold mt-2 small">{{ fight.b_name }}</p>
+       </div>
+    </div>
+    <!-- Stats footer -->
+    <div class="card-footer bg-light d-flex justify-content-around text-center">
+       <div>
+          <span class="fw-bold text-danger" style="font-size: 1.4em;">{{ fight.avg_str_min }}</span><br>
+          <small>Avg Strikes / Min</small>
+       </div>
+       <div>
+          <span class="fw-bold text-primary" style="font-size: 1.4em;">{{ fight.avg_str_rnd }}</span><br>
+          <small>Avg Strikes / Round</small>
+       </div>
+    </div>
+ </div>
+</div>
