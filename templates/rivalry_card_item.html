@@ -1,0 +1,33 @@
+<div class="rivalry-card">
+   <!-- Topo com fotos, nomes e número de vitórias -->
+   <div class="rivalry-header" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 20px;">
+      <!-- Lutador 1 -->
+      <div class="fighter" style="text-align: center;">
+         {% if rivalry.r_image %}
+         <img src="{{ rivalry.r_image }}" alt="{{ rivalry.fights[0].r_name }}" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+         {% endif %}
+         <p style="margin: 8px 0 4px; font-weight: bold;">{{ rivalry.fights[0].r_name }}</p>
+         <p style="margin:0; color:#f39c12; font-weight:bold;">
+            {% if  rivalry.r_wins > rivalry.b_wins %} 🏆 {% endif %} {{ rivalry.r_wins }}
+         </p>
+      </div>
+      <!-- VS -->
+      <div class="vs" style="font-size: 24px; font-weight: bold; color: #e74c3c;">VS</div>
+      <!-- Lutador 2 -->
+      <div class="fighter" style="text-align: center;">
+         {% if rivalry.b_image %}
+         <img src="{{ rivalry.b_image }}" alt="{{ rivalry.fights[0].b_name }}" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+         {% endif %}
+         <p style="margin: 8px 0 4px; font-weight: bold;">{{ rivalry.fights[0].b_name }}</p>
+         <p style="margin:0; color:#f39c12; font-weight:bold;">
+            {% if  rivalry.b_wins > rivalry.r_wins %} 🏆 {% endif %} {{ rivalry.b_wins }}
+         </p>
+      </div>
+   </div>
+   <!-- Sub-seção com informações detalhadas de cada luta -->
+   <div class="rivalry-fights" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+      {% for fight in rivalry.fights %}
+      {% include "rivalry_card_fight_item.html" with context %}
+      {% endfor %}
+   </div>
+</div>

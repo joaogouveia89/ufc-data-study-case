@@ -149,11 +149,7 @@
                   <div class="row g-4">
                       {% set cities = data["top_5_cities_with_more_events"] -%}
                      {% for city in cities -%}
-                     <div class="col-6 col-md-4 col-lg-2 text-center">
-                        <img src="{{ city['image'] }}" alt="{{ city }}" class="img-fluid rounded shadow-sm"">
-                        <p class="mt-2 mb-0 fw-bold">{{ city["city"] }}</p>
-                        <p class="mt-2 mb-0 fw-bold">{{ city["count"] }} events</p>
-                     </div>
+                        {% include "city_card_item.html" with context %}
                      {% endfor %}
                   </div>
                </div>
@@ -256,7 +252,7 @@
                </p>
                <div class="row g-4">
                   {% for fight in data["top_strike_fights"] %}
-                  {% include "top_5_fights_by_striking_activity_item.html" with context %}
+                  {% include "fights_by_striking_activity_item.html" with context %}
                   <hr/>
                   {% endfor %}
                </div>
@@ -271,26 +267,7 @@
                </p>
                <div class="row g-4">
                   {% for fighter in data["top_10_fighters_with_the_most_wins"] %}
-                  <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                     <div class="card shadow-sm border-0 h-100 text-center p-3">
-                        <img src="{{ fighter.image }}" 
-                           alt="{{ fighter.name }}" 
-                           class="img-fluid rounded-circle mx-auto mb-3" 
-                           style="width:100px;height:100px;object-fit:cover;">
-                        <h5 class="mb-1">{{ fighter.name }}</h5>
-                        <div class="text-center d-flex flex-column align-items-center justify-content-between" style="height: 60px;">
-                           {% set nickname = '' if fighter.nick_name|trim|lower == 'nan' else fighter.nick_name %}
-                           {% if nickname %}
-                           <small class="text-muted fst-italic">"{{ nickname }}"</small>
-                           {% else %}
-                           <span style="visibility: hidden;">Placeholder</span>
-                           {% endif %}
-                           <span class="badge bg-success fs-6 px-3 py-2">
-                           {{ fighter.wins }} Wins
-                           </span>
-                        </div>
-                     </div>
-                  </div>
+                      {% include "fighters_with_most_wins_item.html" with context %}
                   {% endfor %}
                </div>
             </div>
@@ -304,26 +281,7 @@
                </p>
                <div class="row g-4">
                   {% for fighter in data["top_10_fighters_with_best_ko_rate"] %}
-                  <div class="col-12 col-md-6 col-lg-4">
-                     <div class="card shadow-sm border-0 h-100">
-                        <div class="text-center p-3">
-                           <!-- Fighter Image -->
-                           <img src="{{ fighter.image }}" alt="{{ fighter.winner }}" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
-                           <!-- Fighter Name -->
-                           <h5 class="fw-bold mb-1">{{ fighter.winner }}</h5>
-                           <!-- KO Wins / Total Wins -->
-                           <p class="text-muted mb-2">{{ fighter.ko_wins }} KO Wins / {{ fighter.total_wins }} Total Wins</p>
-                           <!-- KO Rate Bar -->
-                           <div class="progress" style="height: 20px;">
-                              <div class="progress-bar bg-danger" role="progressbar" 
-                                 style="width: {{ (fighter.ko_rate * 100)|round(1) }}%;" 
-                                 aria-valuenow="{{ (fighter.ko_rate * 100)|round(1) }}" aria-valuemin="0" aria-valuemax="100">
-                                 {{ (fighter.ko_rate * 100)|round(1) }}%
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                    {% include "fighters_with_most_ko_rate_item.html" with context %}
                   {% endfor %}
                </div>
             </div>
@@ -465,85 +423,7 @@
          <section id="rivalries">
             <h2>⚔️ Rivalries & Rematches</h2>
             {% for rivalry in data["rivalries"] %}
-            <div class="rivalry-card">
-               <!-- Topo com fotos, nomes e número de vitórias -->
-               <div class="rivalry-header" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 20px;">
-                  <!-- Lutador 1 -->
-                  <div class="fighter" style="text-align: center;">
-                     {% if rivalry.r_image %}
-                     <img src="{{ rivalry.r_image }}" alt="{{ rivalry.fights[0].r_name }}" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
-                     {% endif %}
-                     <p style="margin: 8px 0 4px; font-weight: bold;">{{ rivalry.fights[0].r_name }}</p>
-                     <p style="margin:0; color:#f39c12; font-weight:bold;">
-                        {% if  rivalry.r_wins > rivalry.b_wins %} 🏆 {% endif %} {{ rivalry.r_wins }}
-                     </p>
-                  </div>
-                  <!-- VS -->
-                  <div class="vs" style="font-size: 24px; font-weight: bold; color: #e74c3c;">VS</div>
-                  <!-- Lutador 2 -->
-                  <div class="fighter" style="text-align: center;">
-                     {% if rivalry.b_image %}
-                     <img src="{{ rivalry.b_image }}" alt="{{ rivalry.fights[0].b_name }}" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
-                     {% endif %}
-                     <p style="margin: 8px 0 4px; font-weight: bold;">{{ rivalry.fights[0].b_name }}</p>
-                     <p style="margin:0; color:#f39c12; font-weight:bold;">
-                        {% if  rivalry.b_wins > rivalry.r_wins %} 🏆 {% endif %} {{ rivalry.b_wins }}
-                     </p>
-                  </div>
-               </div>
-               <!-- Sub-seção com informações detalhadas de cada luta -->
-                <div class="rivalry-fights" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-  {% for fight in rivalry.fights %}
-    <div class="fight-card" style="
-      flex: 1 1 280px; 
-      display: flex; 
-      background: #ffffff; 
-      color: #333; 
-      padding: 15px; 
-      border-radius: 12px; 
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      border-left: 5px solid #d32f2f;
-      align-items: center;
-    ">
-      
-      <!-- Coluna esquerda: número da luta -->
-      <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
-        {{ fight.fight_number }}
-      </div>
-
-      <!-- Coluna direita: informações -->
-      <div style="flex: 1; padding-left: 10px; font-size: 14px;">
-        
-        <!-- Data -->
-        <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
-          📅 {{ fight.date }}
-        </div>
-
-        <!-- Nome do evento -->
-        <div style="margin-bottom: 6px; font-size: 15px;">
-          🎯 <em>{{ fight.event_name }}</em>
-        </div>
-
-        <!-- Vencedor -->
-        <div style="margin-bottom: 6px;">
-          🏆 <strong>Winner:</strong> 
-          <span style="color: {% if fight.winner == rivalry.r_name %}#4caf50{% elif fight.winner == rivalry.b_name %}#2196f3{% else %}#ff9800{% endif %};">
-            {{ fight.winner if fight.winner else "Draw/No Contest" }}
-          </span>
-        </div>
-
-        <!-- Método -->
-        <div>
-          ⚡ <strong>Method:</strong> {{ fight.method }}
-        </div>
-      </div>
-
-    </div>
-  {% endfor %}
-</div>
-
-
-            </div>
+                {% include "rivalry_card_item.html" with context %}
             {% endfor %}
          </section>
          {{ content | safe }}
