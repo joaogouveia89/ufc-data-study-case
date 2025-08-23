@@ -449,16 +449,16 @@
                <tbody>
                   <tr>
                      <td>Won Previous Fight</td>
-                     <td>{{ (win_rate_after_win * 100) | round(1) }}%</td>
+                     <td>{{ data["win_rate_previous_fight_result"]["won"] }}</td>
                   </tr>
                   <tr>
                      <td>Lost Previous Fight</td>
-                     <td>{{ (win_rate_after_loss * 100) | round(1) }}%</td>
+                     <td>{{ data["win_rate_previous_fight_result"]["lost"] }}</td>
                   </tr>
                </tbody>
             </table>
             <p class="text-muted small mt-2">
-               Fighters coming off a win have a slightly higher probability of winning again ({{ (win_rate_after_win * 100) | round(1) }}%) compared to those coming off a loss ({{ (win_rate_after_loss * 100) | round(1) }}%).
+               Fighters coming off a win have a slightly higher probability of winning again ({{ data["win_rate_previous_fight_result"]["won"] }}) compared to those coming off a loss ({{ data["win_rate_previous_fight_result"]["lost"]}}).
                While the difference is not huge, it suggests a minor momentum effect in fight outcomes.
             </p>
          </section>
