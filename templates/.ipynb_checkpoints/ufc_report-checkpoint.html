@@ -420,7 +420,7 @@
                   </tr>
                </thead>
                <tbody>
-                  {% for row in made_weight_stats %}
+                  {% for row in data["made_weight_stats"] %}
                   <tr>
                      <td>{{ row.made_weight }}</td>
                      <td>{{ (row.won * 100) | round(1) }}%</td>
