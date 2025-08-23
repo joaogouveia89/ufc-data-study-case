@@ -270,10 +270,10 @@
                   These fighters have achieved legendary status in MMA history, amassing the highest number of career victories.
                </p>
                <div class="row g-4">
-                  {% for fighter in top_10_fighters_with_the_most_wins %}
+                  {% for fighter in data["top_10_fighters_with_the_most_wins"] %}
                   <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
                      <div class="card shadow-sm border-0 h-100 text-center p-3">
-                        <img src="images/fighter_top_10_wins{{ loop.index }}.jpg" 
+                        <img src="{{ fighter.image }}" 
                            alt="{{ fighter.name }}" 
                            class="img-fluid rounded-circle mx-auto mb-3" 
                            style="width:100px;height:100px;object-fit:cover;">
