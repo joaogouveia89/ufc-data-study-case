@@ -303,12 +303,12 @@
                   Top 10 fighters ranked by their knockout rate, showing efficiency in finishing fights by KO/TKO.
                </p>
                <div class="row g-4">
-                  {% for fighter in top_10_fighters_with_the_most_ko_rate %}
+                  {% for fighter in data["top_10_fighters_with_best_ko_rate"] %}
                   <div class="col-12 col-md-6 col-lg-4">
                      <div class="card shadow-sm border-0 h-100">
                         <div class="text-center p-3">
                            <!-- Fighter Image -->
-                           <img src="images/fighter_ko_{{ loop.index }}.jpg" alt="{{ fighter.winner }}" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
+                           <img src="{{ fighter.image }}" alt="{{ fighter.winner }}" class="img-fluid rounded shadow-sm mb-2" style="max-height: 180px;">
                            <!-- Fighter Name -->
                            <h5 class="fw-bold mb-1">{{ fighter.winner }}</h5>
                            <!-- KO Wins / Total Wins -->
