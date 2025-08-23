@@ -1,0 +1,40 @@
+<div class="trilogy-card" style="margin-bottom: 40px;">
+  
+  <!-- Header: fighters, images and wins -->
+  <div class="trilogy-header" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 20px;">
+    
+    <!-- Fighter R -->
+    <div class="fighter" style="text-align: center;">
+      {% if trilogy.r_image %}
+      <img src="{{ trilogy.r_image }}" alt="{{ trilogy.r_name }}" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+      {% endif %}
+      <p style="margin: 8px 0 4px; font-weight: bold;">{{ trilogy.r_name }}</p>
+      <p style="margin:0; color:#f39c12; font-weight:bold;">
+        {% if trilogy.r_wins > trilogy.b_wins %} 🏆 {% endif %} {{ trilogy.r_wins }}
+      </p>
+    </div>
+
+    <!-- VS -->
+    <div class="vs" style="font-size: 24px; font-weight: bold; color: #e74c3c;">VS</div>
+
+    <!-- Fighter B -->
+    <div class="fighter" style="text-align: center;">
+      {% if trilogy.b_image %}
+      <img src="{{ trilogy.b_image }}" alt="{{ trilogy.b_name }}" style="width:120px; height:120px; border-radius: 50%; object-fit: cover; border: 3px solid #333;">
+      {% endif %}
+      <p style="margin: 8px 0 4px; font-weight: bold;">{{ trilogy.b_name }}</p>
+      <p style="margin:0; color:#f39c12; font-weight:bold;">
+        {% if trilogy.b_wins > trilogy.r_wins %} 🏆 {% endif %} {{ trilogy.b_wins }}
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Fights section -->
+  <div class="trilogy-fights" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+    {% for fight in trilogy.fights %}
+        {% include "trilogy_card_fight_item.html" with context %}
+    {% endfor %}
+  </div>
+
+</div>

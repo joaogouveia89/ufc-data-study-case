@@ -420,12 +420,29 @@
                While the difference is not huge, it suggests a minor momentum effect in fight outcomes.
             </p>
          </section>
-         <section id="rivalries">
-            <h2>⚔️ Rivalries & Rematches</h2>
+         <section class="mt-5">
+            <h2 class="mb-3">⚔️ Timeline of fights between the same opponents</h2>
             {% for rivalry in data["rivalries"] %}
                 {% include "rivalry_card_item.html" with context %}
             {% endfor %}
          </section>
+
+          <section class="mt-5">
+              <h2 class="mb-3">3️⃣ Performance evolution across trilogies</h2>
+                <!-- Explanation of performance metrics -->
+              <div class="metrics-explanation" style="background:#f9f9f9; border-radius:10px; padding:15px; margin-bottom:20px; font-size:14px; color:#444;">
+                <p style="margin:0 0 6px;"><strong>Performance Metrics in Trilogies:</strong></p>
+                <ul style="margin:0; padding-left:18px;">
+                  <li>🏆 Fight number within the trilogy (1, 2, 3...)</li>
+                  <li>🥊 Total significant strikes landed</li>
+                  <li>🤼 Takedowns landed</li>
+                  <li>⏱️ Control time (in seconds)</li>
+                </ul>
+              </div>
+              {% for trilogy in data["trilogies"] %}
+                {% include "trilogy_card_item.html" with context %}
+            {% endfor %}
+          </section>
          {{ content | safe }}
       </div>
    </body>
