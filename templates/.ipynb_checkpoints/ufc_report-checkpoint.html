@@ -86,10 +86,10 @@
             </p>
             <div class="d-flex flex-wrap gap-2">
                <a href="{{ kaggle_link }}" target="_blank" class="btn btn-outline-primary btn-sm">
-               <i class="devicon-kaggle-original"></i> Kaggle Dataset
+               <i class="devicon-kaggle-original"></i>Dataset
                </a>
                <a href="{{ github_link }}" target="_blank" class="btn btn-outline-dark btn-sm">
-               <i class="devicon-github-original"></i> GitHub Codebase
+               <i class="devicon-github-original"></i>Codebase
                </a>
             </div>
          </div>
@@ -445,6 +445,31 @@
           </section>
          {{ content | safe }}
       </div>
+       <!-- Footer -->
+        <footer class="mt-5 py-4 bg-dark text-light">
+          <div class="container text-center small">
+            <p class="mb-1">
+              📊 UFC Data Analysis Report — Generated on <strong>{{ processed_date }}</strong>
+            </p>
+            <p class="mb-2">
+              Built with <i class="fab fa-python text-warning"></i> Python & <i class="fas fa-chart-bar text-info"></i> Chart.js
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+              <a href="{{ github_link }}" target="_blank" class="text-light">
+                <i class="devicon-github-original"></i> GitHub
+              </a>
+              <a href="{{ kaggle_link }}" target="_blank" class="text-light">
+                <i class="devicon-kaggle-original"></i> Kaggle Dataset
+              </a>
+            </div>
+            <hr class="border-secondary my-3">
+            <p class="mb-0 text">
+              ⚠️ This study is exploratory and intended for educational purposes.  
+              UFC® is a registered trademark of Zuffa, LLC.
+            </p>
+          </div>
+        </footer>
+
    </body>
    <script>
       function setupDistFightsPerWeightChart(){
