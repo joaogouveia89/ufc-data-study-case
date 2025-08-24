@@ -1,0 +1,28 @@
+<div class="rivalry-fight-card">
+   <!-- Coluna esquerda: número da luta -->
+   <div class="fight-number">
+      {{ fight.fight_number }}
+   </div>
+   <!-- Coluna direita: informações -->
+   <div class="fight-info">
+      <!-- Data -->
+      <div class="fight-detail fight-date">
+         📅 {{ fight.date }}
+      </div>
+      <!-- Nome do evento -->
+      <div class="fight-detail fight-event">
+         🎯 <em>{{ fight.event_name }}</em>
+      </div>
+      <!-- Vencedor -->
+      <div class="fight-detail">
+         🏆 <strong>Winner:</strong> 
+         <span class="fight-winner" style="color: {% if fight.winner == rivalry.r_name %}#4caf50{% elif fight.winner == rivalry.b_name %}#2196f3{% else %}#ff9800{% endif %};">
+         {{ fight.winner if fight.winner else "Draw/No Contest" }}
+         </span>
+      </div>
+      <!-- Método -->
+      <div class="fight-detail">
+         ⚡ <strong>Method:</strong> {{ fight.method }}
+      </div>
+   </div>
+</div>

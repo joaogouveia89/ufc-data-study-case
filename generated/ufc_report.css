@@ -1,0 +1,385 @@
+header {
+    background-color: #000;
+    color: #fff;
+}
+
+header img {
+    height: 60px;
+}
+
+.intro {
+    background-color: #f8f9fa;
+    border-left: 5px solid #dc3545;
+}
+
+#rivalries {
+    padding: 20px;
+}
+
+.rivalry-card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.fights-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.fight-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.fighters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.fighter {
+    text-align: center;
+}
+
+.fighter img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
+.vs {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* UFC Report CSS Classes */
+
+/* Chart styling */
+.chart-max-height {
+    max-height: 300px;
+}
+
+/* Progress bar custom height */
+.progress-height {
+    height: 20px;
+}
+
+/* Career length card sizing */
+.career-length-card {
+    width: 12rem;
+}
+
+/* Statistics tables sizing */
+.weight-stats-table,
+.previous-fight-table {
+    width: 50%;
+}
+
+/* Trilogy metrics explanation styling */
+.trilogy-metrics-explanation {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #444;
+}
+
+.trilogy-metrics-title {
+    margin: 0 0 6px 0;
+}
+
+.trilogy-metrics-list {
+    margin: 0;
+    padding-left: 18px;
+}
+
+
+/* Fighter KO Card CSS Classes */
+
+/* Fighter image sizing */
+.fighter-ko-image {
+    max-height: 180px;
+}
+
+/* KO rate progress bar height */
+.ko-rate-progress {
+    height: 20px;
+}
+
+/* Fighter Wins Card CSS Classes */
+
+/* Fighter image circular with fixed dimensions */
+.fighter-wins-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* Nickname container with fixed height */
+.fighter-nickname-container {
+    height: 60px;
+}
+
+/* Hidden placeholder for nickname alignment */
+.nickname-placeholder {
+    visibility: hidden;
+}
+
+/* Fight Strikes Card CSS Classes */
+
+/* Statistics values styling */
+.fight-stat-value {
+    font-size: 1.4em;
+}
+
+/* Rivalry Fight Card CSS Classes */
+
+/* Main fight card container */
+.rivalry-fight-card {
+    flex: 1 1 280px;
+    display: flex;
+    background: #ffffff;
+    color: #333;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-left: 5px solid #d32f2f;
+    align-items: center;
+}
+
+/* Fight number column */
+.fight-number {
+    flex: 0 0 60px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+/* Fight information column */
+.fight-info {
+    flex: 1;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+/* Fight detail rows */
+.fight-detail {
+    margin-bottom: 6px;
+}
+
+/* Fight date styling */
+.fight-date {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Fight event styling */
+.fight-event {
+    font-size: 15px;
+}
+
+/* Rivalry Card CSS Classes */
+
+/* Rivalry header container */
+.rivalry-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+/* Individual fighter container */
+.rivalry-fighter {
+    text-align: center;
+}
+
+/* Fighter image styling */
+.rivalry-fighter-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #333;
+}
+
+/* Fighter name styling */
+.rivalry-fighter-name {
+    margin: 8px 0 4px;
+    font-weight: bold;
+}
+
+/* Fighter wins count styling */
+.rivalry-fighter-wins {
+    margin: 0;
+    color: #f39c12;
+    font-weight: bold;
+}
+
+/* VS text styling */
+.rivalry-vs {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Rivalry fights container */
+.rivalry-fights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Trilogy Fight Card CSS Classes */
+
+/* Main trilogy fight card container */
+.trilogy-fight-card {
+    flex: 1 1 300px;
+    display: flex;
+    background: #ffffff;
+    color: #333;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-left: 5px solid #d32f2f;
+}
+
+/* Fight information container */
+.trilogy-fight-info {
+    flex: 1;
+    padding-left: 12px;
+    font-size: 14px;
+}
+
+/* Fight date styling */
+.trilogy-fight-date {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Fight winner section */
+.trilogy-fight-winner {
+    margin-bottom: 12px;
+}
+
+/* Statistics table container using CSS table display */
+.trilogy-stats-table {
+    display: table;
+    width: 100%;
+    border-spacing: 0 6px;
+    font-size: 14px;
+}
+
+/* Table row */
+.trilogy-stats-row {
+    display: table-row;
+}
+
+/* Table header row */
+.trilogy-stats-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Generic table cell */
+.trilogy-stats-cell {
+    display: table-cell;
+}
+
+/* Empty cell in header */
+.trilogy-stats-empty {
+    width: 40%;
+}
+
+/* Fighter names in header */
+.trilogy-stats-r-name {
+    text-align: center;
+    color: #4caf50;
+}
+
+.trilogy-stats-b-name {
+    text-align: center;
+    color: #2196f3;
+}
+
+/* Statistics labels */
+.trilogy-stats-label {
+    font-weight: bold;
+}
+
+/* Statistics values */
+.trilogy-stats-value {
+    text-align: center;
+}
+
+/* Trilogy Card CSS Classes */
+
+/* Main trilogy card container */
+.trilogy-card {
+    margin-bottom: 40px;
+}
+
+/* Trilogy header container */
+.trilogy-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+/* Individual fighter container */
+.trilogy-fighter {
+    text-align: center;
+}
+
+/* Fighter image styling */
+.trilogy-fighter-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #333;
+}
+
+/* Fighter name styling */
+.trilogy-fighter-name {
+    margin: 8px 0 4px;
+    font-weight: bold;
+}
+
+/* Fighter wins count styling */
+.trilogy-fighter-wins {
+    margin: 0;
+    color: #f39c12;
+    font-weight: bold;
+}
+
+/* VS text styling */
+.trilogy-vs {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Trilogy fights container */
+.trilogy-fights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}

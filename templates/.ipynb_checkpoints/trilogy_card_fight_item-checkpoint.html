@@ -1,51 +1,42 @@
-<div class="fight-card" style="
-   flex: 1 1 300px; 
-   display: flex; 
-   background: #ffffff; 
-   color: #333; 
-   padding: 15px; 
-   border-radius: 12px; 
-   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-   border-left: 5px solid #d32f2f;
-   ">
+<div class="trilogy-fight-card">
    <!-- Right column: fight info and performance -->
-   <div style="flex: 1; padding-left: 12px; font-size: 14px;">
+   <div class="trilogy-fight-info">
       <!-- Date -->
-      <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+      <div class="trilogy-fight-date">
          📅 {{ fight.date }}
       </div>
       <!-- Winner -->
-      <div style="margin-bottom: 12px;">
+      <div class="trilogy-fight-winner">
          🏆 <strong>Winner:</strong> 
-         <span style="color: {% if fight.winner_id == fight.r_id %}#4caf50{% elif fight.winner_id == fight.b_id %}#2196f3{% else %}#ff9800{% endif %};">
+         <span class="trilogy-winner-name" style="color: {% if fight.winner_id == fight.r_id %}#4caf50{% elif fight.winner_id == fight.b_id %}#2196f3{% else %}#ff9800{% endif %};">
          {{ fight.winner if fight.winner else "Draw/No Contest" }}
          </span>
       </div>
       <!-- Comparison table -->
-      <div style="display: table; width: 100%; border-spacing: 0 6px; font-size: 14px;">
+      <div class="trilogy-stats-table">
          <!-- Header row -->
-         <div style="display: table-row; font-weight: bold; text-align: center;">
-            <div style="display: table-cell; width: 40%;"></div>
-            <div style="display: table-cell; text-align: center; color:#4caf50;">{{ fight.r_name }}</div>
-            <div style="display: table-cell; text-align: center; color:#2196f3;">{{ fight.b_name }}</div>
+         <div class="trilogy-stats-row trilogy-stats-header">
+            <div class="trilogy-stats-cell trilogy-stats-empty"></div>
+            <div class="trilogy-stats-cell trilogy-stats-r-name">{{ fight.r_name }}</div>
+            <div class="trilogy-stats-cell trilogy-stats-b-name">{{ fight.b_name }}</div>
          </div>
          <!-- Strikes -->
-         <div style="display: table-row;">
-            <div style="display: table-cell; font-weight:bold;">🥊 Strikes</div>
-            <div style="display: table-cell; text-align: center;">{{ fight.r_total_str_landed }}</div>
-            <div style="display: table-cell; text-align: center;">{{ fight.b_total_str_landed }}</div>
+         <div class="trilogy-stats-row">
+            <div class="trilogy-stats-cell trilogy-stats-label">🥊 Strikes</div>
+            <div class="trilogy-stats-cell trilogy-stats-value">{{ fight.r_total_str_landed }}</div>
+            <div class="trilogy-stats-cell trilogy-stats-value">{{ fight.b_total_str_landed }}</div>
          </div>
          <!-- Takedowns -->
-         <div style="display: table-row;">
-            <div style="display: table-cell; font-weight:bold;">🤼 Takedowns</div>
-            <div style="display: table-cell; text-align: center;">{{ fight.r_td_landed }}</div>
-            <div style="display: table-cell; text-align: center;">{{ fight.b_td_landed }}</div>
+         <div class="trilogy-stats-row">
+            <div class="trilogy-stats-cell trilogy-stats-label">🤼 Takedowns</div>
+            <div class="trilogy-stats-cell trilogy-stats-value">{{ fight.r_td_landed }}</div>
+            <div class="trilogy-stats-cell trilogy-stats-value">{{ fight.b_td_landed }}</div>
          </div>
          <!-- Control -->
-         <div style="display: table-row;">
-            <div style="display: table-cell; font-weight:bold;">⏱️ Control (s)</div>
-            <div style="display: table-cell; text-align: center;">{{ fight.r_ctrl }}</div>
-            <div style="display: table-cell; text-align: center;">{{ fight.b_ctrl }}</div>
+         <div class="trilogy-stats-row">
+            <div class="trilogy-stats-cell trilogy-stats-label">⏱️ Control (s)</div>
+            <div class="trilogy-stats-cell trilogy-stats-value">{{ fight.r_ctrl }}</div>
+            <div class="trilogy-stats-cell trilogy-stats-value">{{ fight.b_ctrl }}</div>
          </div>
       </div>
    </div>

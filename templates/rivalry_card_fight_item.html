@@ -1,37 +1,27 @@
-<div class="fight-card" style="
-   flex: 1 1 280px; 
-   display: flex; 
-   background: #ffffff; 
-   color: #333; 
-   padding: 15px; 
-   border-radius: 12px; 
-   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-   border-left: 5px solid #d32f2f;
-   align-items: center;
-   ">
+<div class="rivalry-fight-card">
    <!-- Coluna esquerda: número da luta -->
-   <div style="flex: 0 0 60px; text-align: center; font-size: 32px; font-weight: bold; color: #d32f2f;">
+   <div class="fight-number">
       {{ fight.fight_number }}
    </div>
    <!-- Coluna direita: informações -->
-   <div style="flex: 1; padding-left: 10px; font-size: 14px;">
+   <div class="fight-info">
       <!-- Data -->
-      <div style="margin-bottom: 6px; font-weight: bold; color: #555;">
+      <div class="fight-detail fight-date">
          📅 {{ fight.date }}
       </div>
       <!-- Nome do evento -->
-      <div style="margin-bottom: 6px; font-size: 15px;">
+      <div class="fight-detail fight-event">
          🎯 <em>{{ fight.event_name }}</em>
       </div>
       <!-- Vencedor -->
-      <div style="margin-bottom: 6px;">
+      <div class="fight-detail">
          🏆 <strong>Winner:</strong> 
-         <span style="color: {% if fight.winner == rivalry.r_name %}#4caf50{% elif fight.winner == rivalry.b_name %}#2196f3{% else %}#ff9800{% endif %};">
+         <span class="fight-winner" style="color: {% if fight.winner == rivalry.r_name %}#4caf50{% elif fight.winner == rivalry.b_name %}#2196f3{% else %}#ff9800{% endif %};">
          {{ fight.winner if fight.winner else "Draw/No Contest" }}
          </span>
       </div>
       <!-- Método -->
-      <div>
+      <div class="fight-detail">
          ⚡ <strong>Method:</strong> {{ fight.method }}
       </div>
    </div>
