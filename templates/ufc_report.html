@@ -1,539 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-      <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-      <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
-       <link rel="stylesheet" type="text/css" href="ufc_report.css" />
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <title>{{ title }}</title>
-   </head>
-   <body>
-      <!-- Header -->
-      <header class="py-3 shadow-sm">
-         <div class="container d-flex align-items-center">
-            <img src="{{ ufc_logo_url }}" alt="UFC Logo" class="me-3">
-            <h1 class="h3 mb-0">{{ title }}</h1>
-         </div>
-      </header>
-      <!-- Main container -->
-      <div class="container my-4">
-         <!-- Meta info -->
-         <p class="text-muted small mb-4">
-            <strong>Processed on:</strong> {{ processed_date }}
-         </p>
-         <!-- Intro section -->
-         <div class="intro p-4 mb-4 rounded shadow-sm">
-            <p class="mb-3">
-               This report presents a detailed analysis of UFC fight data, exploring relevant statistics, trends, and insights.
-               The goal is to understand performance patterns, fighting styles, and results over time.
-            </p>
-            <div class="d-flex flex-wrap gap-2">
-               <a href="{{ kaggle_link }}" target="_blank" class="btn btn-outline-primary btn-sm">
-               <i class="devicon-kaggle-original"></i>Dataset
-               </a>
-               <a href="{{ github_link }}" target="_blank" class="btn btn-outline-dark btn-sm">
-               <i class="devicon-github-original"></i>Codebase
-               </a>
-            </div>
-         </div>
-         <hr class="my-4">
-         <!-- UFC Historical Overview Section -->
-         <section class="mb-5">
-            <h2 class="mb-4">
-               <i class="fas fa-history text-danger"></i> UFC Historical Overview
-            </h2>
-            <!-- Evolution of the number of fights per year -->
-            <div class="mb-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-chart-line text-primary"></i> Evolution of the number of fights per year
-               </h4>
-               <div class="text-center">
-                  <img src="{{ evolution_fights_per_year_chart_path }}" alt="Evolution of fights per year" class="img-fluid rounded shadow-sm">
-                  <p class="text-muted small mt-2">Figure 1: Number of UFC fights per year (historical trend)</p>
-               </div>
-            </div>
-            <!-- Most frequent host countries and cities -->
-            <div class="mb-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-map-marker-alt text-success"></i> Most frequent host countries and cities
-               </h4>
-               <!-- Countries -->
-               <div class="mb-4">
-                  <p>
-                     Over the years, UFC has hosted events in multiple countries, but certain nations have dominated the scene.
-                     Below are the top host countries by number of events.
-                  </p>
-                  <!-- Example table -->
-                  <table class="table table-striped table-bordered table-sm">
-                     <thead class="table-dark">
-                        <tr>
-                           <th>Rank</th>
-                           <th>Country</th>
-                           <th>Events Hosted</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        {% set countries = data["top_5_countries_with_more_events"] -%}
-                        {% for country in countries -%}
-                        <tr>
-                           <td>{{ country["position"] }}</td>
-                           <td>{{ country["country"] }}</td>
-                           <td>{{ country["count"] }}</td>
-                        </tr>
-                        {% endfor %}
-                     </tbody>
-                  </table>
-               </div>
-               <!-- Cities -->
-               <div>
-                  <p>
-                     These are the top 5 cities with the most UFC events.
-                  </p>
-                  <div class="row g-4">
-                      {% set cities = data["top_5_cities_with_more_events"] -%}
-                     {% for city in cities -%}
-                        {% include "city_card_item.html" with context %}
-                     {% endfor %}
-                  </div>
-               </div>
-            </div>
-            <!-- Distribution of fights per weight class over time -->
-            <div>
-               <h4 class="mb-3">
-                  <i class="fas fa-dumbbell text-warning"></i> Distribution of fights per weight class over time
-               </h4>
-               <p>
-                  The graph below shows how fights have been distributed across weight classes throughout UFC history.
-               </p>
-               <div class="text-center">
-                  <div>
-                     <canvas id="distFightsPerWeightChart"></canvas>
-                  </div>
-                  <p class="text-muted small mt-2">Figure 2: Weight class distribution over time</p>
-               </div>
-            </div>
-         </section>
-         <!-- General Fight Statistics -->
-         <section class="mb-5">
-            <h2 class="mb-4">
-               <i class="fas fa-chart-pie text-danger"></i> General Fight Statistics
-            </h2>
-            <!-- Win ratio by method -->
-            <div class="mb-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-trophy text-warning"></i> Win ratio by method
-               </h4>
-               <p>
-                  This chart shows the proportion of fight outcomes by method — Knockout/Technical Knockout (KO/TKO), Submission, and Decision.
-               </p>
-               <div class="row align-items-center">
-                  <div class="col-md-6 text-center">
-                     <canvas id="winRatioChart" class="chart-max-height"></canvas>
-                     <p class="text-muted small mt-2">Figure 3: Win ratio distribution</p>
-                  </div>
-                  <div class="col-md-6">
-                     <ul class="list-group shadow-sm">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                           <span><i class="fas fa-hand-rock text-success"></i> KO/TKO</span>
-                           <span class="badge bg-success rounded-pill">{{ data["ko_submission_decision_methods"]["props"][1] }}%</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                           <span><i class="fas fa-link text-primary"></i> Submission</span>
-                           <span class="badge bg-primary rounded-pill">{{ data["ko_submission_decision_methods"]["props"][2] }}%</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                           <span><i class="fas fa-clipboard-check text-danger"></i> Decision</span>
-                           <span class="badge bg-danger rounded-pill">{{ data["ko_submission_decision_methods"]["props"][0] }}%</span>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-            <!-- Average fight duration per weight class -->
-            <div class="mb-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-stopwatch text-info"></i> Average fight duration per weight class
-               </h4>
-               <p>
-                  This table shows the average fight duration for each weight class.  
-                  The bars visually represent the relative length of the fights.
-               </p>
-               <table class="table table-bordered align-middle">
-                  <thead class="table-dark">
-                     <tr>
-                        <th>Weight Class</th>
-                        <th>Average Duration</th>
-                        <th>Visual</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                      {% set duration_by_weight_classes = data["duration_by_weight_class"] -%}
-                      {% for duration_weight_class in duration_by_weight_classes %}
-                     <tr>
-                        <td>{{ duration_weight_class["division"] }}</td>
-                        <td>{{ duration_weight_class["humanized"] }}</td>
-                        <td>
-                           <div class="progress progress-height">
-                              <div class="progress-bar bg-info" role="progressbar"
-                                 style="width: {{ (duration_weight_class['match_time_sec'] / duration_by_weight_classes[0]['match_time_sec']) * 100 }}%;">
-                              </div>
-                           </div>
-                        </td>
-                     </tr>
-                     {% endfor %}
-                  </tbody>
-               </table>
-            </div>
-            <!-- Average Strikes Leaders Section -->
-            <div class="mb-5">
-               <h2 class="mb-4">
-                  <i class="fas fa-hand-rock text-danger"></i> Top 5 Fights by Striking Activity
-               </h2>
-               <p>
-                  Below are the five fights with the highest average strikes, measured both per minute and per round.
-                  These bouts showcase the most action-packed performances in UFC history.
-               </p>
-               <div class="row g-4">
-                  {% for fight in data["top_strike_fights"] %}
-                  {% include "fights_by_striking_activity_item.html" with context %}
-                  <hr/>
-                  {% endfor %}
-               </div>
-            </div>
-            <!-- Top 10 Fighters with the Most Wins -->
-            <div class="mb-5">
-               <h2 class="mb-4">
-                  <i class="fas fa-trophy text-warning"></i> Top 10 Fighters with the Most Wins
-               </h2>
-               <p>
-                  These fighters have achieved legendary status in MMA history, amassing the highest number of career victories.
-               </p>
-               <div class="row g-4">
-                  {% for fighter in data["top_10_fighters_with_the_most_wins"] %}
-                      {% include "fighters_with_most_wins_item.html" with context %}
-                  {% endfor %}
-               </div>
-            </div>
-            <!-- Fighters with Highest KO Rate Section -->
-            <div class="mb-5">
-               <h2 class="mb-4">
-                  <i class="fas fa-fist-raised text-danger"></i> Fighters with the Highest KO Rate
-               </h2>
-               <p>
-                  Top 10 fighters ranked by their knockout rate, showing efficiency in finishing fights by KO/TKO.
-               </p>
-               <div class="row g-4">
-                  {% for fighter in data["top_10_fighters_with_best_ko_rate"] %}
-                    {% include "fighters_with_most_ko_rate_item.html" with context %}
-                  {% endfor %}
-               </div>
-            </div>
-            <!-- Performance Comparison by Age Section -->
-            <div class="mb-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-user-clock text-info"></i> Performance Comparison by Age
-               </h4>
-               <p>
-                  This chart illustrates how fighters' performance varies with age, highlighting trends in win rates, striking efficiency, and fight outcomes over time.
-               </p>
-               <!-- Chart -->
-               <div class="text-center mb-3">
-                  <img src="{{ performance_by_age_chart_path }}" alt="Performance Comparison by Age" class="img-fluid rounded shadow-sm">
-                  <p class="text-muted small mt-2">Figure: Win rate by age</p>
-               </div>
-               <!-- Disclaimer -->
-               <div class="alert alert-warning shadow-sm" role="alert">
-                  <h6 class="fw-bold">⚠️ Disclaimer: How the Win Rate by Age is Calculated</h6>
-                  <p>
-                     The <code>win_rate</code> (win percentage by age) is computed by analyzing fighters' outcomes based on their age at the time of each fight.
-                     The dataset was transformed into a long format, where each row represents <strong>one fighter per fight</strong> (instead of one row per fight with two fighters). 
-                     This allows us to associate each fighter with their age and match outcome individually.
-                  </p>
-                  <p>
-                     The win rate for each age is calculated as: <br>
-                     <strong>Number of fights won by fighters at a given age ÷ Total number of fights fought at that same age</strong>
-                  </p>
-                  <p>
-                     For example, if fighters who were 30 years old won 60 out of 100 fights, the win rate at age 30 is 0.60.
-                  </p>
-                  <hr>
-                  <p class="mb-0">
-                     <strong>Important Notes:</strong>
-                  <ul class="mb-0">
-                     <li>This does <strong>not</strong> account for opponent strength, fight context, or event level.</li>
-                     <li>Ages with very few fights may result in misleading rates due to low sample size.</li>
-                  </ul>
-                  </p>
-               </div>
-            </div>
-            <!-- Average Career Length of Fighters Section -->
-            <div class="mb-5">
-               <h4 class="mb-3">
-                  <i class="fas fa-hourglass-half text-danger"></i> Average Career Length of Fighters
-               </h4>
-               <p>
-                  This metric represents the average duration of a professional UFC fighter's career, measured in years.
-               </p>
-               <div class="d-flex justify-content-center align-items-center my-4">
-                  <div class="card text-center shadow-sm career-length-card">
-                     <div class="card-body">
-                        <i class="fas fa-clock fa-3x text-primary mb-3"></i>
-                        <h2 class="card-title display-5 fw-bold">{{ data["average_career_length_years"] }}</h2>
-                        <p class="card-text text-muted">Years</p>
-                     </div>
-                  </div>
-               </div>
-               <p class="text-muted small text-center">
-                  Note: This average is computed based on available fight data and may not account for retired fighters with incomplete historical records.
-               </p>
-            </div>
-         </section>
-         <!-- 📊 What Influences a Fight Outcome? -->
-         <section class="mt-5">
-            <h3 class="mb-3">📊 What Influences a Fight Outcome?</h3>
-            <div class="card shadow-sm border-0">
-               <div class="card-body">
-                  <p class="mb-3">
-                     <i class="fas fa-lightbulb text-warning me-2"></i>
-                     <strong>Insight:</strong> The analysis explores how physical attributes might correlate with a fighter's chance of winning.
-                  </p>
-                  <div class="alert alert-info mb-0">
-                     <i class="fas fa-chart-line me-2"></i>
-                     {{ data["influences_fight_outcome"] }}
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!-- Does Making Weight Increase Win Chances Section -->
-         <section class="mt-5">
-            <h4 class="mb-3">
-               <i class="fas fa-weight-hanging text-primary"></i> Does Making Weight Increase Win Chances?
-            </h4>
-            <p>
-               The table below shows the win probabilities for fighters based on whether they successfully made weight. 
-               Fighters who made weight have a significantly higher chance of winning.
-            </p>
-            <table class="table table-bordered table-striped weight-stats-table">
-               <thead class="table-dark">
-                  <tr>
-                     <th>Made Weight</th>
-                     <th>Win Probability</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  {% for row in data["made_weight_stats"] %}
-                  <tr>
-                     <td>{{ row.made_weight }}</td>
-                     <td>{{ (row.won * 100) | round(1) }}%</td>
-                  </tr>
-                  {% endfor %}
-               </tbody>
-            </table>
-            <p class="text-muted small mt-2">
-               Fighters who made weight nearly doubled their winning probability compared to those who missed weight.
-            </p>
-         </section>
-         <section class="mt-5">
-            <h4 class="mb-3">
-               <i class="fas fa-running text-success"></i> Do Fighters Coming Off a Win Have a Higher Chance of Winning Again?
-            </h4>
-            <p>
-               This analysis explores whether winning a fight increases the probability of winning the subsequent fight.
-            </p>
-            <table class="table table-bordered table-striped previous-fight-table">
-               <thead class="table-dark">
-                  <tr>
-                     <th>Previous Fight Outcome</th>
-                     <th>Win Probability</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr>
-                     <td>Won Previous Fight</td>
-                     <td>{{ data["win_rate_previous_fight_result"]["won"] }}</td>
-                  </tr>
-                  <tr>
-                     <td>Lost Previous Fight</td>
-                     <td>{{ data["win_rate_previous_fight_result"]["lost"] }}</td>
-                  </tr>
-               </tbody>
-            </table>
-            <p class="text-muted small mt-2">
-               Fighters coming off a win have a slightly higher probability of winning again ({{ data["win_rate_previous_fight_result"]["won"] }}) compared to those coming off a loss ({{ data["win_rate_previous_fight_result"]["lost"]}}).
-               While the difference is not huge, it suggests a minor momentum effect in fight outcomes.
-            </p>
-         </section>
-         <section class="mt-5">
-            <h2 class="mb-3">⚔️ Timeline of fights between the same opponents</h2>
-            {% for rivalry in data["rivalries"] %}
-                {% include "rivalry_card_item.html" with context %}
-            {% endfor %}
-         </section>
 
-          <section class="mt-5">
-              <h2 class="mb-3">3️⃣ Performance evolution across trilogies</h2>
-                <!-- Explanation of performance metrics -->
-              <div class="trilogy-metrics-explanation">
-                <p class="trilogy-metrics-title"><strong>Performance Metrics in Trilogies:</strong></p>
-                <ul class="trilogy-metrics-list">
-                  <li>🏆 Fight number within the trilogy (1, 2, 3...)</li>
-                  <li>🥊 Total significant strikes landed</li>
-                  <li>🤼 Takedowns landed</li>
-                  <li>⏱️ Control time (in seconds)</li>
-                </ul>
-              </div>
-              {% for trilogy in data["trilogies"] %}
-                {% include "trilogy_card_item.html" with context %}
-            {% endfor %}
-          </section>
-         {{ content | safe }}
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+   <link rel="stylesheet" type='text/css'
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+   <link rel="stylesheet" type="text/css" href="ufc_report.css" />
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <title>{{ title }}</title>
+</head>
+
+
+<body>
+   <!-- Mobile Toggle Button -->
+   <button class="mobile-toggle d-md-none" type="button" onclick="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+   </button>
+   <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+         <h4 class="menu-title"><img src="{{ ufc_logo_url }}" alt="UFC Logo" class="title-image"></i>Analytics</h4>
       </div>
-       <!-- Footer -->
-        <footer class="mt-5 py-4 bg-dark text-light">
-          <div class="container text-center small">
-            <p class="mb-1">
-              📊 UFC Data Analysis Report — Generated on <strong>{{ processed_date }}</strong>
-            </p>
-            <p class="mb-2">
-              Built with <i class="fab fa-python text-warning"></i> Python & <i class="fas fa-chart-bar text-info"></i> Chart.js
-            </p>
-            <div class="d-flex justify-content-center gap-3">
-              <a href="{{ github_link }}" target="_blank" class="text-light">
-                <i class="devicon-github-original"></i> GitHub
-              </a>
-              <a href="{{ kaggle_link }}" target="_blank" class="text-light">
-                <i class="devicon-kaggle-original"></i> Kaggle Dataset
-              </a>
-            </div>
-            <hr class="border-secondary my-3">
-            <p class="mb-0 text">
-              ⚠️ This study is exploratory and intended for educational purposes.  
-              UFC® is a registered trademark of Zuffa, LLC.
-            </p>
-          </div>
-        </footer>
+      <nav class="sidebar-nav">
+         <ul class="nav flex-column">
+            <li class="nav-item">
+               <a class="nav-link active" href="#" data-section="overview">
+                  <i class="fas fa-home"></i>
+                  Overview
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" data-section="history">
+                  <i class="fas fa-history"></i>
+                  Historical Overview
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" data-section="statistics">
+                  <i class="fas fa-chart-pie"></i>
+                  Fight Statistics
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" data-section="top-fighters">
+                  <i class="fas fa-trophy"></i>
+                  Top Fighters
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" data-section="influences">
+                  <i class="fas fa-chart-line"></i>
+                  Fight Influences
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" data-section="rivalries">
+                  <i class="fas fa-sword-cross"></i>
+                  Rivalries
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" data-section="trilogies">
+                  <i class="fas fa-medal"></i>
+                  Trilogies
+               </a>
+            </li>
+         </ul>
+      </nav>
+   </div>
+   <!-- Main Content -->
+   <div class="main-content">
+      {% include "sections/overview_section.html" with context %}
+   </div>
+</body>
+<script>
+   function setupDistFightsPerWeightChart() {
+      const distFightsPerWeightChart = document.getElementById('distFightsPerWeightChart');
+      const distFightsPerWeightChartData = {{ data["fights_per_year_division"] | safe
+   }};
+   new Chart(distFightsPerWeightChart, {
+      type: 'line',
+      data: distFightsPerWeightChartData,
+      options: {
+         responsive: true,
+         plugins: {
+            legend: {
+               onClick: (e, legendItem, legend) => {
+                  const index = legendItem.datasetIndex;
+                  const ci = legend.chart;
+                  const meta = ci.getDatasetMeta(index);
 
-   </body>
-   <script>
-      function setupDistFightsPerWeightChart(){
-          const distFightsPerWeightChart = document.getElementById('distFightsPerWeightChart');
-          const distFightsPerWeightChartData = {{ data["fights_per_year_division"] | safe }};
-          new Chart(distFightsPerWeightChart, {
-              type: 'line',
-              data: distFightsPerWeightChartData,
-              options: { 
-              responsive: true,
-              plugins: {
-                  legend: {
-                      onClick: (e, legendItem, legend) => {
-                          const index = legendItem.datasetIndex;
-                          const ci = legend.chart;
-                          const meta = ci.getDatasetMeta(index);
-      
-                          // Alterna visibilidade
-                          meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-                          ci.update();
-                      }
-                  }
-              }
-          }
-        });
+                  // Alterna visibilidade
+                  meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
+                  ci.update();
+               }
+            }
+         }
       }
-      
-       function setupKoSubmissionDecisionMethodsChart(){
-            const koSubmissionDecisionMethodsData = {{ data["ko_submission_decision_methods"]["chart"] | safe }};
-           const ctx = document.getElementById('winRatioChart');
-            const data = {
-                labels: Object.keys(koSubmissionDecisionMethodsData),
-                datasets: [{
-                    data: Object.values(koSubmissionDecisionMethodsData),
-                    backgroundColor: ['#dc3545', '#28a745', '#007bff'],
-                    hoverOffset: 10
-                }]
-            };
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let value = context.parsed;
-                                    let total = context.chart._metasets[context.datasetIndex].total;
-                                    let percentage = ((value / total) * 100).toFixed(1);
-                                    return `${context.label}: ${value} fights (${percentage}%)`;
-                                }
-                            }
-                        },
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-       }
-      
-       function datesToFormat(){
-           const dates = document.getElementsByClassName("date-to-format");
-            for(date = 0; date < dates.length; date++){
-                const dateEl = dates[date];
-                dateEl.innerHTML = dateEl.innerHTML.split(" ")[0];
+   });
+      }
+
+   function setupKoSubmissionDecisionMethodsChart() {
+      const koSubmissionDecisionMethodsData = {{ data["ko_submission_decision_methods"]["chart"] | safe
+   }};
+   const ctx = document.getElementById('winRatioChart');
+   const data = {
+      labels: Object.keys(koSubmissionDecisionMethodsData),
+      datasets: [{
+         data: Object.values(koSubmissionDecisionMethodsData),
+         backgroundColor: ['#dc3545', '#28a745', '#007bff'],
+         hoverOffset: 10
+      }]
+   };
+   new Chart(ctx, {
+      type: 'doughnut',
+      data: data,
+      options: {
+         responsive: true,
+         plugins: {
+            tooltip: {
+               callbacks: {
+                  label: function (context) {
+                     let value = context.parsed;
+                     let total = context.chart._metasets[context.datasetIndex].total;
+                     let percentage = ((value / total) * 100).toFixed(1);
+                     return `${context.label}: ${value} fights (${percentage}%)`;
+                  }
+               }
+            },
+            legend: {
+               position: 'bottom'
             }
+         }
+      }
+   });
        }
-      
-       function upperFirst(){
-           const elements = document.getElementsByClassName("upper-first");
-           for(elementIdx = 0; elementIdx < elements.length; elementIdx++){
-                const element = elements[elementIdx];
-                const result = element
-                              .innerHTML
-                              .split(" ")
-                              .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1))
-                              .join(" ");
-               element.innerHTML = result;
-            }
-       }
-      
-       function secToMinAndSec(){
-           const elements = document.getElementsByClassName("sec-to-min-and-sec");
-           for(elementIdx = 0; elementIdx < elements.length; elementIdx++){
-                const element = elements[elementIdx];
-               const time = element.innerHTML.trim();
-               const totalSeconds = parseInt(time, 10);
-      
-                const minutes = Math.floor(totalSeconds / 60);
-                const seconds = totalSeconds % 60;
-                
-                let result = [];
-                
-                
-                if (minutes > 0) {
-                  result.push(`${minutes} minute${minutes > 1 ? 's' : ''}`);
-                }
-                
-                
-                if (seconds > 0) {
-                  result.push(`${seconds} second${seconds > 1 ? 's' : ''}`);
-                }
-                
-                
-                if (result.length === 0) {
-                  result.push(`0 seconds`);
-                }
-                element.innerHTML = result.join(" ")
-           }
-       }
-      
-        setupDistFightsPerWeightChart();
-        setupKoSubmissionDecisionMethodsChart();
-        datesToFormat();
-        upperFirst();
-        secToMinAndSec();
-      
-   </script>
+
+   function datesToFormat() {
+      const dates = document.getElementsByClassName("date-to-format");
+      for (date = 0; date < dates.length; date++) {
+         const dateEl = dates[date];
+         dateEl.innerHTML = dateEl.innerHTML.split(" ")[0];
+      }
+   }
+
+   function upperFirst() {
+      const elements = document.getElementsByClassName("upper-first");
+      for (elementIdx = 0; elementIdx < elements.length; elementIdx++) {
+         const element = elements[elementIdx];
+         const result = element
+            .innerHTML
+            .split(" ")
+            .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1))
+            .join(" ");
+         element.innerHTML = result;
+      }
+   }
+
+   function secToMinAndSec() {
+      const elements = document.getElementsByClassName("sec-to-min-and-sec");
+      for (elementIdx = 0; elementIdx < elements.length; elementIdx++) {
+         const element = elements[elementIdx];
+         const time = element.innerHTML.trim();
+         const totalSeconds = parseInt(time, 10);
+
+         const minutes = Math.floor(totalSeconds / 60);
+         const seconds = totalSeconds % 60;
+
+         let result = [];
+
+
+         if (minutes > 0) {
+            result.push(`${minutes} minute${minutes > 1 ? 's' : ''}`);
+         }
+
+
+         if (seconds > 0) {
+            result.push(`${seconds} second${seconds > 1 ? 's' : ''}`);
+         }
+
+
+         if (result.length === 0) {
+            result.push(`0 seconds`);
+         }
+         element.innerHTML = result.join(" ")
+      }
+   }
+
+   setupDistFightsPerWeightChart();
+   setupKoSubmissionDecisionMethodsChart();
+   datesToFormat();
+   upperFirst();
+   secToMinAndSec();
+
+</script>
+
 </html>
