@@ -11,25 +11,25 @@
     <div class="row g-4 mb-4">
         <div class="col-md-3">
             <div class="stat-card">
-                <div class="stat-number">7,922</div>
+                <div class="stat-number">{{ data["total_fights"] }}</div>
                 <div class="stat-label">Total Fights</div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="stat-card">
-                <div class="stat-number">253</div>
-                <div class="stat-label">Most Wins (Travis Fulton)</div>
+                <div class="stat-number">{{ data["top_winner"]["wins"] }}</div>
+                <div class="stat-label">Most Wins ({{ data["top_winner"]["winner"] }})</div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="stat-card">
-                <div class="stat-number">3.22</div>
+                <div class="stat-number">{{ data["average_career_length_years"] }}</div>
                 <div class="stat-label">Avg Career Length (Years)</div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="stat-card">
-                <div class="stat-number">48.46%</div>
+                <div class="stat-number">{{ data["decision_ending_perc"] }}%</div>
                 <div class="stat-label">Fights End in Decision</div>
             </div>
         </div>
