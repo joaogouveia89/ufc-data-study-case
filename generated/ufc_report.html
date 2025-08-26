@@ -138,126 +138,920 @@
         </div>
     </div>
 </div>
+      <!-- Historical Overview Section -->
+<div class="section" id="history">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="fas fa-history text-primary me-2"></i>Historical Overview</h2>
+        </div>
+    </div>
+
+    <!-- Evolution Chart -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Evolution of Fights Per Year</h5>
+        </div>
+        <div class="card-body text-center">
+            <img src="images/chart-1.png" alt="Evolution of fights per year" class="img-fluid rounded">
+            <p class="text-muted small mt-2">Number of UFC fights per year (historical trend)</p>
+        </div>
+    </div>
+
+    <!-- Host Countries -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Most Frequent Host Countries</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Rank</th>
+                            <th>Country</th>
+                            <th>Events Hosted</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>USA</td>
+                            <td>5,814</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Brazil</td>
+                            <td>471</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Canada</td>
+                            <td>413</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>United Kingdom</td>
+                            <td>338</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>United Arab Emirates</td>
+                            <td>252</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Cities -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-city me-2"></i>Top 5 Host Cities</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-2 text-center">
+                    <img src="images/city1.jpg" alt="Las Vegas" class="img-fluid rounded shadow-sm mb-2">
+                    <h6>Las Vegas</h6>
+                    <span class="badge bg-primary">2,811 events</span>
+                </div>
+                <div class="col-md-2 text-center">
+                    <img src="images/city2.jpg" alt="Abu Dhabi" class="img-fluid rounded shadow-sm mb-2">
+                    <h6>Abu Dhabi</h6>
+                    <span class="badge bg-primary">252 events</span>
+                </div>
+                <div class="col-md-2 text-center">
+                    <img src="images/city3.jpg" alt="London" class="img-fluid rounded shadow-sm mb-2">
+                    <h6>London</h6>
+                    <span class="badge bg-primary">183 events</span>
+                </div>
+                <div class="col-md-2 text-center">
+                    <img src="images/city4.jpg" alt="Rio de Janeiro" class="img-fluid rounded shadow-sm mb-2">
+                    <h6>Rio de Janeiro</h6>
+                    <span class="badge bg-primary">147 events</span>
+                </div>
+                <div class="col-md-2 text-center">
+                    <img src="images/city5.jpg" alt="Newark" class="img-fluid rounded shadow-sm mb-2">
+                    <h6>Newark</h6>
+                    <span class="badge bg-primary">127 events</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weight Class Distribution -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-dumbbell me-2"></i>Weight Class Distribution Over Time</h5>
+        </div>
+        <div class="card-body">
+            <div class="chart-container">
+                <canvas id="distFightsPerWeightChart"></canvas>
+            </div>
+            <p class="text-muted small text-center mt-3">Weight class distribution over time</p>
+        </div>
+    </div>
+</div>
+      <!-- Fight Statistics Section -->
+<div class="section" id="statistics">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="fas fa-chart-pie text-primary me-2"></i>Fight Statistics</h2>
+        </div>
+    </div>
+
+    <!-- Win Ratio Chart -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-trophy me-2"></i>Win Ratio by Method</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="chart-container">
+                        <canvas id="winRatioChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="list-group">
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-hand-rock text-success me-2"></i>KO/TKO</span>
+                            <span class="badge bg-success rounded-pill">32.09%</span>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-link text-info me-2"></i>Submission</span>
+                            <span class="badge bg-info rounded-pill">19.45%</span>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-clipboard-check text-primary me-2"></i>Decision</span>
+                            <span class="badge bg-primary rounded-pill">48.46%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance by Age -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-user-clock me-2"></i>Performance by Age</h5>
+        </div>
+        <div class="card-body text-center">
+            <img src="images/chart-2.png" alt="Performance by Age" class="img-fluid rounded">
+            <p class="text-muted small mt-3">Win rate by age showing performance trends throughout fighters' careers</p>
+        </div>
+    </div>
+
+    <!-- Average Career Length -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-hourglass-half me-2"></i>Average Career Statistics</h5>
+        </div>
+        <div class="card-body text-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-number">3.22</div>
+                        <div class="stat-label">Average Career Length (Years)</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-number">5.0</div>
+                        <div class="stat-label">Longest Avg Fight Duration (Minutes)</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-number">10.17</div>
+                        <div class="stat-label">Highest Strikes/Min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <!-- Top Fighters Section -->
+<div class="section" id="top-fighters">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="fas fa-trophy text-primary me-2"></i>Top Fighters</h2>
+        </div>
+    </div>
+
+    <!-- Most Wins -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-medal me-2"></i>Top 10 Fighters with Most Wins</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <img src="images/top10wins_fighter1.jpg" alt="Travis Fulton"
+                                class="fighter-wins-image mb-3">
+                            <h6>Travis Fulton</h6>
+                            <small class="text-muted fst-italic">"The Ironman"</small>
+                            <br><span class="badge bg-success mt-2">253 Wins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <img src="images/top10wins_fighter2.jpg" alt="Dan Severn" class="fighter-wins-image mb-3">
+                            <h6>Dan Severn</h6>
+                            <small class="text-muted fst-italic">"The Beast"</small>
+                            <br><span class="badge bg-success mt-2">101 Wins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <img src="images/top10wins_fighter3.jpg" alt="Jeremy Horn" class="fighter-wins-image mb-3">
+                            <h6>Jeremy Horn</h6>
+                            <small class="text-muted fst-italic">"Gumby"</small>
+                            <br><span class="badge bg-success mt-2">91 Wins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <img src="images/top10wins_fighter4.jpg" alt="Travis Wiuff" class="fighter-wins-image mb-3">
+                            <h6>Travis Wiuff</h6>
+                            <small class="text-muted fst-italic">"The Diesel"</small>
+                            <br><span class="badge bg-success mt-2">75 Wins</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highest KO Rate -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-fist-raised me-2"></i>Highest KO Rate Fighters</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="images/top10korate_fighter1.jpg" alt="Anthony Johnson"
+                                class="fighter-ko-image mb-3">
+                            <h6>Anthony Johnson</h6>
+                            <p class="text-muted small">11 KO Wins / 13 Total Wins</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 84.6%" aria-valuenow="84.6"
+                                    aria-valuemin="0" aria-valuemax="100">84.6%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="images/top10korate_fighter2.jpg" alt="Cain Velasquez"
+                                class="fighter-ko-image mb-3">
+                            <h6>Cain Velasquez</h6>
+                            <p class="text-muted small">10 KO Wins / 12 Total Wins</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 83.3%" aria-valuenow="83.3"
+                                    aria-valuemin="0" aria-valuemax="100">83.3%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="images/top10korate_fighter3.jpg" alt="Francis Ngannou"
+                                class="fighter-ko-image mb-3">
+                            <h6>Francis Ngannou</h6>
+                            <p class="text-muted small">10 KO Wins / 12 Total Wins</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 83.3%" aria-valuenow="83.3"
+                                    aria-valuemin="0" aria-valuemax="100">83.3%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <!-- Fight Influences Section -->
+<div class="section" id="influences">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="fas fa-chart-line text-primary me-2"></i>What Influences Fight Outcomes?</h2>
+        </div>
+    </div>
+
+    <!-- Physical Attributes -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-ruler me-2"></i>Physical Attributes Impact</h5>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-lightbulb me-2"></i>
+                <strong>Insight:</strong> Based on the data analysis, reach difference shows a correlation of 0.056 with
+                winning probability, while height difference shows a correlation of 0.044. This suggests that reach has
+                a slightly higher influence on fight outcomes than height, although both correlations are weak.
+            </div>
+        </div>
+    </div>
+
+    <!-- Weight Making -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-weight-hanging me-2"></i>Making Weight Impact</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Made Weight</th>
+                            <th>Win Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Yes</td>
+                            <td><span class="badge bg-success">49.1%</span></td>
+                        </tr>
+                        <tr>
+                            <td>No</td>
+                            <td><span class="badge bg-danger">20.0%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-muted small">Fighters who made weight nearly doubled their winning probability compared to
+                those who missed weight.</p>
+        </div>
+    </div>
+
+    <!-- Previous Fight Outcome -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-running me-2"></i>Previous Fight Momentum</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Previous Fight Outcome</th>
+                            <th>Win Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Won Previous Fight</td>
+                            <td><span class="badge bg-success">51.98%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Lost Previous Fight</td>
+                            <td><span class="badge bg-warning">46.64%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-muted small">Fighters coming off a win have a slightly higher probability of winning again,
+                suggesting a minor momentum effect.</p>
+        </div>
+    </div>
+</div>
+      <!-- Rivalries Section -->
+<div class="section" id="rivalries">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="fas fa-sword-cross text-primary me-2"></i>Historic Rivalries</h2>
+        </div>
+    </div>
+
+    <!-- Cain vs JDS -->
+    <div class="rivalry-card">
+        <div class="rivalry-header">
+            <div class="rivalry-fighter">
+                <img src="images/rivalry_1.jpg" alt="Cain Velasquez" class="rivalry-fighter-image">
+                <h6>Cain Velasquez</h6>
+                <span class="badge bg-success">2 Wins</span>
+            </div>
+            <div class="rivalry-vs">VS</div>
+            <div class="rivalry-fighter">
+                <img src="images/rivalry_2.jpg" alt="Junior Dos Santos" class="rivalry-fighter-image">
+                <h6>Junior Dos Santos</h6>
+                <span class="badge bg-primary">1 Win</span>
+            </div>
+        </div>
+        <div class="accordion" id="cainJdsAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#fight1">
+                        Fight 1: UFC on FOX (2011-11-12)
+                    </button>
+                </h2>
+                <div id="fight1" class="accordion-collapse collapse show" data-bs-parent="#cainJdsAccordion">
+                    <div class="accordion-body">
+                        <strong>Winner:</strong> Junior Dos Santos (KO/TKO)
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#fight2">
+                        Fight 2: UFC 155 (2012-12-29)
+                    </button>
+                </h2>
+                <div id="fight2" class="accordion-collapse collapse" data-bs-parent="#cainJdsAccordion">
+                    <div class="accordion-body">
+                        <strong>Winner:</strong> Cain Velasquez (Decision - Unanimous)
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#fight3">
+                        Fight 3: UFC 166 (2013-10-19)
+                    </button>
+                </h2>
+                <div id="fight3" class="accordion-collapse collapse" data-bs-parent="#cainJdsAccordion">
+                    <div class="accordion-body">
+                        <strong>Winner:</strong> Cain Velasquez (KO/TKO)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Max vs Volk -->
+    <div class="rivalry-card">
+        <div class="rivalry-header">
+            <div class="rivalry-fighter">
+                <img src="images/rivalry_3.jpg" alt="Max Holloway" class="rivalry-fighter-image">
+                <h6>Max Holloway</h6>
+                <span class="badge bg-danger">0 Wins</span>
+            </div>
+            <div class="rivalry-vs">VS</div>
+            <div class="rivalry-fighter">
+                <img src="images/rivalry_4.jpg" alt="Alexander Volkanovski" class="rivalry-fighter-image">
+                <h6>Alexander Volkanovski</h6>
+                <span class="badge bg-success">3 Wins</span>
+            </div>
+        </div>
+        <div class="accordion" id="maxVolkAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#maxVolk1">
+                        Fight 1: UFC 245 (2019-12-14)
+                    </button>
+                </h2>
+                <div id="maxVolk1" class="accordion-collapse collapse" data-bs-parent="#maxVolkAccordion">
+                    <div class="accordion-body">
+                        <strong>Winner:</strong> Alexander Volkanovski (Decision - Unanimous)
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#maxVolk2">
+                        Fight 2: UFC 251 (2020-07-11)
+                    </button>
+                </h2>
+                <div id="maxVolk2" class="accordion-collapse collapse" data-bs-parent="#maxVolkAccordion">
+                    <div class="accordion-body">
+                        <strong>Winner:</strong> Alexander Volkanovski (Decision - Split)
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#maxVolk3">
+                        Fight 3: UFC 276 (2022-07-02)
+                    </button>
+                </h2>
+                <div id="maxVolk3" class="accordion-collapse collapse" data-bs-parent="#maxVolkAccordion">
+                    <div class="accordion-body">
+                        <strong>Winner:</strong> Alexander Volkanovski (Decision - Unanimous)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <!-- Trilogies Section -->
+<div class="section" id="trilogies">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="fas fa-medal text-primary me-2"></i>Performance Evolution in Trilogies</h2>
+            <p class="text-muted">Analysis of how fighters' performance evolved across their trilogy fights.</p>
+        </div>
+    </div>
+
+    <!-- Dustin vs Max -->
+    <div class="trilogy-card">
+        <div class="trilogy-header">
+            <div class="trilogy-fighter">
+                <img src="images/trilogy_1.jpg" alt="Dustin Poirier" class="trilogy-fighter-image">
+                <h6>Dustin Poirier</h6>
+                <span class="badge bg-success">2 Wins</span>
+            </div>
+            <div class="trilogy-vs">VS</div>
+            <div class="trilogy-fighter">
+                <img src="images/trilogy_2.jpg" alt="Max Holloway" class="trilogy-fighter-image">
+                <h6>Max Holloway</h6>
+                <span class="badge bg-primary">1 Win</span>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Fight 1</strong><br>
+                        <small>2012-02-04</small>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Metric</th>
+                                <th>Dustin</th>
+                                <th>Max</th>
+                            </tr>
+                            <tr>
+                                <td>Strikes</td>
+                                <td>15</td>
+                                <td>11</td>
+                            </tr>
+                            <tr>
+                                <td>Takedowns</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Control (s)</td>
+                                <td>89</td>
+                                <td>7</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Fight 2</strong><br>
+                        <small>2019-04-13</small>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Metric</th>
+                                <th>Max</th>
+                                <th>Dustin</th>
+                            </tr>
+                            <tr>
+                                <td>Strikes</td>
+                                <td>208</td>
+                                <td>180</td>
+                            </tr>
+                            <tr>
+                                <td>Takedowns</td>
+                                <td>0</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Control (s)</td>
+                                <td>6</td>
+                                <td>215</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Fight 3</strong><br>
+                        <small>2025-07-19</small>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Metric</th>
+                                <th>Max</th>
+                                <th>Dustin</th>
+                            </tr>
+                            <tr>
+                                <td>Strikes</td>
+                                <td>201</td>
+                                <td>109</td>
+                            </tr>
+                            <tr>
+                                <td>Takedowns</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Control (s)</td>
+                                <td>92</td>
+                                <td>12</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dustin vs Conor -->
+    <div class="trilogy-card">
+        <div class="trilogy-header">
+            <div class="trilogy-fighter">
+                <img src="images/trilogy_3.jpg" alt="Dustin Poirier" class="trilogy-fighter-image">
+                <h6>Dustin Poirier</h6>
+                <span class="badge bg-success">2 Wins</span>
+            </div>
+            <div class="trilogy-vs">VS</div>
+            <div class="trilogy-fighter">
+                <img src="images/trilogy_4.jpg" alt="Conor McGregor" class="trilogy-fighter-image">
+                <h6>Conor McGregor</h6>
+                <span class="badge bg-primary">1 Win</span>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Fight 1</strong><br>
+                        <small>2014-09-27</small>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Metric</th>
+                                <th>Dustin</th>
+                                <th>Conor</th>
+                            </tr>
+                            <tr>
+                                <td>Strikes</td>
+                                <td>10</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>Takedowns</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Control (s)</td>
+                                <td>0</td>
+                                <td>3</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Fight 2</strong><br>
+                        <small>2021-01-23</small>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Metric</th>
+                                <th>Dustin</th>
+                                <th>Conor</th>
+                            </tr>
+                            <tr>
+                                <td>Strikes</td>
+                                <td>53</td>
+                                <td>52</td>
+                            </tr>
+                            <tr>
+                                <td>Takedowns</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Control (s)</td>
+                                <td>102</td>
+                                <td>67</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Fight 3</strong><br>
+                        <small>2021-07-10</small>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Metric</th>
+                                <th>Dustin</th>
+                                <th>Conor</th>
+                            </tr>
+                            <tr>
+                                <td>Strikes</td>
+                                <td>36</td>
+                                <td>43</td>
+                            </tr>
+                            <tr>
+                                <td>Takedowns</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Control (s)</td>
+                                <td>198</td>
+                                <td>0</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
    </div>
+   <!-- Footer -->
+   <footer class="mt-5 py-4 bg-dark text-light">
+      <div class="container text-center small">
+         <p class="mb-1">
+            📊 UFC Data Analysis Report — Generated on <strong>August 26th, 2025</strong>
+         </p>
+         <p class="mb-2">
+            Built with <i class="fab fa-python text-warning"></i> Python & <i class="fas fa-chart-bar text-info"></i>
+            Chart.js
+         </p>
+         <div class="d-flex justify-content-center gap-3">
+            <a href="https://github.com/joaogouveia89/ufc-data-study-case" target="_blank" class="text-light">
+               <i class="devicon-github-original"></i> GitHub
+            </a>
+            <a href="https://www.kaggle.com/datasets/neelagiriaditya/ufc-datasets-1994-2025/data" target="_blank" class="text-light">
+               <i class="devicon-kaggle-original"></i> Kaggle Dataset
+            </a>
+         </div>
+         <hr class="border-secondary my-3">
+         <p class="mb-0 text">
+            ⚠️ This study is exploratory and intended for educational purposes.
+            UFC® is a registered trademark of Zuffa, LLC.
+         </p>
+      </div>
+   </footer>
 </body>
 <script>
-   function setupDistFightsPerWeightChart() {
-      const distFightsPerWeightChart = document.getElementById('distFightsPerWeightChart');
-      const distFightsPerWeightChartData = {"labels": [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "datasets": [{"label": "bantamweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 428, 409, 404, 647, 424, 543, 469, 640, 754, 567, 722, 742, 667, 784, 473]}, {"label": "catch weight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 10, 46, 0, 12, 22, 0, 22, 24, 73, 36, 0, 12, 143, 42, 159, 128, 52, 36]}, {"label": "featherweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33, 454, 587, 577, 654, 630, 586, 535, 674, 750, 669, 708, 675, 713, 771, 497]}, {"label": "flyweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 143, 254, 379, 415, 281, 344, 298, 210, 262, 330, 378, 455, 525, 310]}, {"label": "heavyweight", "data": [185, 60, 140, 89, 80, 87, 106, 56, 88, 231, 146, 210, 252, 331, 265, 299, 330, 326, 331, 484, 460, 400, 489, 498, 448, 441, 411, 395, 240]}, {"label": "interim bantamweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 25, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0]}, {"label": "interim featherweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 24, 0, 0, 0, 0, 0, 0, 13, 0, 0]}, {"label": "interim flyweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0]}, {"label": "interim heavyweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 19, 0, 10, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 13, 0, 13, 14, 0]}, {"label": "interim lightweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 13, 11, 0, 0, 0, 0, 0]}, {"label": "interim middleweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 13, 0, 0, 0, 0, 0, 0]}, {"label": "interim welterweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0]}, {"label": "light heavyweight", "data": [7, 25, 8, 13, 64, 67, 34, 46, 115, 286, 283, 297, 387, 356, 385, 302, 382, 328, 313, 450, 468, 466, 572, 406, 468, 437, 433, 424, 309]}, {"label": "lightweight", "data": [99, 48, 44, 49, 56, 61, 74, 48, 0, 164, 470, 554, 619, 677, 704, 738, 889, 1194, 1125, 1055, 818, 859, 923, 561, 783, 823, 943, 824, 547]}, {"label": "middleweight", "data": [0, 59, 96, 85, 40, 93, 57, 61, 204, 296, 248, 454, 391, 548, 475, 508, 652, 635, 642, 692, 643, 540, 556, 500, 760, 785, 689, 733, 614]}, {"label": "super heavyweight", "data": [0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"label": "welterweight", "data": [0, 8, 15, 68, 80, 97, 58, 94, 188, 361, 368, 461, 600, 688, 596, 686, 806, 931, 990, 1137, 843, 975, 942, 632, 716, 761, 740, 789, 447]}, {"label": "women's bantamweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 175, 187, 234, 260, 189, 146, 283, 214, 212, 184, 224, 252, 149]}, {"label": "women's featherweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 64, 35, 36, 61, 61, 51, 0, 9]}, {"label": "women's flyweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 114, 282, 442, 384, 500, 402, 416, 360, 220]}, {"label": "women's strawweight", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 145, 283, 312, 405, 393, 370, 287, 366, 416, 426, 468, 267]}]};
-   new Chart(distFightsPerWeightChart, {
-      type: 'line',
-      data: distFightsPerWeightChartData,
-      options: {
-         responsive: true,
-         plugins: {
-            legend: {
-               onClick: (e, legendItem, legend) => {
-                  const index = legendItem.datasetIndex;
-                  const ci = legend.chart;
-                  const meta = ci.getDatasetMeta(index);
+      // Navigation functionality
+      function showSection(sectionId) {
+         // Hide all sections
+         document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+         });
+         
+         // Show selected section
+         document.getElementById(sectionId).classList.add('active');
+         
+         // Update navigation
+         document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+         });
+         document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+      }
 
-                  // Alterna visibilidade
-                  meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-                  ci.update();
+      // Add click listeners to navigation
+      document.querySelectorAll('[data-section]').forEach(link => {
+         link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = e.currentTarget.getAttribute('data-section');
+            showSection(sectionId);
+         });
+      });
+
+      // Mobile sidebar toggle
+      function toggleSidebar() {
+         document.getElementById('sidebar').classList.toggle('show');
+      }
+
+      // Chart setup functions
+      function setupDistFightsPerWeightChart() {
+         const ctx = document.getElementById('distFightsPerWeightChart');
+         const data = {
+            labels: [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+            datasets: [
+               {
+                  label: "Heavyweight",
+                  data: [185, 60, 140, 89, 80, 87, 106, 56, 88, 231, 146, 210, 252, 331, 265, 299, 330, 326, 331, 484, 460, 400, 489, 498, 448, 441, 411, 395, 240],
+                  borderColor: '#d41515',
+                  backgroundColor: 'rgba(212, 21, 21, 0.1)'
+               },
+               {
+                  label: "Light Heavyweight",
+                  data: [7, 25, 8, 13, 64, 67, 34, 46, 115, 286, 283, 297, 387, 356, 385, 302, 382, 328, 313, 450, 468, 466, 572, 406, 468, 437, 433, 424, 309],
+                  borderColor: '#000000',
+                  backgroundColor: 'rgba(0, 0, 0, 0.1)'
+               },
+               {
+                  label: "Middleweight",
+                  data: [0, 59, 96, 85, 40, 93, 57, 61, 204, 296, 248, 454, 391, 548, 475, 508, 652, 635, 642, 692, 643, 540, 556, 500, 760, 785, 689, 733, 614],
+                  borderColor: '#6c757d',
+                  backgroundColor: 'rgba(108, 117, 125, 0.1)'
+               },
+               {
+                  label: "Welterweight",
+                  data: [0, 8, 15, 68, 80, 97, 58, 94, 188, 361, 368, 461, 600, 688, 596, 686, 806, 931, 990, 1137, 843, 975, 942, 632, 716, 761, 740, 789, 447],
+                  borderColor: '#17a2b8',
+                  backgroundColor: 'rgba(23, 162, 184, 0.1)'
+               },
+               {
+                  label: "Lightweight",
+                  data: [99, 48, 44, 49, 56, 61, 74, 48, 0, 164, 470, 554, 619, 677, 704, 738, 889, 1194, 1125, 1055, 818, 859, 923, 561, 783, 823, 943, 824, 547],
+                  borderColor: '#28a745',
+                  backgroundColor: 'rgba(40, 167, 69, 0.1)'
                }
-            }
-         }
-      }
-   });
-      }
+            ]
+         };
 
-   function setupKoSubmissionDecisionMethodsChart() {
-      const koSubmissionDecisionMethodsData = {'Decision': 3839, 'KO/TKO': 2542, 'Submission': 1541};
-   const ctx = document.getElementById('winRatioChart');
-   const data = {
-      labels: Object.keys(koSubmissionDecisionMethodsData),
-      datasets: [{
-         data: Object.values(koSubmissionDecisionMethodsData),
-         backgroundColor: ['#dc3545', '#28a745', '#007bff'],
-         hoverOffset: 10
-      }]
-   };
-   new Chart(ctx, {
-      type: 'doughnut',
-      data: data,
-      options: {
-         responsive: true,
-         plugins: {
-            tooltip: {
-               callbacks: {
-                  label: function (context) {
-                     let value = context.parsed;
-                     let total = context.chart._metasets[context.datasetIndex].total;
-                     let percentage = ((value / total) * 100).toFixed(1);
-                     return `${context.label}: ${value} fights (${percentage}%)`;
+         new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+               responsive: true,
+               maintainAspectRatio: false,
+               plugins: {
+                  legend: {
+                     position: 'bottom'
+                  }
+               },
+               scales: {
+                  y: {
+                     beginAtZero: true
                   }
                }
-            },
-            legend: {
-               position: 'bottom'
             }
-         }
+         });
       }
-   });
-       }
 
-   function datesToFormat() {
-      const dates = document.getElementsByClassName("date-to-format");
-      for (date = 0; date < dates.length; date++) {
-         const dateEl = dates[date];
-         dateEl.innerHTML = dateEl.innerHTML.split(" ")[0];
+      function setupWinRatioChart() {
+         const ctx = document.getElementById('winRatioChart');
+         const data = {
+            labels: ['Decision', 'KO/TKO', 'Submission'],
+            datasets: [{
+               data: [3839, 2542, 1541],
+               backgroundColor: ['#d41515', '#28a745', '#007bff'],
+               hoverOffset: 10
+            }]
+         };
+
+         new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+               responsive: true,
+               maintainAspectRatio: false,
+               plugins: {
+                  tooltip: {
+                     callbacks: {
+                        label: function (context) {
+                           let value = context.parsed;
+                           let total = context.chart._metasets[context.datasetIndex].total;
+                           let percentage = ((value / total) * 100).toFixed(1);
+                           return `${context.label}: ${value} fights (${percentage}%)`;
+                        }
+                     }
+                  },
+                  legend: {
+                     position: 'bottom'
+                  }
+               }
+            }
+         });
       }
-   }
 
-   function upperFirst() {
-      const elements = document.getElementsByClassName("upper-first");
-      for (elementIdx = 0; elementIdx < elements.length; elementIdx++) {
-         const element = elements[elementIdx];
-         const result = element
-            .innerHTML
-            .split(" ")
-            .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1))
-            .join(" ");
-         element.innerHTML = result;
-      }
-   }
-
-   function secToMinAndSec() {
-      const elements = document.getElementsByClassName("sec-to-min-and-sec");
-      for (elementIdx = 0; elementIdx < elements.length; elementIdx++) {
-         const element = elements[elementIdx];
-         const time = element.innerHTML.trim();
-         const totalSeconds = parseInt(time, 10);
-
-         const minutes = Math.floor(totalSeconds / 60);
-         const seconds = totalSeconds % 60;
-
-         let result = [];
-
-
-         if (minutes > 0) {
-            result.push(`${minutes} minute${minutes > 1 ? 's' : ''}`);
-         }
-
-
-         if (seconds > 0) {
-            result.push(`${seconds} second${seconds > 1 ? 's' : ''}`);
-         }
-
-
-         if (result.length === 0) {
-            result.push(`0 seconds`);
-         }
-         element.innerHTML = result.join(" ")
-      }
-   }
-
-   setupDistFightsPerWeightChart();
-   setupKoSubmissionDecisionMethodsChart();
-   datesToFormat();
-   upperFirst();
-   secToMinAndSec();
-
-</script>
+      // Initialize charts when DOM is loaded
+      document.addEventListener('DOMContentLoaded', function() {
+         setupDistFightsPerWeightChart();
+         setupWinRatioChart();
+      });
+   </script>
 
 </html>

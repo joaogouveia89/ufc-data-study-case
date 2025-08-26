@@ -1,0 +1,85 @@
+<!-- Fight Influences Section -->
+<div class="section" id="influences">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="fas fa-chart-line text-primary me-2"></i>What Influences Fight Outcomes?</h2>
+        </div>
+    </div>
+
+    <!-- Physical Attributes -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-ruler me-2"></i>Physical Attributes Impact</h5>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-lightbulb me-2"></i>
+                <strong>Insight:</strong> Based on the data analysis, reach difference shows a correlation of 0.056 with
+                winning probability, while height difference shows a correlation of 0.044. This suggests that reach has
+                a slightly higher influence on fight outcomes than height, although both correlations are weak.
+            </div>
+        </div>
+    </div>
+
+    <!-- Weight Making -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-weight-hanging me-2"></i>Making Weight Impact</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Made Weight</th>
+                            <th>Win Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Yes</td>
+                            <td><span class="badge bg-success">49.1%</span></td>
+                        </tr>
+                        <tr>
+                            <td>No</td>
+                            <td><span class="badge bg-danger">20.0%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-muted small">Fighters who made weight nearly doubled their winning probability compared to
+                those who missed weight.</p>
+        </div>
+    </div>
+
+    <!-- Previous Fight Outcome -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-running me-2"></i>Previous Fight Momentum</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Previous Fight Outcome</th>
+                            <th>Win Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Won Previous Fight</td>
+                            <td><span class="badge bg-success">51.98%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Lost Previous Fight</td>
+                            <td><span class="badge bg-warning">46.64%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-muted small">Fighters coming off a win have a slightly higher probability of winning again,
+                suggesting a minor momentum effect.</p>
+        </div>
+    </div>
+</div>

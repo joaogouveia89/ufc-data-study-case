@@ -75,129 +75,172 @@
    </div>
    <!-- Main Content -->
    <div class="main-content">
-      {% include "sections/overview_section.html" with context %}
+      {% include "sections/overview.html" with context %}
+      {% include "sections/historical_overview.html" with context %}
+      {% include "sections/fight_statistics.html" with context %}
+      {% include "sections/top_fighters.html" with context %}
+      {% include "sections/fight_influences.html" with context %}
+      {% include "sections/rivalries.html" with context %}
+      {% include "sections/trilogies.html" with context %}
    </div>
+   <!-- Footer -->
+   <footer class="mt-5 py-4 bg-dark text-light">
+      <div class="container text-center small">
+         <p class="mb-1">
+            📊 UFC Data Analysis Report — Generated on <strong>{{ processed_date }}</strong>
+         </p>
+         <p class="mb-2">
+            Built with <i class="fab fa-python text-warning"></i> Python & <i class="fas fa-chart-bar text-info"></i>
+            Chart.js
+         </p>
+         <div class="d-flex justify-content-center gap-3">
+            <a href="{{ github_link }}" target="_blank" class="text-light">
+               <i class="devicon-github-original"></i> GitHub
+            </a>
+            <a href="{{ kaggle_link }}" target="_blank" class="text-light">
+               <i class="devicon-kaggle-original"></i> Kaggle Dataset
+            </a>
+         </div>
+         <hr class="border-secondary my-3">
+         <p class="mb-0 text">
+            ⚠️ This study is exploratory and intended for educational purposes.
+            UFC® is a registered trademark of Zuffa, LLC.
+         </p>
+      </div>
+   </footer>
 </body>
 <script>
-   function setupDistFightsPerWeightChart() {
-      const distFightsPerWeightChart = document.getElementById('distFightsPerWeightChart');
-      const distFightsPerWeightChartData = {{ data["fights_per_year_division"] | safe
-   }};
-   new Chart(distFightsPerWeightChart, {
-      type: 'line',
-      data: distFightsPerWeightChartData,
-      options: {
-         responsive: true,
-         plugins: {
-            legend: {
-               onClick: (e, legendItem, legend) => {
-                  const index = legendItem.datasetIndex;
-                  const ci = legend.chart;
-                  const meta = ci.getDatasetMeta(index);
+      // Navigation functionality
+      function showSection(sectionId) {
+         // Hide all sections
+         document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+         });
+         
+         // Show selected section
+         document.getElementById(sectionId).classList.add('active');
+         
+         // Update navigation
+         document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+         });
+         document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+      }
 
-                  // Alterna visibilidade
-                  meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-                  ci.update();
+      // Add click listeners to navigation
+      document.querySelectorAll('[data-section]').forEach(link => {
+         link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = e.currentTarget.getAttribute('data-section');
+            showSection(sectionId);
+         });
+      });
+
+      // Mobile sidebar toggle
+      function toggleSidebar() {
+         document.getElementById('sidebar').classList.toggle('show');
+      }
+
+      // Chart setup functions
+      function setupDistFightsPerWeightChart() {
+         const ctx = document.getElementById('distFightsPerWeightChart');
+         const data = {
+            labels: [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+            datasets: [
+               {
+                  label: "Heavyweight",
+                  data: [185, 60, 140, 89, 80, 87, 106, 56, 88, 231, 146, 210, 252, 331, 265, 299, 330, 326, 331, 484, 460, 400, 489, 498, 448, 441, 411, 395, 240],
+                  borderColor: '#d41515',
+                  backgroundColor: 'rgba(212, 21, 21, 0.1)'
+               },
+               {
+                  label: "Light Heavyweight",
+                  data: [7, 25, 8, 13, 64, 67, 34, 46, 115, 286, 283, 297, 387, 356, 385, 302, 382, 328, 313, 450, 468, 466, 572, 406, 468, 437, 433, 424, 309],
+                  borderColor: '#000000',
+                  backgroundColor: 'rgba(0, 0, 0, 0.1)'
+               },
+               {
+                  label: "Middleweight",
+                  data: [0, 59, 96, 85, 40, 93, 57, 61, 204, 296, 248, 454, 391, 548, 475, 508, 652, 635, 642, 692, 643, 540, 556, 500, 760, 785, 689, 733, 614],
+                  borderColor: '#6c757d',
+                  backgroundColor: 'rgba(108, 117, 125, 0.1)'
+               },
+               {
+                  label: "Welterweight",
+                  data: [0, 8, 15, 68, 80, 97, 58, 94, 188, 361, 368, 461, 600, 688, 596, 686, 806, 931, 990, 1137, 843, 975, 942, 632, 716, 761, 740, 789, 447],
+                  borderColor: '#17a2b8',
+                  backgroundColor: 'rgba(23, 162, 184, 0.1)'
+               },
+               {
+                  label: "Lightweight",
+                  data: [99, 48, 44, 49, 56, 61, 74, 48, 0, 164, 470, 554, 619, 677, 704, 738, 889, 1194, 1125, 1055, 818, 859, 923, 561, 783, 823, 943, 824, 547],
+                  borderColor: '#28a745',
+                  backgroundColor: 'rgba(40, 167, 69, 0.1)'
                }
-            }
-         }
-      }
-   });
-      }
+            ]
+         };
 
-   function setupKoSubmissionDecisionMethodsChart() {
-      const koSubmissionDecisionMethodsData = {{ data["ko_submission_decision_methods"]["chart"] | safe
-   }};
-   const ctx = document.getElementById('winRatioChart');
-   const data = {
-      labels: Object.keys(koSubmissionDecisionMethodsData),
-      datasets: [{
-         data: Object.values(koSubmissionDecisionMethodsData),
-         backgroundColor: ['#dc3545', '#28a745', '#007bff'],
-         hoverOffset: 10
-      }]
-   };
-   new Chart(ctx, {
-      type: 'doughnut',
-      data: data,
-      options: {
-         responsive: true,
-         plugins: {
-            tooltip: {
-               callbacks: {
-                  label: function (context) {
-                     let value = context.parsed;
-                     let total = context.chart._metasets[context.datasetIndex].total;
-                     let percentage = ((value / total) * 100).toFixed(1);
-                     return `${context.label}: ${value} fights (${percentage}%)`;
+         new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+               responsive: true,
+               maintainAspectRatio: false,
+               plugins: {
+                  legend: {
+                     position: 'bottom'
+                  }
+               },
+               scales: {
+                  y: {
+                     beginAtZero: true
                   }
                }
-            },
-            legend: {
-               position: 'bottom'
             }
-         }
+         });
       }
-   });
-       }
 
-   function datesToFormat() {
-      const dates = document.getElementsByClassName("date-to-format");
-      for (date = 0; date < dates.length; date++) {
-         const dateEl = dates[date];
-         dateEl.innerHTML = dateEl.innerHTML.split(" ")[0];
+      function setupWinRatioChart() {
+         const ctx = document.getElementById('winRatioChart');
+         const data = {
+            labels: ['Decision', 'KO/TKO', 'Submission'],
+            datasets: [{
+               data: [3839, 2542, 1541],
+               backgroundColor: ['#d41515', '#28a745', '#007bff'],
+               hoverOffset: 10
+            }]
+         };
+
+         new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+               responsive: true,
+               maintainAspectRatio: false,
+               plugins: {
+                  tooltip: {
+                     callbacks: {
+                        label: function (context) {
+                           let value = context.parsed;
+                           let total = context.chart._metasets[context.datasetIndex].total;
+                           let percentage = ((value / total) * 100).toFixed(1);
+                           return `${context.label}: ${value} fights (${percentage}%)`;
+                        }
+                     }
+                  },
+                  legend: {
+                     position: 'bottom'
+                  }
+               }
+            }
+         });
       }
-   }
 
-   function upperFirst() {
-      const elements = document.getElementsByClassName("upper-first");
-      for (elementIdx = 0; elementIdx < elements.length; elementIdx++) {
-         const element = elements[elementIdx];
-         const result = element
-            .innerHTML
-            .split(" ")
-            .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1))
-            .join(" ");
-         element.innerHTML = result;
-      }
-   }
-
-   function secToMinAndSec() {
-      const elements = document.getElementsByClassName("sec-to-min-and-sec");
-      for (elementIdx = 0; elementIdx < elements.length; elementIdx++) {
-         const element = elements[elementIdx];
-         const time = element.innerHTML.trim();
-         const totalSeconds = parseInt(time, 10);
-
-         const minutes = Math.floor(totalSeconds / 60);
-         const seconds = totalSeconds % 60;
-
-         let result = [];
-
-
-         if (minutes > 0) {
-            result.push(`${minutes} minute${minutes > 1 ? 's' : ''}`);
-         }
-
-
-         if (seconds > 0) {
-            result.push(`${seconds} second${seconds > 1 ? 's' : ''}`);
-         }
-
-
-         if (result.length === 0) {
-            result.push(`0 seconds`);
-         }
-         element.innerHTML = result.join(" ")
-      }
-   }
-
-   setupDistFightsPerWeightChart();
-   setupKoSubmissionDecisionMethodsChart();
-   datesToFormat();
-   upperFirst();
-   secToMinAndSec();
-
-</script>
+      // Initialize charts when DOM is loaded
+      document.addEventListener('DOMContentLoaded', function() {
+         setupDistFightsPerWeightChart();
+         setupWinRatioChart();
+      });
+   </script>
 
 </html>
