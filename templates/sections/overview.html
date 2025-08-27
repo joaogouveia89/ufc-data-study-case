@@ -11,26 +11,50 @@
     <div class="row g-4 mb-4">
         <div class="col-md-3">
             <div class="stat-card">
+                <div class="stat-number">{{ data["total_events"] }}</div>
+                <div class="stat-label">Total Events</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-number">{{ data["total_fighters"] }}</div>
+                <div class="stat-label">Total Fighters</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-number">{{ data["most_active_year"] }}</div>
+                <div class="stat-label">Most Active Year</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-number">{{ data["most_popular_venue"] }}</div>
+                <div class="stat-label">Most Popular Venue</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
                 <div class="stat-number">{{ data["total_fights"] }}</div>
                 <div class="stat-label">Total Fights</div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="stat-card">
-                <div class="stat-number">{{ data["top_winner"]["wins"] }}</div>
-                <div class="stat-label">Most Wins ({{ data["top_winner"]["winner"] }})</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="stat-card">
-                <div class="stat-number">{{ data["average_career_length_years"] }}</div>
-                <div class="stat-label">Avg Career Length (Years)</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="stat-card">
                 <div class="stat-number">{{ data["decision_ending_perc"] }}%</div>
                 <div class="stat-label">Fights End in Decision</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-number">{{ data["avg_fights_per_event"] }}</div>
+                <div class="stat-label">Avg Fights per Event</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-number">{{ data["host_countries"] }}</div>
+                <div class="stat-label">Countries Hosted UFC Events</div>
             </div>
         </div>
     </div>
