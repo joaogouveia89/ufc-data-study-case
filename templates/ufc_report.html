@@ -142,6 +142,35 @@
       }
 
       // Chart setup functions
+
+      function setupEventsPerYearChart(){
+         const ctx = document.getElementById('fightsPerYearChart').getContext('2d');
+         new Chart(ctx, {
+            type: 'line',
+            data: {
+               labels: {{ data["events_per_year"].keys() | list | safe }}, // years
+               datasets: [{
+                     label: 'Fights per Year',
+                     data: {{ data["events_per_year"].values() | list | safe }}, // counts
+                     borderColor: 'rgba(75, 192, 192, 1)',
+                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                     fill: true,
+                     tension: 0.3
+               }]
+            },
+            options: {
+               responsive: true,
+               plugins: {
+                     legend: { display: false },
+               },
+               scales: {
+                     x: { title: { display: true, text: 'Year' } },
+                     y: { title: { display: true, text: 'Number of Fights' } }
+               }
+            }
+         });
+      }
+
       function setupDistFightsPerWeightChart() {
          const ctx = document.getElementById('distFightsPerWeightChart');
          const data = {
@@ -238,6 +267,7 @@
 
       // Initialize charts when DOM is loaded
       document.addEventListener('DOMContentLoaded', function() {
+         setupEventsPerYearChart();
          setupDistFightsPerWeightChart();
          setupWinRatioChart();
       });
