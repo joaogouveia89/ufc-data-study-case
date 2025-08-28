@@ -17,34 +17,33 @@
     </div>
 
     <!-- Host Countries -->
-<div class="card mb-4">
-    <div class="card-header">
-        <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Most Frequent Host Countries</h5>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Rank</th>
-                        <th>Country</th>
-                        <th>Events Hosted</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for country in data["top_5_countries_with_more_events"] %}
-                    <tr>
-                        <td>{{ country["position"] }}</td>
-                        <td>{{ country["country"] }}</td>
-                        <td>{{ country["count"] }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Most Frequent Host Countries</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Rank</th>
+                            <th>Country</th>
+                            <th>Events Hosted</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for country in data["top_5_countries_with_more_events"] %}
+                        <tr>
+                            <td>{{ country["position"] }}</td>
+                            <td>{{ country["country"] }}</td>
+                            <td>{{ country["count"] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-
 
     <!-- Top Cities -->
     <div class="card mb-4">
@@ -53,34 +52,17 @@
         </div>
         <div class="card-body">
             <div class="row g-3">
+                {% for city in data["top_5_cities_with_more_events"] %}
                 <div class="col-md-2 text-center">
-                    <img src="images/city1.jpg" alt="Las Vegas" class="img-fluid rounded shadow-sm mb-2">
-                    <h6>Las Vegas</h6>
-                    <span class="badge bg-primary">2,811 events</span>
+                    <img src="{{ city['image'] }}" alt="{{ city['city'] }}" class="img-fluid rounded shadow-sm mb-2">
+                    <h6>{{ city["city"] }}</h6>
+                    <span class="badge bg-primary rounded-pill fs-6 px-2 py-1">{{ city["count"] }} events</span>
                 </div>
-                <div class="col-md-2 text-center">
-                    <img src="images/city2.jpg" alt="Abu Dhabi" class="img-fluid rounded shadow-sm mb-2">
-                    <h6>Abu Dhabi</h6>
-                    <span class="badge bg-primary">252 events</span>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="images/city3.jpg" alt="London" class="img-fluid rounded shadow-sm mb-2">
-                    <h6>London</h6>
-                    <span class="badge bg-primary">183 events</span>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="images/city4.jpg" alt="Rio de Janeiro" class="img-fluid rounded shadow-sm mb-2">
-                    <h6>Rio de Janeiro</h6>
-                    <span class="badge bg-primary">147 events</span>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="images/city5.jpg" alt="Newark" class="img-fluid rounded shadow-sm mb-2">
-                    <h6>Newark</h6>
-                    <span class="badge bg-primary">127 events</span>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+
 
     <!-- Weight Class Distribution -->
     <div class="card">
