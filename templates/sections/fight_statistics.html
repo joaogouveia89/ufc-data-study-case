@@ -44,8 +44,12 @@
             <h5 class="mb-0"><i class="fas fa-user-clock me-2"></i>Performance by Age</h5>
         </div>
         <div class="card-body text-center">
-            <img src="images/chart-2.png" alt="Performance by Age" class="img-fluid rounded">
-            <p class="text-muted small mt-3">Win rate by age showing performance trends throughout fighters' careers</p>
+            <div class="chart-container">
+                <canvas id="performanceByAgeChart"></canvas>
+            </div>
+            <div class="note">
+                At age 45, the win ratio deviates from the overall pattern, which may have occurred due to specific factors such as sample size, career shifts, or external circumstances.
+            </div>
         </div>
     </div>
 

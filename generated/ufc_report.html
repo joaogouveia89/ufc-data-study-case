@@ -156,7 +156,7 @@
                             <i class="fab fa-github me-1"></i>Codebase
                         </a>
                     </div>
-                    <p class="text-muted mt-3 mb-0"><strong>Processed on:</strong> August 28th, 2025</p>
+                    <p class="text-muted mt-3 mb-0"><strong>Processed on:</strong> August 29th, 2025</p>
                 </div>
             </div>
         </div>
@@ -244,7 +244,7 @@
                 <div class="col-md-2 text-center">
                     <img src="images/city1.jpg" alt="Las Vegas" class="img-fluid rounded shadow-sm mb-2">
                     <h6>Las Vegas</h6>
-                    <span class="badge bg-primary rounded-pill fs-6 px-2 py-1">2811 events</span>
+                    <span class="badge bg-primary rounded-pill fs-6 px-2 py-1">2521 events</span>
                 </div>
                 
                 <div class="col-md-2 text-center">
@@ -335,8 +335,12 @@
             <h5 class="mb-0"><i class="fas fa-user-clock me-2"></i>Performance by Age</h5>
         </div>
         <div class="card-body text-center">
-            <img src="images/chart-2.png" alt="Performance by Age" class="img-fluid rounded">
-            <p class="text-muted small mt-3">Win rate by age showing performance trends throughout fighters' careers</p>
+            <div class="chart-container">
+                <canvas id="performanceByAgeChart"></canvas>
+            </div>
+            <div class="note">
+                At age 45, the win ratio deviates from the overall pattern, which may have occurred due to specific factors such as sample size, career shifts, or external circumstances.
+            </div>
         </div>
     </div>
 
@@ -934,7 +938,7 @@
    <footer class="mt-5 py-4 bg-dark text-light">
       <div class="container text-center small">
          <p class="mb-1">
-            📊 UFC Data Analysis Report — Generated on <strong>August 28th, 2025</strong>
+            📊 UFC Data Analysis Report — Generated on <strong>August 29th, 2025</strong>
          </p>
          <p class="mb-2">
             Built with <i class="fab fa-python text-warning"></i> Python & <i class="fas fa-chart-bar text-info"></i>
@@ -957,167 +961,233 @@
    </footer>
 </body>
 <script>
-      // Navigation functionality
-      function showSection(sectionId) {
-         // Hide all sections
-         document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
-         });
-         
-         // Show selected section
-         document.getElementById(sectionId).classList.add('active');
-         
-         // Update navigation
-         document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-         });
-         document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
-      }
-
-      // Add click listeners to navigation
-      document.querySelectorAll('[data-section]').forEach(link => {
-         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const sectionId = e.currentTarget.getAttribute('data-section');
-            showSection(sectionId);
-         });
+   // Navigation functionality
+   function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(section => {
+         section.classList.remove('active');
       });
 
-      // Mobile sidebar toggle
-      function toggleSidebar() {
-         document.getElementById('sidebar').classList.toggle('show');
-      }
+      // Show selected section
+      document.getElementById(sectionId).classList.add('active');
 
-      // Chart setup functions
+      // Update navigation
+      document.querySelectorAll('.nav-link').forEach(link => {
+         link.classList.remove('active');
+      });
+      document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+   }
 
-      function setupEventsPerYearChart(){
-         const ctx = document.getElementById('fightsPerYearChart').getContext('2d');
-         new Chart(ctx, {
-            type: 'line',
-            data: {
-               labels: [1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], // years
-               datasets: [{
-                     label: 'Fights per Year',
-                     data: [31, 40, 43, 41, 25, 44, 43, 40, 53, 41, 39, 64, 132, 153, 181, 195, 232, 279, 320, 364, 481, 452, 469, 435, 449, 516, 456, 509, 511, 520, 517, 338], // counts
-                     borderColor: 'rgba(75, 192, 192, 1)',
-                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                     fill: true,
-                     tension: 0.3
+   // Add click listeners to navigation
+   document.querySelectorAll('[data-section]').forEach(link => {
+      link.addEventListener('click', (e) => {
+         e.preventDefault();
+         const sectionId = e.currentTarget.getAttribute('data-section');
+         showSection(sectionId);
+      });
+   });
+
+   // Mobile sidebar toggle
+   function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('show');
+   }
+
+   // Chart setup functions
+
+   function setupEventsPerYearChart() {
+      const ctx = document.getElementById('fightsPerYearChart').getContext('2d');
+      new Chart(ctx, {
+         type: 'line',
+         data: {
+            labels: [1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], // years
+   datasets: [{
+      label: 'Fights per Year',
+      data: [31, 40, 43, 41, 25, 44, 43, 40, 53, 41, 39, 64, 132, 153, 181, 195, 232, 279, 320, 364, 481, 452, 469, 435, 449, 516, 456, 509, 511, 520, 517, 338], // counts
+      borderColor: 'rgba(75, 192, 192, 1)',
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      fill: true,
+      tension: 0.3
                }]
             },
-            options: {
-               responsive: true,
-               plugins: {
-                     legend: { display: false },
-               },
-               scales: {
-                     x: { title: { display: true, text: 'Year' } },
-                     y: { title: { display: true, text: 'Number of Fights' } }
-               }
-            }
+   options: {
+      responsive: true,
+         plugins: {
+         legend: { display: false },
+      },
+      scales: {
+         x: { title: { display: true, text: 'Year' } },
+         y: { title: { display: true, text: 'Number of Fights' } }
+      }
+   }
          });
       }
 
-      function setupDistFightsPerWeightChart() {
-         const ctx = document.getElementById('distFightsPerWeightChart');
-         const data = {
-            labels: [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
-            datasets: [
-               {
-                  label: "Heavyweight",
-                  data: [185, 60, 140, 89, 80, 87, 106, 56, 88, 231, 146, 210, 252, 331, 265, 299, 330, 326, 331, 484, 460, 400, 489, 498, 448, 441, 411, 395, 240],
-                  borderColor: '#d41515',
-                  backgroundColor: 'rgba(212, 21, 21, 0.1)'
-               },
-               {
-                  label: "Light Heavyweight",
-                  data: [7, 25, 8, 13, 64, 67, 34, 46, 115, 286, 283, 297, 387, 356, 385, 302, 382, 328, 313, 450, 468, 466, 572, 406, 468, 437, 433, 424, 309],
-                  borderColor: '#000000',
-                  backgroundColor: 'rgba(0, 0, 0, 0.1)'
-               },
-               {
-                  label: "Middleweight",
-                  data: [0, 59, 96, 85, 40, 93, 57, 61, 204, 296, 248, 454, 391, 548, 475, 508, 652, 635, 642, 692, 643, 540, 556, 500, 760, 785, 689, 733, 614],
-                  borderColor: '#6c757d',
-                  backgroundColor: 'rgba(108, 117, 125, 0.1)'
-               },
-               {
-                  label: "Welterweight",
-                  data: [0, 8, 15, 68, 80, 97, 58, 94, 188, 361, 368, 461, 600, 688, 596, 686, 806, 931, 990, 1137, 843, 975, 942, 632, 716, 761, 740, 789, 447],
-                  borderColor: '#17a2b8',
-                  backgroundColor: 'rgba(23, 162, 184, 0.1)'
-               },
-               {
-                  label: "Lightweight",
-                  data: [99, 48, 44, 49, 56, 61, 74, 48, 0, 164, 470, 554, 619, 677, 704, 738, 889, 1194, 1125, 1055, 818, 859, 923, 561, 783, 823, 943, 824, 547],
-                  borderColor: '#28a745',
-                  backgroundColor: 'rgba(40, 167, 69, 0.1)'
-               }
-            ]
-         };
+   function setupPerformanceByAgeChart() {
+      // Recebendo os dados do Python (via Jinja, por exemplo)
+      const perfData = {"age": {"0": 18.0, "1": 19.0, "2": 20.0, "3": 21.0, "4": 22.0, "5": 23.0, "6": 24.0, "7": 25.0, "8": 26.0, "9": 27.0, "10": 28.0, "11": 29.0, "12": 30.0, "13": 31.0, "14": 32.0, "15": 33.0, "16": 34.0, "17": 35.0, "18": 36.0, "19": 37.0, "20": 38.0, "21": 39.0, "22": 40.0, "23": 41.0, "24": 42.0, "25": 43.0, "26": 44.0, "27": 45.0, "28": 46.0, "29": 47.0, "30": 51.0}, "win_rate": {"0": 0.4, "1": 0.8, "2": 0.5961538461538461, "3": 0.5818181818181818, "4": 0.5582329317269076, "5": 0.5995423340961098, "6": 0.5376, "7": 0.5241844769403825, "8": 0.5303571428571429, "9": 0.5543154761904762, "10": 0.5239071038251366, "11": 0.5052562417871223, "12": 0.5061250805931657, "13": 0.48745762711864404, "14": 0.47785547785547783, "15": 0.4672897196261682, "16": 0.4315443592552026, "17": 0.4177583697234352, "18": 0.41467889908256883, "19": 0.4262295081967213, "20": 0.3684210526315789, "21": 0.3618421052631579, "22": 0.3557692307692308, "23": 0.3888888888888889, "24": 0.2857142857142857, "25": 0.3333333333333333, "26": 0.26666666666666666, "27": 0.14285714285714285, "28": 0.5, "29": 0.5, "30": 0.0}};
 
-         new Chart(ctx, {
-            type: 'line',
-            data: data,
-            options: {
-               responsive: true,
-               maintainAspectRatio: false,
-               plugins: {
-                  legend: {
-                     position: 'bottom'
+   // Extraindo arrays de idades e win_rate
+   const ages = Object.values(perfData.age);
+   const winRates = Object.values(perfData.win_rate);
+
+   console.log(ages);
+
+   const ctx = document.getElementById('performanceByAgeChart').getContext('2d');
+   new Chart(ctx, {
+      type: 'line',
+      data: {
+         labels: ages,
+         datasets: [{
+            label: 'Win Rate',
+            data: winRates,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            tension: 0.3,
+            pointRadius: 3,
+            pointHoverRadius: 5,
+            fill: true
+         }]
+      },
+      options: {
+         responsive: true,
+         plugins: {
+            tooltip: {
+               callbacks: {
+                  label: function (context) {
+                     return (context.raw * 100).toFixed(1) + "%";
+                  }
+               }
+            },
+            legend: {
+               display: false
+            }
+         },
+         scales: {
+            y: {
+               beginAtZero: true,
+               max: 1,
+               ticks: {
+                  callback: function (value) {
+                     return (value * 100) + "%";
                   }
                },
-               scales: {
-                  y: {
-                     beginAtZero: true
-                  }
+               title: {
+                  display: true,
+                  text: "Win Rate (%)"
+               }
+            },
+            x: {
+               title: {
+                  display: true,
+                  text: "Age"
                }
             }
-         });
+         }
       }
+   });
+   }
 
-      function setupWinRatioChart() {
-         const ctx = document.getElementById('winRatioChart');
-         const data = {
-            labels: ['Decision', 'KO/TKO', 'Submission'],
-            datasets: [{
-               data: [3839, 2542, 1541],
-               backgroundColor: ['#d41515', '#28a745', '#007bff'],
-               hoverOffset: 10
-            }]
-         };
+   function setupDistFightsPerWeightChart() {
+      const ctx = document.getElementById('distFightsPerWeightChart');
+      const data = {
+         labels: [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+         datasets: [
+            {
+               label: "Heavyweight",
+               data: [185, 60, 140, 89, 80, 87, 106, 56, 88, 231, 146, 210, 252, 331, 265, 299, 330, 326, 331, 484, 460, 400, 489, 498, 448, 441, 411, 395, 240],
+               borderColor: '#d41515',
+               backgroundColor: 'rgba(212, 21, 21, 0.1)'
+            },
+            {
+               label: "Light Heavyweight",
+               data: [7, 25, 8, 13, 64, 67, 34, 46, 115, 286, 283, 297, 387, 356, 385, 302, 382, 328, 313, 450, 468, 466, 572, 406, 468, 437, 433, 424, 309],
+               borderColor: '#000000',
+               backgroundColor: 'rgba(0, 0, 0, 0.1)'
+            },
+            {
+               label: "Middleweight",
+               data: [0, 59, 96, 85, 40, 93, 57, 61, 204, 296, 248, 454, 391, 548, 475, 508, 652, 635, 642, 692, 643, 540, 556, 500, 760, 785, 689, 733, 614],
+               borderColor: '#6c757d',
+               backgroundColor: 'rgba(108, 117, 125, 0.1)'
+            },
+            {
+               label: "Welterweight",
+               data: [0, 8, 15, 68, 80, 97, 58, 94, 188, 361, 368, 461, 600, 688, 596, 686, 806, 931, 990, 1137, 843, 975, 942, 632, 716, 761, 740, 789, 447],
+               borderColor: '#17a2b8',
+               backgroundColor: 'rgba(23, 162, 184, 0.1)'
+            },
+            {
+               label: "Lightweight",
+               data: [99, 48, 44, 49, 56, 61, 74, 48, 0, 164, 470, 554, 619, 677, 704, 738, 889, 1194, 1125, 1055, 818, 859, 923, 561, 783, 823, 943, 824, 547],
+               borderColor: '#28a745',
+               backgroundColor: 'rgba(40, 167, 69, 0.1)'
+            }
+         ]
+      };
 
-         new Chart(ctx, {
-            type: 'doughnut',
-            data: data,
-            options: {
-               responsive: true,
-               maintainAspectRatio: false,
-               plugins: {
-                  tooltip: {
-                     callbacks: {
-                        label: function (context) {
-                           let value = context.parsed;
-                           let total = context.chart._metasets[context.datasetIndex].total;
-                           let percentage = ((value / total) * 100).toFixed(1);
-                           return `${context.label}: ${value} fights (${percentage}%)`;
-                        }
-                     }
-                  },
-                  legend: {
-                     position: 'bottom'
-                  }
+      new Chart(ctx, {
+         type: 'line',
+         data: data,
+         options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+               legend: {
+                  position: 'bottom'
+               }
+            },
+            scales: {
+               y: {
+                  beginAtZero: true
                }
             }
-         });
-      }
-
-      // Initialize charts when DOM is loaded
-      document.addEventListener('DOMContentLoaded', function() {
-         setupEventsPerYearChart();
-         setupDistFightsPerWeightChart();
-         setupWinRatioChart();
+         }
       });
-   </script>
+   }
+
+   function setupWinRatioChart() {
+      const ctx = document.getElementById('winRatioChart');
+      const data = {
+         labels: ['Decision', 'KO/TKO', 'Submission'],
+         datasets: [{
+            data: [3839, 2542, 1541],
+            backgroundColor: ['#d41515', '#28a745', '#007bff'],
+            hoverOffset: 10
+         }]
+      };
+
+      new Chart(ctx, {
+         type: 'doughnut',
+         data: data,
+         options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+               tooltip: {
+                  callbacks: {
+                     label: function (context) {
+                        let value = context.parsed;
+                        let total = context.chart._metasets[context.datasetIndex].total;
+                        let percentage = ((value / total) * 100).toFixed(1);
+                        return `${context.label}: ${value} fights (${percentage}%)`;
+                     }
+                  }
+               },
+               legend: {
+                  position: 'bottom'
+               }
+            }
+         }
+      });
+   }
+
+   // Initialize charts when DOM is loaded
+   document.addEventListener('DOMContentLoaded', function () {
+      setupEventsPerYearChart();
+      setupDistFightsPerWeightChart();
+      setupWinRatioChart();
+      setupPerformanceByAgeChart();
+   });
+</script>
 
 </html>
