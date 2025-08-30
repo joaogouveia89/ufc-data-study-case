@@ -173,13 +173,12 @@
 
    function setupPerformanceByAgeChart() {
       // Recebendo os dados do Python (via Jinja, por exemplo)
-      const perfData = {{ data["performance_by_age"] | tojson }};
+      const perfData = {{ data["performance_by_age"] | tojson
+   }};
 
    // Extraindo arrays de idades e win_rate
    const ages = Object.values(perfData.age);
    const winRates = Object.values(perfData.win_rate);
-
-   console.log(ages);
 
    const ctx = document.getElementById('performanceByAgeChart').getContext('2d');
    new Chart(ctx, {
@@ -294,12 +293,17 @@
       });
    }
 
-   function setupWinRatioChart() {
+   function setupWinRatioChart(data) {
       const ctx = document.getElementById('winRatioChart');
-      const data = {
-         labels: ['Decision', 'KO/TKO', 'Submission'],
+      const chartData = {{ data["ko_submission_decision_methods"]["chart"] }};
+
+      const labels = Object.keys(chartData); 
+      const values = Object.values(chartData); 
+
+      const dataset = {
+         labels: labels,
          datasets: [{
-            data: [3839, 2542, 1541],
+            data: values,
             backgroundColor: ['#d41515', '#28a745', '#007bff'],
             hoverOffset: 10
          }]
@@ -307,7 +311,7 @@
 
       new Chart(ctx, {
          type: 'doughnut',
-         data: data,
+         data: dataset,
          options: {
             responsive: true,
             maintainAspectRatio: false,
@@ -329,6 +333,7 @@
          }
       });
    }
+
 
    // Initialize charts when DOM is loaded
    document.addEventListener('DOMContentLoaded', function () {

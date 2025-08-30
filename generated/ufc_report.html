@@ -156,7 +156,7 @@
                             <i class="fab fa-github me-1"></i>Codebase
                         </a>
                     </div>
-                    <p class="text-muted mt-3 mb-0"><strong>Processed on:</strong> August 29th, 2025</p>
+                    <p class="text-muted mt-3 mb-0"><strong>Processed on:</strong> August 30th, 2025</p>
                 </div>
             </div>
         </div>
@@ -310,21 +310,28 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="list-group">
-                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fas fa-hand-rock text-success me-2"></i>KO/TKO</span>
-                            <span class="badge bg-success rounded-pill">32.09%</span>
-                        </div>
-                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fas fa-link text-info me-2"></i>Submission</span>
-                            <span class="badge bg-info rounded-pill">19.45%</span>
-                        </div>
-                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fas fa-clipboard-check text-primary me-2"></i>Decision</span>
-                            <span class="badge bg-primary rounded-pill">48.46%</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="list-group">
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-hand-rock text-success me-2"></i>KO/TKO</span>
+            <span class="badge bg-success rounded-pill">
+                32.09%
+            </span>
+        </div>
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-link text-info me-2"></i>Submission</span>
+            <span class="badge bg-info rounded-pill">
+                19.45%
+            </span>
+        </div>
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-clipboard-check text-primary me-2"></i>Decision</span>
+            <span class="badge bg-primary rounded-pill">
+                48.46
+            </span>
+        </div>
+    </div>
+</div>
+
             </div>
         </div>
     </div>
@@ -339,34 +346,35 @@
                 <canvas id="performanceByAgeChart"></canvas>
             </div>
             <div class="note">
-                At age 45, the win ratio deviates from the overall pattern, which may have occurred due to specific factors such as sample size, career shifts, or external circumstances.
+                At age 45, the win ratio deviates from the overall pattern, which may have occurred due to specific
+                factors such as sample size, career shifts, or external circumstances.
             </div>
         </div>
     </div>
 
-    <!-- Average Career Length -->
+    <!-- Average Fight Statistics -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0"><i class="fas fa-hourglass-half me-2"></i>Average Career Statistics</h5>
+            <h5 class="mb-0"><i class="fas fa-hourglass-half me-2"></i>Average Fight Statistics</h5>
         </div>
         <div class="card-body text-center">
             <div class="row">
                 <div class="col-md-4">
                     <div class="stat-card">
-                        <div class="stat-number">3.22</div>
-                        <div class="stat-label">Average Career Length (Years)</div>
+                        <div class="stat-number">12.5</div>
+                        <div class="stat-label">Avg Fight Duration (Minutes)</div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="stat-card">
-                        <div class="stat-number">5.0</div>
-                        <div class="stat-label">Longest Avg Fight Duration (Minutes)</div>
+                        <div class="stat-number">85</div>
+                        <div class="stat-label">Avg Strikes Landed per Fight</div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="stat-card">
-                        <div class="stat-number">10.17</div>
-                        <div class="stat-label">Highest Strikes/Min</div>
+                        <div class="stat-number">2.1</div>
+                        <div class="stat-label">Avg Takedowns per Fight</div>
                     </div>
                 </div>
             </div>
@@ -938,7 +946,7 @@
    <footer class="mt-5 py-4 bg-dark text-light">
       <div class="container text-center small">
          <p class="mb-1">
-            📊 UFC Data Analysis Report — Generated on <strong>August 29th, 2025</strong>
+            📊 UFC Data Analysis Report — Generated on <strong>August 30th, 2025</strong>
          </p>
          <p class="mb-2">
             Built with <i class="fab fa-python text-warning"></i> Python & <i class="fas fa-chart-bar text-info"></i>
@@ -1029,8 +1037,6 @@
    // Extraindo arrays de idades e win_rate
    const ages = Object.values(perfData.age);
    const winRates = Object.values(perfData.win_rate);
-
-   console.log(ages);
 
    const ctx = document.getElementById('performanceByAgeChart').getContext('2d');
    new Chart(ctx, {
@@ -1145,12 +1151,17 @@
       });
    }
 
-   function setupWinRatioChart() {
+   function setupWinRatioChart(data) {
       const ctx = document.getElementById('winRatioChart');
-      const data = {
-         labels: ['Decision', 'KO/TKO', 'Submission'],
+      const chartData = {'Decision': 3839, 'KO/TKO': 2542, 'Submission': 1541};
+
+      const labels = Object.keys(chartData); 
+      const values = Object.values(chartData); 
+
+      const dataset = {
+         labels: labels,
          datasets: [{
-            data: [3839, 2542, 1541],
+            data: values,
             backgroundColor: ['#d41515', '#28a745', '#007bff'],
             hoverOffset: 10
          }]
@@ -1158,7 +1169,7 @@
 
       new Chart(ctx, {
          type: 'doughnut',
-         data: data,
+         data: dataset,
          options: {
             responsive: true,
             maintainAspectRatio: false,
@@ -1180,6 +1191,7 @@
          }
       });
    }
+
 
    // Initialize charts when DOM is loaded
    document.addEventListener('DOMContentLoaded', function () {
