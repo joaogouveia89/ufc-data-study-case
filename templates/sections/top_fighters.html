@@ -125,23 +125,39 @@
         </div>
         <div class="card-body">
             <div class="row g-3">
-                {% for fighter in data["top_fighters_most_submissions"] %}
+                {% for fighter in data["top_5_submission_specialists"] %}
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <img src="{{ fighter.image }}" alt="{{ fighter.name }}" class="fighter-sub-image mb-3">
-                            <h6>{{ fighter.name }}</h6>
-                            <small class="text-muted fst-italic">{{ fighter.nickname }}</small>
-                            <br><span class="badge bg-info mt-2">{{ fighter.submissions }} Submissions</span>
+                        <div class="card-body d-flex flex-column">
+                            <!-- Fighter Image -->
+                            <img src="{{ fighter.image }}" alt="{{ fighter.winner_name }}"
+                                class="fighter-sub-image mb-3 rounded-circle border border-2 border-dark mx-auto"
+                                style="width:100px; height:100px; object-fit:cover;">
+
+                            <!-- Fighter Name -->
+                            <h6 class="fw-bold">{{ fighter.winner_name }}</h6>
+
+                            <!-- Submission Wins / Total Wins -->
+                            <p class="text-muted small mb-2">
+                                {{ fighter.submission_wins }} Submissions / {{ fighter.total_wins }} Total Wins
+                            </p>
+
+                            <!-- Ranking Highlight -->
+                            <div class="mt-auto">
+                                <span class="badge bg-dark">Rank #{{ loop.index }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            <p class="text-muted small mt-3">Highlight the fighters who won the most by submission (locks, chokes,
-                etc.).</p>
+            <p class="text-muted small mt-3">
+                Fighters with the most wins by submission (locks, chokes, etc.).
+            </p>
         </div>
     </div>
+
+
 
     <!-- Fastest Average Fight Enders -->
     <div class="card">
