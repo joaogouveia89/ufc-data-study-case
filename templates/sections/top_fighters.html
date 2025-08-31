@@ -160,26 +160,41 @@
 
 
     <!-- Fastest Average Fight Enders -->
-    <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0"><i class="fas fa-bolt me-2"></i>Top 5 Fastest Average Fight Enders</h5>
-        </div>
-        <div class="card-body">
-            <div class="row g-3">
-                {% for fighter in data["top_fighters_fastest_avg_fight_end"] %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <img src="{{ fighter.image }}" alt="{{ fighter.name }}" class="fighter-fast-image mb-3">
-                            <h6>{{ fighter.name }}</h6>
-                            <p class="text-muted small">Avg Duration: {{ fighter.avg_duration }}</p>
-                            <span class="badge bg-danger mt-2">Quick Finisher</span>
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-bolt me-2"></i>Top 5 Fastest Average Fight Enders</h5>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            {% for fighter in data["top_5_fastest_avg_fight_enders"] %}
+            <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center d-flex flex-column">
+                        <!-- Fighter Image -->
+                        <img src="{{ fighter.image }}" alt="{{ fighter.winner_name }}"
+                             class="fighter-fast-image mb-3 rounded-circle border border-2 border-dark mx-auto"
+                             style="width:100px; height:100px; object-fit:cover;">
+
+                        <!-- Fighter Name -->
+                        <h6 class="fw-bold">{{ fighter.winner_name }}</h6>
+
+                        <!-- Avg Fight Duration & Total Fights -->
+                        <ul class="list-unstyled mt-3 text-start small flex-grow-1">
+                            <li><i class="fas fa-stopwatch me-1 text-primary"></i>Avg Duration: {{ fighter.avg_fight_duration_sec | round(1) }} sec</li>
+                            <li><i class="fas fa-fist-raised me-1 text-info"></i>Total Fights: {{ fighter.total_fights }}</li>
+                        </ul>
+
+                        <!-- Highlight Badge & Ranking -->
+                        <div class="mt-auto">
+                            <span class="badge bg-dark">Rank #{{ loop.index }}</span>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
-            <p class="text-muted small mt-3">List of fighters who, on average, finish their fights the quickest.</p>
+            {% endfor %}
         </div>
+        <p class="text-muted small mt-3">List of fighters who, on average, finish their fights the quickest (among fighters with more than 10 fights).</p>
     </div>
+</div>
+
 </div>
