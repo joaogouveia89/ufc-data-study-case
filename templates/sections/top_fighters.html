@@ -1,5 +1,5 @@
 <!-- Top Fighters Section -->
-<div class="section" id="top-fighters">
+<div class="section" id="fighters-statistics">
     <div class="row mb-4">
         <div class="col-12">
             <h2><i class="fas fa-trophy text-primary me-2"></i>Top Fighters</h2>
@@ -9,105 +9,141 @@
     <!-- Most Wins -->
     <div class="card mb-4">
         <div class="card-header">
-            <h5 class="mb-0"><i class="fas fa-medal me-2"></i>Top 10 Fighters with Most Wins</h5>
+            <h5 class="mb-0"><i class="fas fa-medal me-2"></i>Top 5 UFC Fighters by Wins</h5>
         </div>
         <div class="card-body">
             <div class="row g-3">
+                {% for fighter in data["top_5_ufc_winners"] %}
                 <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <img src="images/top10wins_fighter1.jpg" alt="Travis Fulton"
-                                class="fighter-wins-image mb-3">
-                            <h6>Travis Fulton</h6>
-                            <small class="text-muted fst-italic">"The Ironman"</small>
-                            <br><span class="badge bg-success mt-2">253 Wins</span>
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center d-flex flex-column">
+                            <!-- Fighter Image -->
+                            <img src="{{ fighter.image }}" alt="{{ fighter.name }}"
+                                class="fighter-wins-image mb-3 rounded-circle border border-2 border-dark mx-auto"
+                                style="width:100px; height:100px; object-fit:cover;">
+
+                            <!-- Fighter Name -->
+                            <h6 class="fw-bold">{{ fighter.name }}</h6>
+                            <small class="text-muted fst-italic">{{ fighter.nickname }}</small>
+
+                            <!-- Stats -->
+                            <div class="mt-3">
+                                <span class="badge bg-success me-1">{{ fighter.ufc_wins }} UFC Wins</span>
+                                <div class="mt-1">
+                                    <span class="badge bg-success me-1">{{ fighter.wins }} Wins</span>
+                                    <span class="badge bg-danger me-1">{{ fighter.losses }} Losses</span>
+                                    <span class="badge bg-secondary">{{ fighter.draws }} Draws</span>
+                                </div>
+                                <div class="mt-1">
+                                    <span class="badge bg-info">Last UFC Fight: {{ fighter.last_ufc_fight_date_str
+                                        }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Extra Info -->
+                            <ul class="list-unstyled mt-3 text-start small flex-grow-1">
+                                <li><i class="fas fa-ruler-vertical me-1 text-primary"></i>Height: {{ fighter.height }}
+                                    cm</li>
+                                <li><i class="fas fa-arrows-alt-h me-1 text-info"></i>Reach: {{ fighter.reach }} cm</li>
+                                <li><i class="fas fa-birthday-cake me-1 text-pink"></i>Birthday: {{ fighter.dob_str }}
+                                </li>
+                            </ul>
+
+                            <!-- Ranking Highlight -->
+                            <div class="mt-auto">
+                                <span class="badge bg-dark">Rank #{{ loop.index }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <img src="images/top10wins_fighter2.jpg" alt="Dan Severn" class="fighter-wins-image mb-3">
-                            <h6>Dan Severn</h6>
-                            <small class="text-muted fst-italic">"The Beast"</small>
-                            <br><span class="badge bg-success mt-2">101 Wins</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <img src="images/top10wins_fighter3.jpg" alt="Jeremy Horn" class="fighter-wins-image mb-3">
-                            <h6>Jeremy Horn</h6>
-                            <small class="text-muted fst-italic">"Gumby"</small>
-                            <br><span class="badge bg-success mt-2">91 Wins</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <img src="images/top10wins_fighter4.jpg" alt="Travis Wiuff" class="fighter-wins-image mb-3">
-                            <h6>Travis Wiuff</h6>
-                            <small class="text-muted fst-italic">"The Diesel"</small>
-                            <br><span class="badge bg-success mt-2">75 Wins</span>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
+            <p class="text-muted small mt-3">
+                Ranking of fighters with the highest number of UFC wins, compared with their overall career records,
+                physical attributes, and last fight date in the UFC.
+            </p>
         </div>
     </div>
 
+
+
     <!-- Highest KO Rate -->
-    <div class="card">
+    <div class="card mb-4">
         <div class="card-header">
-            <h5 class="mb-0"><i class="fas fa-fist-raised me-2"></i>Highest KO Rate Fighters</h5>
+            <h5 class="mb-0"><i class="fas fa-fist-raised me-2"></i>Top 5 Fighters with Highest KO Rate</h5>
         </div>
         <div class="card-body">
             <div class="row g-3">
+                {% for fighter in data["top_fighters_highest_ko_rate"] %}
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100">
                         <div class="card-body text-center">
-                            <img src="images/top10korate_fighter1.jpg" alt="Anthony Johnson"
-                                class="fighter-ko-image mb-3">
-                            <h6>Anthony Johnson</h6>
-                            <p class="text-muted small">11 KO Wins / 13 Total Wins</p>
+                            <img src="{{ fighter.image }}" alt="{{ fighter.name }}" class="fighter-ko-image mb-3">
+                            <h6>{{ fighter.name }}</h6>
+                            <p class="text-muted small">{{ fighter.ko_wins }} KO Wins / {{ fighter.total_wins }}
+                                Total Wins</p>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 84.6%" aria-valuenow="84.6"
-                                    aria-valuemin="0" aria-valuemax="100">84.6%</div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ fighter.ko_rate }}%"
+                                    aria-valuenow="{{ fighter.ko_rate }}" aria-valuemin="0" aria-valuemax="100">
+                                    {{ fighter.ko_rate }}%
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <img src="images/top10korate_fighter2.jpg" alt="Cain Velasquez"
-                                class="fighter-ko-image mb-3">
-                            <h6>Cain Velasquez</h6>
-                            <p class="text-muted small">10 KO Wins / 12 Total Wins</p>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 83.3%" aria-valuenow="83.3"
-                                    aria-valuemin="0" aria-valuemax="100">83.3%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <img src="images/top10korate_fighter3.jpg" alt="Francis Ngannou"
-                                class="fighter-ko-image mb-3">
-                            <h6>Francis Ngannou</h6>
-                            <p class="text-muted small">10 KO Wins / 12 Total Wins</p>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 83.3%" aria-valuenow="83.3"
-                                    aria-valuemin="0" aria-valuemax="100">83.3%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
+            <p class="text-muted small mt-3">Shows the percentage of knockout wins in relation to the fighter's
+                total wins.</p>
+        </div>
+    </div>
+
+    <!-- Top Submission Specialists -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-link me-2"></i>Top 5 Submission Specialists</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                {% for fighter in data["top_fighters_most_submissions"] %}
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <img src="{{ fighter.image }}" alt="{{ fighter.name }}" class="fighter-sub-image mb-3">
+                            <h6>{{ fighter.name }}</h6>
+                            <small class="text-muted fst-italic">{{ fighter.nickname }}</small>
+                            <br><span class="badge bg-info mt-2">{{ fighter.submissions }} Submissions</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <p class="text-muted small mt-3">Highlight the fighters who won the most by submission (locks, chokes,
+                etc.).</p>
+        </div>
+    </div>
+
+    <!-- Fastest Average Fight Enders -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-bolt me-2"></i>Top 5 Fastest Average Fight Enders</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                {% for fighter in data["top_fighters_fastest_avg_fight_end"] %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <img src="{{ fighter.image }}" alt="{{ fighter.name }}" class="fighter-fast-image mb-3">
+                            <h6>{{ fighter.name }}</h6>
+                            <p class="text-muted small">Avg Duration: {{ fighter.avg_duration }}</p>
+                            <span class="badge bg-danger mt-2">Quick Finisher</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <p class="text-muted small mt-3">List of fighters who, on average, finish their fights the quickest.</p>
         </div>
     </div>
 </div>
