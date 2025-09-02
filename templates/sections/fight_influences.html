@@ -14,9 +14,7 @@
         <div class="card-body">
             <div class="alert alert-info">
                 <i class="fas fa-lightbulb me-2"></i>
-                <strong>Insight:</strong> Based on the data analysis, reach difference shows a correlation of 0.056 with
-                winning probability, while height difference shows a correlation of 0.044. This suggests that reach has
-                a slightly higher influence on fight outcomes than height, although both correlations are weak.
+                <strong>Insight:</strong> {{ data["influences_fight_outcome"] }}
             </div>
         </div>
     </div>
@@ -36,21 +34,33 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for stat in data["made_weight_stats"] %}
                         <tr>
-                            <td>Yes</td>
-                            <td><span class="badge bg-success">49.1%</span></td>
+                            <td>
+                                {% if stat.made_weight %}
+                                Yes
+                                {% else %}
+                                No
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if stat.made_weight %}
+                                <span class="badge bg-success">{{ (stat.won * 100) | round(1) }} %</span>
+                                {% else %}
+                                <span class="badge bg-danger">{{ (stat.won * 100) | round(1) }} %</span>
+                                {% endif %}
+                            </td>
                         </tr>
-                        <tr>
-                            <td>No</td>
-                            <td><span class="badge bg-danger">20.0%</span></td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
-            <p class="text-muted small">Fighters who made weight nearly doubled their winning probability compared to
-                those who missed weight.</p>
+            <p class="text-muted small">
+                Fighters who made weight were over twice as likely to win compared to those who missed weight.
+            </p>
         </div>
     </div>
+
 
     <!-- Previous Fight Outcome -->
     <div class="card">
@@ -69,17 +79,21 @@
                     <tbody>
                         <tr>
                             <td>Won Previous Fight</td>
-                            <td><span class="badge bg-success">51.98%</span></td>
+                            <td><span class="badge bg-success">{{ data["win_rate_previous_fight_result"]["won"]
+                                    }}</span></td>
                         </tr>
                         <tr>
                             <td>Lost Previous Fight</td>
-                            <td><span class="badge bg-warning">46.64%</span></td>
+                            <td><span class="badge bg-warning">{{ data["win_rate_previous_fight_result"]["lost"]
+                                    }}</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="text-muted small">Fighters coming off a win have a slightly higher probability of winning again,
-                suggesting a minor momentum effect.</p>
+            <p class="text-muted small">
+                Fighters coming off a win have a slightly higher probability of winning again,
+                suggesting a minor momentum effect.
+            </p>
         </div>
     </div>
 </div>
