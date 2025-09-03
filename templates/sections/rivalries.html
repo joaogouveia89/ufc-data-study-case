@@ -39,7 +39,7 @@
                 {% for fight in rivalry.fights %}
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm" style="background-color:#111111; color:white;">
-                        <img src="{{ fight.poster }}" class="card-img-top" alt="Fight Poster">
+                        <img src="{{ fight.poster }}" class="card-img-top mx-auto d-block" alt="Fight Poster" style="width: 50%;">
                         <div class="card-body text-center">
                             <h6 class="fw-bold mb-1 text-white">{{ fight.event_name }}</h6>
                             <p class="mb-1 text-white small">{{ fight.date }}</p>
