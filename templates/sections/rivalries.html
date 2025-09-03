@@ -14,22 +14,23 @@
     <div class="card mb-5 shadow-sm border-0" style="background-color:#000000; color:white;">
         <!-- Rivalry Header: Fighters and Total Wins -->
         <div class="card-header bg-dark d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <img src="{{ rivalry.r_image }}" alt="{{ rivalry.r_name }}" class="rounded-circle me-3" style="width:80px;height:80px;">
-                <div>
-                    <h5 class="mb-0 text-white">{{ rivalry.r_name }}</h5>
-                    <span class="badge bg-success">{{ rivalry.r_wins }} Wins</span>
-                </div>
-            </div>
-            <div class="fs-4 fw-bold text-center text-white">VS</div>
-            <div class="d-flex align-items-center">
-                <img src="{{ rivalry.b_image }}" alt="{{ rivalry.b_name }}" class="rounded-circle me-3" style="width:80px;height:80px;">
-                <div>
-                    <h5 class="mb-0 text-white">{{ rivalry.b_name }}</h5>
-                    <span class="badge bg-primary">{{ rivalry.b_wins }} Wins</span>
-                </div>
-            </div>
+    <div class="d-flex align-items-center">
+        <img src="{{ rivalry.r_image }}" alt="{{ rivalry.r_name }}" class="rounded-circle me-3">
+        <div class="d-flex flex-column align-items-center">
+            <h5 class="mb-0 text-white">{{ rivalry.r_name }}</h5>
+            <p style="margin-top: 12px; font-size: 2.5rem;">{{ rivalry.r_wins }}</p>
         </div>
+    </div>
+    <div class="fs-4 fw-bold text-center text-white">VS</div>
+    <div class="d-flex align-items-center">
+        <div class="d-flex flex-column align-items-center">
+            <h5 class="mb-0 text-white">{{ rivalry.b_name }}</h5>
+            <p style="margin-top: 12px; font-size: 2.5rem;">{{ rivalry.b_wins }}</p>
+        </div>
+        <img src="{{ rivalry.b_image }}" alt="{{ rivalry.b_name }}" class="rounded-circle me-3">
+    </div>
+</div>
+
 
         <!-- Fights Timeline -->
         <div class="card-body">
@@ -41,7 +42,7 @@
                         <img src="{{ fight.poster }}" class="card-img-top" alt="Fight Poster">
                         <div class="card-body text-center">
                             <h6 class="fw-bold mb-1 text-white">{{ fight.event_name }}</h6>
-                            <p class="mb-1 text-muted small">{{ fight.date }}</p>
+                            <p class="mb-1 text-white small">{{ fight.date }}</p>
                             <p class="mb-1 text-white"><i class="fas fa-trophy text-warning me-1"></i>
                                 <strong>{{ fight.winner_name }}</strong> ({{ fight.method }})
                             </p>
