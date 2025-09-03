@@ -66,10 +66,13 @@
                     <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Dataset Information</h5>
                 </div>
                 <div class="card-body">
-                    <p>This dashboard presents a detailed analysis of UFC fight data, exploring relevant statistics,
-                        trends, and insights. The goal is to understand performance patterns, fighting styles, and
-                        results over time.</p>
-                    <div class="d-flex flex-wrap gap-2">
+                    <p>This dashboard provides a comprehensive exploration of UFC fight data from 1994 to 2025.
+                        It brings together key statistics, performance metrics, and historical insights to help
+                        identify patterns across fighters, events, and outcomes. By analyzing trends such as fight
+                        frequency, methods of victory, and head-to-head rivalries, the goal is to create a clearer
+                        picture of how the sport has evolved over time and highlight factors that influence success
+                        inside the octagon.</p>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
                         <a href="https://www.kaggle.com/datasets/neelagiriaditya/ufc-datasets-1994-2025/data"
                             target="_blank" class="btn btn-outline-primary btn-sm">
                             <i class="fas fa-database me-1"></i>Dataset
@@ -79,9 +82,27 @@
                             <i class="fab fa-github me-1"></i>Codebase
                         </a>
                     </div>
+
+                    <!-- New Sources Section -->
+                    <h6 class="fw-bold mt-3 mb-2 text-dark"><i class="fas fa-link me-2"></i>Sources</h6>
+                    <ul class="list-unstyled small mb-0">
+                        <li>
+                            <a href="https://www.espn.com/mma/" target="_blank" class="text-decoration-none">
+                                <i class="fas fa-user-circle me-1 text-secondary"></i> Fighter photos (ESPN MMA)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.flaticon.com/packs/mma-fighters" target="_blank"
+                                class="text-decoration-none">
+                                <i class="fas fa-icons me-1 text-secondary"></i> Fight icons (Flaticon MMA pack)
+                            </a>
+                        </li>
+                    </ul>
+
                     <p class="text-muted mt-3 mb-0"><strong>Processed on:</strong> {{ processed_date }}</p>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
