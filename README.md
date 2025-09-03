@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/UFC_Logo.png" alt="UFC Logo" width="200"/>
+  <img src="UFC_Logo.png" alt="UFC Logo" width="200"/>
 </p>
 
 
