@@ -19,47 +19,70 @@
         </div>
     </div>
 
-    <!-- Weight Making -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h5 class="mb-0"><i class="fas fa-weight-hanging me-2"></i>Making Weight Impact</h5>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Made Weight</th>
-                            <th>Win Probability</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for stat in data["made_weight_stats"] %}
-                        <tr>
-                            <td>
-                                {% if stat.made_weight %}
-                                Yes
-                                {% else %}
-                                No
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if stat.made_weight %}
-                                <span class="badge bg-success">{{ (stat.won * 100) | round(1) }} %</span>
-                                {% else %}
-                                <span class="badge bg-danger">{{ (stat.won * 100) | round(1) }} %</span>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <p class="text-muted small">
-                Fighters who made weight were over twice as likely to win compared to those who missed weight.
-            </p>
-        </div>
+    <!-- Performance metrics impact -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Performance Metrics Impact</h5>
     </div>
+    <div class="card-body">
+        <div class="row text-center">
+
+            <!-- Strikes -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="images/strike.png" alt="Strikes"
+                         class="card-img-top p-3 mx-auto d-block"
+                         style="max-width:200px; height:auto;">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Significant Strikes</h6>
+                        <p class="mb-1 text-muted small">Win rate when landing more</p>
+                        <span class="badge bg-success fs-6">
+                            {{ data["performance_metrics"]["strikes"] }} %
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Takedowns -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="images/takedown.png" alt="Takedowns"
+                         class="card-img-top p-3 mx-auto d-block"
+                         style="max-width:200px; height:auto;">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Takedowns</h6>
+                        <p class="mb-1 text-muted small">Win rate when landing more</p>
+                        <span class="badge bg-primary fs-6">
+                            {{ data["performance_metrics"]["takedowns"] }} %
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submissions -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="images/submission.png" alt="Submissions"
+                         class="card-img-top p-3 mx-auto d-block"
+                         style="max-width:200px; height:auto;">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Submission Attempts</h6>
+                        <p class="mb-1 text-muted small">Win rate when attempting more</p>
+                        <span class="badge bg-warning text-dark fs-6">
+                            {{ data["performance_metrics"]["submissions"] }} %
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="text-muted small mt-3 text-center">
+            Fighters who outperform their opponents in these core metrics — striking, grappling, and submissions —
+            demonstrate a clear statistical edge in winning probability.
+        </p>
+    </div>
+</div>
 
 
     <!-- Previous Fight Outcome -->
@@ -68,32 +91,39 @@
             <h5 class="mb-0"><i class="fas fa-running me-2"></i>Previous Fight Momentum</h5>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Previous Fight Outcome</th>
-                            <th>Win Probability</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Won Previous Fight</td>
-                            <td><span class="badge bg-success">{{ data["win_rate_previous_fight_result"]["won"]
-                                    }}</span></td>
-                        </tr>
-                        <tr>
-                            <td>Lost Previous Fight</td>
-                            <td><span class="badge bg-warning">{{ data["win_rate_previous_fight_result"]["lost"]
-                                    }}</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="row text-center">
+
+                <!-- Won Previous Fight -->
+                <div class="col-md-6 mb-3">
+                    <div class="p-4 rounded shadow-sm bg-light border border-success">
+                        <h6 class="fw-bold text-success">
+                            <i class="fas fa-trophy me-2"></i> Won Previous Fight
+                        </h6>
+                        <div class="display-6 text-success">
+                            {{ data["win_rate_previous_fight_result"]["won"] }}
+                        </div>
+                        <small class="text-muted">Higher chance of keeping momentum</small>
+                    </div>
+                </div>
+
+                <!-- Lost Previous Fight -->
+                <div class="col-md-6 mb-3">
+                    <div class="p-4 rounded shadow-sm bg-light border border-warning">
+                        <h6 class="fw-bold text-warning">
+                            <i class="fas fa-times-circle me-2"></i> Lost Previous Fight
+                        </h6>
+                        <div class="display-6 text-warning">
+                            {{ data["win_rate_previous_fight_result"]["lost"] }}
+                        </div>
+                        <small class="text-muted">Fighting uphill after a loss</small>
+                    </div>
+                </div>
             </div>
-            <p class="text-muted small">
-                Fighters coming off a win have a slightly higher probability of winning again,
-                suggesting a minor momentum effect.
+
+            <p class="text-muted small mt-3 text-center">
+                Momentum plays a role: fighters coming off a win are more likely to win again.
             </p>
         </div>
     </div>
+
 </div>

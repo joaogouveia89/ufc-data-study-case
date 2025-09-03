@@ -156,7 +156,7 @@
                             <i class="fab fa-github me-1"></i>Codebase
                         </a>
                     </div>
-                    <p class="text-muted mt-3 mb-0"><strong>Processed on:</strong> September 2nd, 2025</p>
+                    <p class="text-muted mt-3 mb-0"><strong>Processed on:</strong> September 3rd, 2025</p>
                 </div>
             </div>
         </div>
@@ -1096,95 +1096,117 @@
         <div class="card-body">
             <div class="alert alert-info">
                 <i class="fas fa-lightbulb me-2"></i>
-                <strong>Insight:</strong> Note: Based on the data, reach difference shows a correlation of 0.056 with winning probability, while height difference shows a correlation of 0.044. This suggests that reach has a slightly higher influence on fight outcomes than height, although both correlations are weak and should not be considered strong predictors.
+                <strong>Insight:</strong> Based on the data, reach difference shows a correlation of 0.053 with winning probability, while height difference shows a correlation of 0.041. This suggests that reach has a slightly higher influence on fight outcomes than height, although both correlations are weak and should not be considered strong predictors.
             </div>
         </div>
     </div>
 
- <!-- Weight Making -->
+    <!-- Performance metrics impact -->
 <div class="card mb-4">
     <div class="card-header">
-        <h5 class="mb-0"><i class="fas fa-weight-hanging me-2"></i>Making Weight Impact</h5>
+        <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Performance Metrics Impact</h5>
     </div>
     <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Made Weight</th>
-                        <th>Win Probability</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <td>
-                            
-                                No
-                            
-                        </td>
-                        <td>
-                            
-                                <span class="badge bg-danger">20.0 %</span>
-                            
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            
-                                Yes
-                            
-                        </td>
-                        <td>
-                            
-                                <span class="badge bg-success">49.1 %</span>
-                            
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
+        <div class="row text-center">
+
+            <!-- Strikes -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="images/strike.png" alt="Strikes"
+                         class="card-img-top p-3 mx-auto d-block"
+                         style="max-width:200px; height:auto;">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Significant Strikes</h6>
+                        <p class="mb-1 text-muted small">Win rate when landing more</p>
+                        <span class="badge bg-success fs-6">
+                            76.51 %
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Takedowns -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="images/takedown.png" alt="Takedowns"
+                         class="card-img-top p-3 mx-auto d-block"
+                         style="max-width:200px; height:auto;">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Takedowns</h6>
+                        <p class="mb-1 text-muted small">Win rate when landing more</p>
+                        <span class="badge bg-primary fs-6">
+                            44.27 %
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submissions -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="images/submission.png" alt="Submissions"
+                         class="card-img-top p-3 mx-auto d-block"
+                         style="max-width:200px; height:auto;">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Submission Attempts</h6>
+                        <p class="mb-1 text-muted small">Win rate when attempting more</p>
+                        <span class="badge bg-warning text-dark fs-6">
+                            27.05 %
+                        </span>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <p class="text-muted small">
-            Fighters who made weight were over twice as likely to win compared to those who missed weight.
+
+        <p class="text-muted small mt-3 text-center">
+            Fighters who outperform their opponents in these core metrics — striking, grappling, and submissions —
+            demonstrate a clear statistical edge in winning probability.
         </p>
     </div>
 </div>
 
 
     <!-- Previous Fight Outcome -->
-<div class="card">
-    <div class="card-header">
-        <h5 class="mb-0"><i class="fas fa-running me-2"></i>Previous Fight Momentum</h5>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Previous Fight Outcome</th>
-                        <th>Win Probability</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Won Previous Fight</td>
-                        <td><span class="badge bg-success">51.98%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Lost Previous Fight</td>
-                        <td><span class="badge bg-warning">46.64%</span></td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-running me-2"></i>Previous Fight Momentum</h5>
         </div>
-        <p class="text-muted small">
-            Fighters coming off a win have a slightly higher probability of winning again,
-            suggesting a minor momentum effect.
-        </p>
+        <div class="card-body">
+            <div class="row text-center">
+
+                <!-- Won Previous Fight -->
+                <div class="col-md-6 mb-3">
+                    <div class="p-4 rounded shadow-sm bg-light border border-success">
+                        <h6 class="fw-bold text-success">
+                            <i class="fas fa-trophy me-2"></i> Won Previous Fight
+                        </h6>
+                        <div class="display-6 text-success">
+                            51.43%
+                        </div>
+                        <small class="text-muted">Higher chance of keeping momentum</small>
+                    </div>
+                </div>
+
+                <!-- Lost Previous Fight -->
+                <div class="col-md-6 mb-3">
+                    <div class="p-4 rounded shadow-sm bg-light border border-warning">
+                        <h6 class="fw-bold text-warning">
+                            <i class="fas fa-times-circle me-2"></i> Lost Previous Fight
+                        </h6>
+                        <div class="display-6 text-warning">
+                            47.10%
+                        </div>
+                        <small class="text-muted">Fighting uphill after a loss</small>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-muted small mt-3 text-center">
+                Momentum plays a role: fighters coming off a win are more likely to win again.
+            </p>
+        </div>
     </div>
-</div>
 
 </div>
       <!-- Rivalries Section -->
@@ -1554,7 +1576,7 @@
    <footer class="mt-5 py-4 bg-dark text-light">
       <div class="container text-center small">
          <p class="mb-1">
-            📊 UFC Data Analysis Report — Generated on <strong>September 2nd, 2025</strong>
+            📊 UFC Data Analysis Report — Generated on <strong>September 3rd, 2025</strong>
          </p>
          <p class="mb-2">
             Built with <i class="fab fa-python text-warning"></i> Python & <i class="fas fa-chart-bar text-info"></i>
